@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Textile Engineering Virtual Laboratory", "WindowsFormsApplication1\Textile Engineering Virtual Laboratory.csproj", "{F25DF3DE-E4BA-435C-83E1-AD6000D5098F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Textile Engineering Virtual Laboratory", "Textile Engineering Virtual Laboratory.csproj", "{F25DF3DE-E4BA-435C-83E1-AD6000D5098F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
