@@ -6,7 +6,7 @@ namespace TextileEngineeringVirtualLaboratory.Plotter
     public abstract class PlotterTemplate
     {
         protected const int axesRange = 30;
-        protected const int displayMargin = 600;
+        protected const int displayMargin = 700;
         protected const int displayScale = 15;
 
         // Plot with coordinate system

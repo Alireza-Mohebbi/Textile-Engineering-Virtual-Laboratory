@@ -163,7 +163,7 @@
             this.plotTypeComboBox.Size = new System.Drawing.Size(245, 21);
             this.plotTypeComboBox.TabIndex = 3;
             this.plotTypeComboBox.Tag = "";
-            this.plotTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.plotTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.plotTypeComboBox_SelectedIndexChanged);
             // 
             // plotInputsGroupBox
             // 

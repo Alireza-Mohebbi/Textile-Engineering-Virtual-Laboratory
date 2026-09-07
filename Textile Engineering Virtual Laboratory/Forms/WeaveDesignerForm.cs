@@ -11,7 +11,7 @@ namespace TextileEngineeringVirtualLaboratory
     {
         public Weave DesignedWeave { get; set; }
         private Rectangle[,] interactiveIntersectionsOfWeave;
-        private const int marginFromScreenCoord = 50;
+        private const int displayMargin = 50;
         private const float displayScale = 50;
 
         public WeaveDesigner()
@@ -50,15 +50,15 @@ namespace TextileEngineeringVirtualLaboratory
             {
                 for (int j = 0; j < DesignedWeave.WeftCount; j++)
                 {
-                    int x = marginFromScreenCoord + (int)(i * DesignedWeave.YarnSpacing * displayScale);
-                    int y = marginFromScreenCoord + (int)(j * DesignedWeave.YarnSpacing * displayScale);
+                    int x = displayMargin + (int)(i * DesignedWeave.YarnSpacing * displayScale);
+                    int y = displayMargin + (int)(j * DesignedWeave.YarnSpacing * displayScale);
 
                     interactiveIntersectionsOfWeave[i, j] = new Rectangle(x - interactiveAreaSize / 2, y - interactiveAreaSize / 2, interactiveAreaSize, interactiveAreaSize);
                 }
             }
         }
 
-        // Switch between warp-over-weft or vice versa by clicking on that intersection
+        // Switch between warp-over-weft or vice versa by clicking on an intersection
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
             if (DesignedWeave == null || interactiveIntersectionsOfWeave == null)
@@ -88,7 +88,7 @@ namespace TextileEngineeringVirtualLaboratory
             }
 
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            e.Graphics.TranslateTransform(marginFromScreenCoord, marginFromScreenCoord);
+            e.Graphics.TranslateTransform(displayMargin, displayMargin);
             e.Graphics.ScaleTransform(displayScale, displayScale);
 
             WeaveRenderer weaveRenderer = new WeaveRenderer();
