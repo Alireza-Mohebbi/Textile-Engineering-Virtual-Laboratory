@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace TextileEngineeringVirtualLaboratory.Plotter
 {
-    public partial class ShearStiffnessPlotter : PlotterTemplate
+    public partial class ShearStiffnessPlotter : AbstractPlotter
     {
         private float shearStress1, shearStress2;     // (MPa)
         private float shearStrain1, shearStrain2;

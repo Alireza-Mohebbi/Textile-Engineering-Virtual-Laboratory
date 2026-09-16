@@ -11,8 +11,8 @@
         public bool[,] IsWarpOverWeft { get; set; }
         public int RepeatX { get; set; }
         public int RepeatY { get; set; }
-        public float FabricWidth { get { return ((YarnWidth + YarnSpacing) * WarpCount * RepeatX) - YarnSpacing; } }    // (mm)
-        public float FabricHeight { get { return ((YarnWidth + YarnSpacing) * WeftCount * RepeatY) - YarnSpacing; } }   // (mm)
+        public float FabricWidth { get { return YarnSpacing * WarpCount * RepeatX; } }    // (mm)
+        public float FabricHeight { get { return YarnSpacing * WeftCount * RepeatY; } }   // (mm)
         public float FabricThickness { get { return 2 * YarnThickness; } }  // (mm)
 
         /// Weave mechanical properties ///

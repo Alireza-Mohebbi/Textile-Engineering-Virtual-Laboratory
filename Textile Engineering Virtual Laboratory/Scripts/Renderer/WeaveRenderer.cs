@@ -108,7 +108,7 @@ namespace TextileEngineeringVirtualLaboratory.Renderer
 
                 if (weftCurveControlPoints.Length > 1)
                 {
-                    g.DrawCurve( weftPen, weftCurveControlPoints);
+                    g.DrawCurve(weftPen, weftCurveControlPoints);
                 }
             }
         }

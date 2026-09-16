@@ -89,7 +89,7 @@
             this.weavePropertiesButton.Name = "weavePropertiesButton";
             this.weavePropertiesButton.Size = new System.Drawing.Size(105, 23);
             this.weavePropertiesButton.TabIndex = 2;
-            this.weavePropertiesButton.Text = "Weave Properties";
+            this.weavePropertiesButton.Text = "Properties";
             this.weavePropertiesButton.UseVisualStyleBackColor = true;
             this.weavePropertiesButton.Click += new System.EventHandler(this.weavePropertiesButton_Click);
             // 
@@ -157,7 +157,8 @@
             "Stress-Strain Curve",
             "Bending Moment-Curvature Curve",
             "Shear Stiffness Curve",
-            "Drape 2D"});
+            "Drape 2D",
+            "Crimp"});
             this.plotTypeComboBox.Location = new System.Drawing.Point(17, 92);
             this.plotTypeComboBox.Name = "plotTypeComboBox";
             this.plotTypeComboBox.Size = new System.Drawing.Size(245, 21);

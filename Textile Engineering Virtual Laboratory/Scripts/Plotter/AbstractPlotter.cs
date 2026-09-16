@@ -3,7 +3,7 @@ using System.Drawing.Drawing2D;
 
 namespace TextileEngineeringVirtualLaboratory.Plotter
 {
-    public abstract class PlotterTemplate
+    public abstract class AbstractPlotter
     {
         protected const int axesRange = 30;
         protected const int displayMargin = 700;
@@ -55,7 +55,7 @@ namespace TextileEngineeringVirtualLaboratory.Plotter
             g.DrawString(labelY, textsFont, Brushes.Black, 0, -axesRange * 1.08f);
         }
 
-        // Implementations of concrete plotters
+        // Concrete plotters override this method
         public abstract void DoPlot(Graphics g);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using TextileEngineeringVirtualLaboratory.Calculator;
 using TextileEngineeringVirtualLaboratory.Forms;
 using TextileEngineeringVirtualLaboratory.Plotter;
 using TextileEngineeringVirtualLaboratory.Renderer;
@@ -128,7 +129,7 @@ namespace TextileEngineeringVirtualLaboratory
             {
                 // Stress-Strain plotter selected
                 case 1:
-                    PlotterTemplate bendingMomentCurvaturePlotter = new BendingMomentCurvaturePlotter(
+                    AbstractPlotter bendingMomentCurvaturePlotter = new BendingMomentCurvaturePlotter(
                         (float)input1.Value,
                         (float)input2.Value,
                         (float)input3.Value,
@@ -137,7 +138,7 @@ namespace TextileEngineeringVirtualLaboratory
 
                 // Shear stiffness plotter selected
                 case 2:
-                    PlotterTemplate shearStiffnessPlotter = new ShearStiffnessPlotter(
+                    AbstractPlotter shearStiffnessPlotter = new ShearStiffnessPlotter(
                         (float)input1.Value,
                         (float)input2.Value,
                         (float)input3.Value,
@@ -146,8 +147,13 @@ namespace TextileEngineeringVirtualLaboratory
 
                 // Drape plotter selected
                 case 3:
-                    PlotterTemplate drapePlotter = new DrapePlotter(Weave);
+                    AbstractPlotter drapePlotter = new DrapePlotter(Weave);
                     drapePlotter.Plot(e.Graphics); break;
+
+                // Crimp calculator selected
+                case 4:
+                    AbstractCalculator crimpCalculator = new CrimpCalculator();
+                    crimpCalculator.CalculateWarpsCrimp(Weave); break;
 
                 // None selected
                 default: break;
