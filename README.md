@@ -1,6 +1,6 @@
 ## About the Project 
 
-This software allows users to model a 2D weave structure (including its cross section) and assign yarn properties to it. Based on the defined model, the software provides approximate predictions of the weave's mechanical behavior and generates useful mechanical plots.
+This software allows users to model a 2D plain weave structure (including its cross section) and assign yarn properties to it. Based on the defined model, the software provides approximate predictions of the weave's mechanical behavior and generates useful mechanical plots.
 
 
 ## Cooperations
@@ -10,7 +10,7 @@ The project is led by Dr. Mostafa Jamshidi, assistant professor in the Departmen
 
 ## Under Development
 
-The initial versions will focus on 2D weave modeling, property assignment, and approximate mechanical predictions. Accuracy and modeling capabilities will be improved as the underlying models are developed and validated.
+The initial versions will focus on 2D plain weave modeling, property assignment, and approximate mechanical predictions. Accuracy and modeling capabilities will be improved as the underlying models are developed and validated.
 
 
 ## Disclaimer 
