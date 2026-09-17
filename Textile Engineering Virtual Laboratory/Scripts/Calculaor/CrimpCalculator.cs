@@ -59,10 +59,7 @@ namespace TextileEngineeringVirtualLaboratory.Calculator
                 }
             }
 
-
-            //////////////////////////////////////////////////////
-            // Calculate warps' overlap arc lengths at intersections
-            CalculateWarpsOverlapArcLengthsAtIntersections();
+            CalculateCrimp();
 
 
             //////////////////////////////////////////////////////
@@ -84,40 +81,50 @@ namespace TextileEngineeringVirtualLaboratory.Calculator
             MessageBox.Show(message, "Warp and weft path points");
         }
 
-        private void CalculateWarpsOverlapArcLengthsAtIntersections()
+        private void CalculateCrimp()
         {
-            float[,] warpSegmentAngle = new float[weave.WarpCount, weave.WeftCount + 1];
-            float[,] warpSegmentLength = new float[weave.WarpCount, weave.WeftCount + 1];
+            float sumOfWarpsProjectedLengths = 0;      // The short, visible length
+            float sumOfWarpsStraightenedLengths = 0;   // The full length including interlacement curves
+            float[] crimpOfEachWarp = new float[weave.WarpCount];
+            float fabricCrimp = 0;
             int k = 0;
 
             for (int i = 0; i < weave.WarpCount; i++)
             {
+                // Accumulate lengths for this individual warp
+                float warpProjectedLength = 0;
+                float warpStraightenedLength = 0;
+
                 for (int j = 0; j < weave.WeftCount + 1; j++, k++)
                 {
-                    warpSegmentAngle[i, j] = (float)Math.Atan(Math.Abs((warpsPathPoints[k + 1].Y - warpsPathPoints[k].Y) / (warpsPathPoints[k + 1].X - warpsPathPoints[k].X)));
-                    warpSegmentLength[i, j] = (float)Math.Sqrt(Math.Pow(warpsPathPoints[k + 1].X - warpsPathPoints[k].X, 2) + Math.Pow(warpsPathPoints[k + 1].Y - warpsPathPoints[k].Y, 2));
+                    float warpSegmentAngle = (float)Math.Atan(Math.Abs((warpsPathPoints[k + 1].Y - warpsPathPoints[k].Y) / (warpsPathPoints[k + 1].X - warpsPathPoints[k].X)));
+                    float warpSegmentProjectedLength = (float)Math.Sqrt(Math.Pow(warpsPathPoints[k + 1].X - warpsPathPoints[k].X, 2) + Math.Pow(warpsPathPoints[k + 1].Y - warpsPathPoints[k].Y, 2));
+                    float warpSegmentStraightenedLength = (warpSegmentProjectedLength * (1 / (float)Math.Cos(warpSegmentAngle))) + ((2 * weave.YarnThickness) * (warpSegmentAngle - (float)Math.Tan(warpSegmentAngle)));
+
+                    // Add this segment to the current warp
+                    warpProjectedLength += warpSegmentProjectedLength;
+                    warpStraightenedLength += warpSegmentStraightenedLength;
+
+                    // Add this segment to the whole fabric
+                    sumOfWarpsProjectedLengths += warpSegmentProjectedLength;
+                    sumOfWarpsStraightenedLengths += warpSegmentStraightenedLength;
                 }
+
+                // Calculate crimp for this warp AFTER all its segments
+                crimpOfEachWarp[i] = ((warpStraightenedLength - warpProjectedLength) / warpProjectedLength) * 100;
                 k++;
             }
 
-            // Log
-            string message = "";
+            fabricCrimp = ((sumOfWarpsStraightenedLengths - sumOfWarpsProjectedLengths) / (sumOfWarpsProjectedLengths)) * 100;
 
-            for (int i = 0; i < warpSegmentAngle.GetLength(0); i++)
+            /////////////////////
+            // Print crimp values
+            string messageNew = "";
+            for (int i = 0; i < weave.WarpCount; i++)
             {
-                message += $"Warp {i}:\n";
-
-                for (int j = 0; j < warpSegmentAngle.GetLength(1); j++)
-                {
-                    message += $"  Segment {j}: " +
-                               $"Angle = {warpSegmentAngle[i, j]:F3}, " +
-                               $"Length = {warpSegmentLength[i, j]:F3}\n";
-                }
-
-                message += "\n";
+                messageNew += ("Warp " + (i + 1) + " crimp: " + crimpOfEachWarp[i]) + "%" + "\n";
             }
-
-            MessageBox.Show(message, "Angle and lengths of warp segments");
+            MessageBox.Show(messageNew + "\nFabric total crimp in warp direction = " + fabricCrimp.ToString() + "%");
         }
     }
 }
