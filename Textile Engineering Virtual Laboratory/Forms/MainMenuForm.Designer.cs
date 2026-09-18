@@ -33,10 +33,11 @@
             this.weavePropertiesButton = new System.Windows.Forms.Button();
             this.weaveViewLabel = new System.Windows.Forms.Label();
             this.weaveViewer = new System.Windows.Forms.PictureBox();
-            this.plotInputsPanel = new System.Windows.Forms.Panel();
-            this.plotterHeader = new System.Windows.Forms.Label();
+            this.resultsWindow = new System.Windows.Forms.PictureBox();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.plotTabPage = new System.Windows.Forms.TabPage();
+            this.plotButton = new System.Windows.Forms.Button();
             this.plotTypeLabel = new System.Windows.Forms.Label();
-            this.plotTypeComboBox = new System.Windows.Forms.ComboBox();
             this.plotInputsGroupBox = new System.Windows.Forms.GroupBox();
             this.input1 = new System.Windows.Forms.NumericUpDown();
             this.input2 = new System.Windows.Forms.NumericUpDown();
@@ -46,17 +47,27 @@
             this.inputLabel2 = new System.Windows.Forms.Label();
             this.inputLabel3 = new System.Windows.Forms.Label();
             this.inputLabel4 = new System.Windows.Forms.Label();
-            this.plotButton = new System.Windows.Forms.Button();
-            this.plotViewer = new System.Windows.Forms.PictureBox();
+            this.plotTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.calculateTabPage = new System.Windows.Forms.TabPage();
+            this.calculateButton = new System.Windows.Forms.Button();
+            this.simulateTabPage = new System.Windows.Forms.TabPage();
+            this.simulateButton = new System.Windows.Forms.Button();
+            this.simulationParameterTypeLabel = new System.Windows.Forms.Label();
+            this.simulationParameterTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.calculationParameterTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.calculationParameterTypeLabel = new System.Windows.Forms.Label();
             this.controls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.weaveViewer)).BeginInit();
-            this.plotInputsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.resultsWindow)).BeginInit();
+            this.tabControl.SuspendLayout();
+            this.plotTabPage.SuspendLayout();
             this.plotInputsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.input1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.plotViewer)).BeginInit();
+            this.calculateTabPage.SuspendLayout();
+            this.simulateTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // newWeaveButton
@@ -114,57 +125,60 @@
             this.weaveViewer.TabIndex = 4;
             this.weaveViewer.TabStop = false;
             // 
-            // plotInputsPanel
+            // resultsWindow
             // 
-            this.plotInputsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.plotInputsPanel.Controls.Add(this.plotterHeader);
-            this.plotInputsPanel.Controls.Add(this.plotTypeLabel);
-            this.plotInputsPanel.Controls.Add(this.plotTypeComboBox);
-            this.plotInputsPanel.Controls.Add(this.plotInputsGroupBox);
-            this.plotInputsPanel.Controls.Add(this.plotButton);
-            this.plotInputsPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.plotInputsPanel.Enabled = false;
-            this.plotInputsPanel.Location = new System.Drawing.Point(568, 0);
-            this.plotInputsPanel.Name = "plotInputsPanel";
-            this.plotInputsPanel.Size = new System.Drawing.Size(281, 477);
-            this.plotInputsPanel.TabIndex = 2;
+            this.resultsWindow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.resultsWindow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resultsWindow.Location = new System.Drawing.Point(133, 0);
+            this.resultsWindow.Name = "resultsWindow";
+            this.resultsWindow.Size = new System.Drawing.Size(716, 477);
+            this.resultsWindow.TabIndex = 3;
+            this.resultsWindow.TabStop = false;
             // 
-            // plotterHeader
+            // tabControl
             // 
-            this.plotterHeader.AutoSize = true;
-            this.plotterHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.plotterHeader.Location = new System.Drawing.Point(82, 12);
-            this.plotterHeader.Name = "plotterHeader";
-            this.plotterHeader.Size = new System.Drawing.Size(100, 31);
-            this.plotterHeader.TabIndex = 12;
-            this.plotterHeader.Text = "Plotter";
+            this.tabControl.Controls.Add(this.calculateTabPage);
+            this.tabControl.Controls.Add(this.simulateTabPage);
+            this.tabControl.Controls.Add(this.plotTabPage);
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Right;
+            this.tabControl.Location = new System.Drawing.Point(532, 0);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(317, 477);
+            this.tabControl.TabIndex = 4;
+            // 
+            // plotTabPage
+            // 
+            this.plotTabPage.Controls.Add(this.plotButton);
+            this.plotTabPage.Controls.Add(this.plotTypeLabel);
+            this.plotTabPage.Controls.Add(this.plotInputsGroupBox);
+            this.plotTabPage.Controls.Add(this.plotTypeComboBox);
+            this.plotTabPage.Location = new System.Drawing.Point(4, 22);
+            this.plotTabPage.Name = "plotTabPage";
+            this.plotTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.plotTabPage.Size = new System.Drawing.Size(309, 451);
+            this.plotTabPage.TabIndex = 0;
+            this.plotTabPage.Text = "Plot";
+            this.plotTabPage.UseVisualStyleBackColor = true;
+            // 
+            // plotButton
+            // 
+            this.plotButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.plotButton.Location = new System.Drawing.Point(6, 413);
+            this.plotButton.Name = "plotButton";
+            this.plotButton.Size = new System.Drawing.Size(295, 30);
+            this.plotButton.TabIndex = 4;
+            this.plotButton.Text = "Plot";
+            this.plotButton.UseVisualStyleBackColor = true;
             // 
             // plotTypeLabel
             // 
             this.plotTypeLabel.AutoSize = true;
-            this.plotTypeLabel.Location = new System.Drawing.Point(14, 76);
+            this.plotTypeLabel.Location = new System.Drawing.Point(6, 33);
             this.plotTypeLabel.Name = "plotTypeLabel";
-            this.plotTypeLabel.Size = new System.Drawing.Size(67, 13);
+            this.plotTypeLabel.Size = new System.Drawing.Size(66, 13);
             this.plotTypeLabel.TabIndex = 5;
-            this.plotTypeLabel.Text = "Select a Plot";
-            // 
-            // plotTypeComboBox
-            // 
-            this.plotTypeComboBox.DisplayMember = "iii";
-            this.plotTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.plotTypeComboBox.FormattingEnabled = true;
-            this.plotTypeComboBox.Items.AddRange(new object[] {
-            "Stress-Strain Curve",
-            "Bending Moment-Curvature Curve",
-            "Shear Stiffness Curve",
-            "Drape 2D",
-            "Crimp"});
-            this.plotTypeComboBox.Location = new System.Drawing.Point(17, 92);
-            this.plotTypeComboBox.Name = "plotTypeComboBox";
-            this.plotTypeComboBox.Size = new System.Drawing.Size(245, 21);
-            this.plotTypeComboBox.TabIndex = 3;
-            this.plotTypeComboBox.Tag = "";
-            this.plotTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.plotTypeComboBox_SelectedIndexChanged);
+            this.plotTypeLabel.Text = "Select a plot";
             // 
             // plotInputsGroupBox
             // 
@@ -178,9 +192,9 @@
             this.plotInputsGroupBox.Controls.Add(this.inputLabel2);
             this.plotInputsGroupBox.Controls.Add(this.inputLabel3);
             this.plotInputsGroupBox.Controls.Add(this.inputLabel4);
-            this.plotInputsGroupBox.Location = new System.Drawing.Point(17, 129);
+            this.plotInputsGroupBox.Location = new System.Drawing.Point(6, 86);
             this.plotInputsGroupBox.Name = "plotInputsGroupBox";
-            this.plotInputsGroupBox.Size = new System.Drawing.Size(245, 299);
+            this.plotInputsGroupBox.Size = new System.Drawing.Size(295, 321);
             this.plotInputsGroupBox.TabIndex = 6;
             this.plotInputsGroupBox.TabStop = false;
             this.plotInputsGroupBox.Text = "Inputs";
@@ -193,7 +207,7 @@
             0,
             0,
             327680});
-            this.input1.Location = new System.Drawing.Point(148, 28);
+            this.input1.Location = new System.Drawing.Point(209, 28);
             this.input1.Name = "input1";
             this.input1.Size = new System.Drawing.Size(86, 20);
             this.input1.TabIndex = 13;
@@ -206,7 +220,7 @@
             0,
             0,
             327680});
-            this.input2.Location = new System.Drawing.Point(148, 54);
+            this.input2.Location = new System.Drawing.Point(209, 54);
             this.input2.Name = "input2";
             this.input2.Size = new System.Drawing.Size(86, 20);
             this.input2.TabIndex = 16;
@@ -219,7 +233,7 @@
             0,
             0,
             327680});
-            this.input3.Location = new System.Drawing.Point(148, 80);
+            this.input3.Location = new System.Drawing.Point(209, 80);
             this.input3.Name = "input3";
             this.input3.Size = new System.Drawing.Size(86, 20);
             this.input3.TabIndex = 17;
@@ -232,7 +246,7 @@
             0,
             0,
             327680});
-            this.input4.Location = new System.Drawing.Point(148, 106);
+            this.input4.Location = new System.Drawing.Point(209, 106);
             this.input4.Name = "input4";
             this.input4.Size = new System.Drawing.Size(86, 20);
             this.input4.TabIndex = 20;
@@ -273,34 +287,120 @@
             this.inputLabel4.TabIndex = 19;
             this.inputLabel4.Text = "Input 4";
             // 
-            // plotButton
+            // plotTypeComboBox
             // 
-            this.plotButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.plotButton.Location = new System.Drawing.Point(21, 434);
-            this.plotButton.Name = "plotButton";
-            this.plotButton.Size = new System.Drawing.Size(245, 30);
-            this.plotButton.TabIndex = 4;
-            this.plotButton.Text = "Plot";
-            this.plotButton.UseVisualStyleBackColor = true;
-            this.plotButton.Click += new System.EventHandler(this.plotButton_Click);
+            this.plotTypeComboBox.DisplayMember = "iii";
+            this.plotTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.plotTypeComboBox.FormattingEnabled = true;
+            this.plotTypeComboBox.Items.AddRange(new object[] {
+            "Stress-Strain Curve",
+            "Bending Moment-Curvature Curve",
+            "Shear Stiffness Curve"});
+            this.plotTypeComboBox.Location = new System.Drawing.Point(6, 49);
+            this.plotTypeComboBox.Name = "plotTypeComboBox";
+            this.plotTypeComboBox.Size = new System.Drawing.Size(295, 21);
+            this.plotTypeComboBox.TabIndex = 3;
+            this.plotTypeComboBox.Tag = "";
+            this.plotTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.plotTypeComboBox_SelectedIndexChanged);
             // 
-            // plotViewer
+            // calculateTabPage
             // 
-            this.plotViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.plotViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.plotViewer.Location = new System.Drawing.Point(133, 0);
-            this.plotViewer.Name = "plotViewer";
-            this.plotViewer.Size = new System.Drawing.Size(435, 477);
-            this.plotViewer.TabIndex = 3;
-            this.plotViewer.TabStop = false;
+            this.calculateTabPage.Controls.Add(this.calculateButton);
+            this.calculateTabPage.Controls.Add(this.calculationParameterTypeLabel);
+            this.calculateTabPage.Controls.Add(this.calculationParameterTypeComboBox);
+            this.calculateTabPage.Location = new System.Drawing.Point(4, 22);
+            this.calculateTabPage.Name = "calculateTabPage";
+            this.calculateTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.calculateTabPage.Size = new System.Drawing.Size(309, 451);
+            this.calculateTabPage.TabIndex = 1;
+            this.calculateTabPage.Text = "Calculate";
+            this.calculateTabPage.UseVisualStyleBackColor = true;
+            // 
+            // calculateButton
+            // 
+            this.calculateButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.calculateButton.Location = new System.Drawing.Point(6, 413);
+            this.calculateButton.Name = "calculateButton";
+            this.calculateButton.Size = new System.Drawing.Size(295, 30);
+            this.calculateButton.TabIndex = 8;
+            this.calculateButton.Text = "Calculate";
+            this.calculateButton.UseVisualStyleBackColor = true;
+            this.calculateButton.Click += new System.EventHandler(this.calculateButton_Click);
+            // 
+            // simulateTabPage
+            // 
+            this.simulateTabPage.Controls.Add(this.simulateButton);
+            this.simulateTabPage.Controls.Add(this.simulationParameterTypeLabel);
+            this.simulateTabPage.Controls.Add(this.simulationParameterTypeComboBox);
+            this.simulateTabPage.Location = new System.Drawing.Point(4, 22);
+            this.simulateTabPage.Name = "simulateTabPage";
+            this.simulateTabPage.Size = new System.Drawing.Size(309, 451);
+            this.simulateTabPage.TabIndex = 2;
+            this.simulateTabPage.Text = "Simulate";
+            this.simulateTabPage.UseVisualStyleBackColor = true;
+            // 
+            // simulateButton
+            // 
+            this.simulateButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.simulateButton.Location = new System.Drawing.Point(6, 413);
+            this.simulateButton.Name = "simulateButton";
+            this.simulateButton.Size = new System.Drawing.Size(295, 30);
+            this.simulateButton.TabIndex = 8;
+            this.simulateButton.Text = "Simulate";
+            this.simulateButton.UseVisualStyleBackColor = true;
+            this.simulateButton.Click += new System.EventHandler(this.simulateButton_Click);
+            // 
+            // simulationParameterTypeLabel
+            // 
+            this.simulationParameterTypeLabel.AutoSize = true;
+            this.simulationParameterTypeLabel.Location = new System.Drawing.Point(6, 33);
+            this.simulationParameterTypeLabel.Name = "simulationParameterTypeLabel";
+            this.simulationParameterTypeLabel.Size = new System.Drawing.Size(96, 13);
+            this.simulationParameterTypeLabel.TabIndex = 9;
+            this.simulationParameterTypeLabel.Text = "Select a parameter";
+            // 
+            // simulationParameterTypeComboBox
+            // 
+            this.simulationParameterTypeComboBox.DisplayMember = "iii";
+            this.simulationParameterTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.simulationParameterTypeComboBox.FormattingEnabled = true;
+            this.simulationParameterTypeComboBox.Items.AddRange(new object[] {
+            "Drape 2D"});
+            this.simulationParameterTypeComboBox.Location = new System.Drawing.Point(6, 48);
+            this.simulationParameterTypeComboBox.Name = "simulationParameterTypeComboBox";
+            this.simulationParameterTypeComboBox.Size = new System.Drawing.Size(295, 21);
+            this.simulationParameterTypeComboBox.TabIndex = 7;
+            this.simulationParameterTypeComboBox.Tag = "";
+            // 
+            // calculationParameterTypeComboBox
+            // 
+            this.calculationParameterTypeComboBox.DisplayMember = "iii";
+            this.calculationParameterTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.calculationParameterTypeComboBox.FormattingEnabled = true;
+            this.calculationParameterTypeComboBox.Items.AddRange(new object[] {
+            "Crimp"});
+            this.calculationParameterTypeComboBox.Location = new System.Drawing.Point(6, 48);
+            this.calculationParameterTypeComboBox.Name = "calculationParameterTypeComboBox";
+            this.calculationParameterTypeComboBox.Size = new System.Drawing.Size(295, 21);
+            this.calculationParameterTypeComboBox.TabIndex = 7;
+            this.calculationParameterTypeComboBox.Tag = "";
+            // 
+            // calculationParameterTypeLabel
+            // 
+            this.calculationParameterTypeLabel.AutoSize = true;
+            this.calculationParameterTypeLabel.Location = new System.Drawing.Point(6, 33);
+            this.calculationParameterTypeLabel.Name = "calculationParameterTypeLabel";
+            this.calculationParameterTypeLabel.Size = new System.Drawing.Size(96, 13);
+            this.calculationParameterTypeLabel.TabIndex = 9;
+            this.calculationParameterTypeLabel.Text = "Select a parameter";
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(849, 477);
-            this.Controls.Add(this.plotViewer);
-            this.Controls.Add(this.plotInputsPanel);
+            this.Controls.Add(this.tabControl);
+            this.Controls.Add(this.resultsWindow);
             this.Controls.Add(this.controls);
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -309,15 +409,20 @@
             this.controls.ResumeLayout(false);
             this.controls.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.weaveViewer)).EndInit();
-            this.plotInputsPanel.ResumeLayout(false);
-            this.plotInputsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.resultsWindow)).EndInit();
+            this.tabControl.ResumeLayout(false);
+            this.plotTabPage.ResumeLayout(false);
+            this.plotTabPage.PerformLayout();
             this.plotInputsGroupBox.ResumeLayout(false);
             this.plotInputsGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.input1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.input2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.input3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.input4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.plotViewer)).EndInit();
+            this.calculateTabPage.ResumeLayout(false);
+            this.calculateTabPage.PerformLayout();
+            this.simulateTabPage.ResumeLayout(false);
+            this.simulateTabPage.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -326,23 +431,31 @@
 
         private System.Windows.Forms.Button newWeaveButton;
         private System.Windows.Forms.Panel controls;
-        private System.Windows.Forms.Panel plotInputsPanel;
-        private System.Windows.Forms.ComboBox plotTypeComboBox;
-        private System.Windows.Forms.Button plotButton;
         private System.Windows.Forms.PictureBox weaveViewer;
-        private System.Windows.Forms.Label plotTypeLabel;
-        private System.Windows.Forms.Label plotterHeader;
-        private System.Windows.Forms.NumericUpDown input1;
-        private System.Windows.Forms.NumericUpDown input4;
-        private System.Windows.Forms.Label inputLabel4;
-        private System.Windows.Forms.Label inputLabel2;
-        private System.Windows.Forms.NumericUpDown input3;
-        private System.Windows.Forms.NumericUpDown input2;
-        private System.Windows.Forms.Label inputLabel3;
-        private System.Windows.Forms.Label inputLabel1;
         private System.Windows.Forms.Button weavePropertiesButton;
-        private System.Windows.Forms.GroupBox plotInputsGroupBox;
         private System.Windows.Forms.Label weaveViewLabel;
-        private System.Windows.Forms.PictureBox plotViewer;
+        private System.Windows.Forms.PictureBox resultsWindow;
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.TabPage calculateTabPage;
+        private System.Windows.Forms.Button calculateButton;
+        private System.Windows.Forms.TabPage plotTabPage;
+        private System.Windows.Forms.Button plotButton;
+        private System.Windows.Forms.Label plotTypeLabel;
+        private System.Windows.Forms.GroupBox plotInputsGroupBox;
+        private System.Windows.Forms.NumericUpDown input1;
+        private System.Windows.Forms.NumericUpDown input2;
+        private System.Windows.Forms.NumericUpDown input3;
+        private System.Windows.Forms.NumericUpDown input4;
+        private System.Windows.Forms.Label inputLabel1;
+        private System.Windows.Forms.Label inputLabel2;
+        private System.Windows.Forms.Label inputLabel3;
+        private System.Windows.Forms.Label inputLabel4;
+        private System.Windows.Forms.ComboBox plotTypeComboBox;
+        private System.Windows.Forms.TabPage simulateTabPage;
+        private System.Windows.Forms.Button simulateButton;
+        private System.Windows.Forms.Label simulationParameterTypeLabel;
+        private System.Windows.Forms.ComboBox simulationParameterTypeComboBox;
+        private System.Windows.Forms.Label calculationParameterTypeLabel;
+        private System.Windows.Forms.ComboBox calculationParameterTypeComboBox;
     }
 }

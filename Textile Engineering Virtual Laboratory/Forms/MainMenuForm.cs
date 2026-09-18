@@ -5,6 +5,7 @@ using TextileEngineeringVirtualLaboratory.Calculator;
 using TextileEngineeringVirtualLaboratory.Forms;
 using TextileEngineeringVirtualLaboratory.Plotter;
 using TextileEngineeringVirtualLaboratory.Renderer;
+using TextileEngineeringVirtualLaboratory.Simulator;
 using TextileEngineeringVirtualLaboratory.Textiles;
 
 
@@ -19,7 +20,7 @@ namespace TextileEngineeringVirtualLaboratory
             InitializeComponent();
             DoubleBuffered = true;
             weaveViewer.Paint += weaveViewer_Paint;
-            plotViewer.Paint += plotViewer_Paint;
+            resultsWindow.Paint += resultsWindow_Paint;
         }
 
         private void newWeaveButton_Click(object sender, EventArgs e)
@@ -50,7 +51,7 @@ namespace TextileEngineeringVirtualLaboratory
             if (weavePropertiesConfigurer.ShowDialog() == DialogResult.OK)
             {
                 Weave = weavePropertiesConfigurer.Weave;
-                plotInputsPanel.Enabled = true;
+                tabControl.Enabled = true;
             }
         }
 
@@ -115,49 +116,83 @@ namespace TextileEngineeringVirtualLaboratory
             }
         }
 
-        private void plotButton_Click(object sender, EventArgs e)
+        private void calculateButton_Click(object sender, EventArgs e)
         {
-            plotViewer.Invalidate();
+            resultsWindow.Invalidate();
         }
 
-        private void plotViewer_Paint(object sender, PaintEventArgs e)
+        private void simulateButton_Click(object sender, EventArgs e)
+        {
+            resultsWindow.Invalidate();
+        }
+
+        private void plotButton_Click(object sender, EventArgs e)
+        {
+            resultsWindow.Invalidate();
+        }
+
+        private void resultsWindow_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.Clear(Color.White);
             e.Graphics.ScaleTransform(0.5f, 0.5f);
 
-            switch (plotTypeComboBox.SelectedIndex)
+            if (tabControl.SelectedTab == plotTabPage)
             {
-                // Stress-Strain plotter selected
-                case 1:
-                    AbstractPlotter bendingMomentCurvaturePlotter = new BendingMomentCurvaturePlotter(
-                        (float)input1.Value,
-                        (float)input2.Value,
-                        (float)input3.Value,
-                        (float)input4.Value);
-                    bendingMomentCurvaturePlotter.Plot(e.Graphics, "Curvature (mm^-1)", "Bending Moment (N.mm)"); break;
+                switch (plotTypeComboBox.SelectedIndex)
+                {
+                    // Stress-Strain plotter selected
+                    case 0: break;
+                        
+                    case 1:
+                        AbstractPlotter bendingMomentCurvaturePlotter = new BendingMomentCurvaturePlotter(
+                            (float)input1.Value,
+                            (float)input2.Value,
+                            (float)input3.Value,
+                            (float)input4.Value);
+                        bendingMomentCurvaturePlotter.Plot(e.Graphics, "Curvature (mm^-1)", "Bending Moment (N.mm)"); break;
 
-                // Shear stiffness plotter selected
-                case 2:
-                    AbstractPlotter shearStiffnessPlotter = new ShearStiffnessPlotter(
-                        (float)input1.Value,
-                        (float)input2.Value,
-                        (float)input3.Value,
-                        (float)input4.Value);
-                    shearStiffnessPlotter.Plot(e.Graphics, "Shear Strain", "Shear Stress (MPa)"); break;
+                    // Shear stiffness plotter selected
+                    case 2:
+                        AbstractPlotter shearStiffnessPlotter = new ShearStiffnessPlotter(
+                            (float)input1.Value,
+                            (float)input2.Value,
+                            (float)input3.Value,
+                            (float)input4.Value);
+                        shearStiffnessPlotter.Plot(e.Graphics, "Shear Strain", "Shear Stress (MPa)"); break;
 
-                // Drape plotter selected
-                case 3:
-                    AbstractPlotter drapePlotter = new DrapePlotter(Weave);
-                    drapePlotter.Plot(e.Graphics); break;
-
-                // Crimp calculator selected
-                case 4:
-                    AbstractCalculator crimpCalculator = new CrimpCalculator();
-                    crimpCalculator.CalculateCrimp(Weave, "warp"); break;
-
-                // None selected
-                default: break;
+                    // None selected
+                    default: break;
+                }
             }
+
+            else if (tabControl.SelectedTab == calculateTabPage)
+            {
+                switch (calculationParameterTypeComboBox.SelectedIndex)
+                {
+                    // Crimp calculator selected
+                    case 0:
+                        AbstractCalculator crimpCalculator = new CrimpCalculator();
+                        crimpCalculator.CalculateCrimp(Weave, "warp"); break;
+
+                    // None selected
+                    default: break;
+                }
+            }
+
+            else if (tabControl.SelectedTab == simulateTabPage)
+            {
+                switch (plotTypeComboBox.SelectedIndex)
+                {
+                    // Drape 2D simulator selected
+                    case 0:
+                        AbstractSimulator drapeSimulator = new DrapeSimulator(Weave);
+                        drapeSimulator.Simulate(e.Graphics); break;
+
+                    // None selected
+                    default: break;
+                }
+            }
+
         }
     }
 }

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using TextileEngineeringVirtualLaboratory.Simulator;
 using TextileEngineeringVirtualLaboratory.Textiles;
 
 namespace TextileEngineeringVirtualLaboratory.Plotter
 {
-    public partial class DrapePlotter : AbstractPlotter
+    public partial class DrapeSimulator : AbstractSimulator
     {
         private Weave weave;
         private float bendingRigidity;          // (N/mm^2)
@@ -14,7 +14,7 @@ namespace TextileEngineeringVirtualLaboratory.Plotter
         private float length;                   // (mm)
         private float secondMomentOfInertia;    // (mm^4)
 
-        public DrapePlotter(Weave weave)
+        public DrapeSimulator(Weave weave)
         {
             this.weave = weave;
             secondMomentOfInertia = weave.FabricWidth * (float)Math.Pow(weave.FabricThickness, 3) / 12;
@@ -25,7 +25,7 @@ namespace TextileEngineeringVirtualLaboratory.Plotter
 
         // Note: These calculations are with respect to the warp direction of the fabric
         // If the drape in weft direction is desired, new calculations should be implemented
-        public override void DoPlot(Graphics g)
+        public override void Simulate(Graphics g)
         {
             PointF[] points = new PointF[axesRange];
 

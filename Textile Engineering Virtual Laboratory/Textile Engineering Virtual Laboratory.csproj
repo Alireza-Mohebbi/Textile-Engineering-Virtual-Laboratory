@@ -62,7 +62,8 @@
     <Compile Include="Scripts\Calculator\CrimpCalculator.cs" />
     <Compile Include="Scripts\Plotter\ShearStiffnessPlotter.cs" />
     <Compile Include="Scripts\Plotter\BendingMomentCurvaturePlotter.cs" />
-    <Compile Include="Scripts\Plotter\DrapePlotter.cs" />
+    <Compile Include="Scripts\Simulator\AbstractSimulator.cs" />
+    <Compile Include="Scripts\Simulator\DrapeSimulator.cs" />
     <Compile Include="Scripts\Plotter\AbstractPlotter.cs" />
     <Compile Include="Scripts\Renderer\WeaveRenderer.cs" />
     <Compile Include="Scripts\Textiles\Weave.cs" />
