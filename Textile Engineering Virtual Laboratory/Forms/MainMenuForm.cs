@@ -153,7 +153,7 @@ namespace TextileEngineeringVirtualLaboratory
                 // Crimp calculator selected
                 case 4:
                     AbstractCalculator crimpCalculator = new CrimpCalculator();
-                    crimpCalculator.CalculateWarpsCrimp(Weave); break;
+                    crimpCalculator.CalculateCrimp(Weave, "warp"); break;
 
                 // None selected
                 default: break;
