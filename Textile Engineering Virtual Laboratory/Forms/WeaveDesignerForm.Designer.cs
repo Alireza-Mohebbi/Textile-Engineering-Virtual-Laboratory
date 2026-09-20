@@ -232,10 +232,10 @@
             this.yarnWidthInput.Size = new System.Drawing.Size(120, 20);
             this.yarnWidthInput.TabIndex = 3;
             this.yarnWidthInput.Value = new decimal(new int[] {
-            1,
+            5,
             0,
             0,
-            0});
+            65536});
             // 
             // yarnThicknessInput
             // 
@@ -255,10 +255,10 @@
             this.yarnThicknessInput.Size = new System.Drawing.Size(120, 20);
             this.yarnThicknessInput.TabIndex = 4;
             this.yarnThicknessInput.Value = new decimal(new int[] {
-            1,
+            5,
             0,
             0,
-            0});
+            65536});
             // 
             // yarnSpacingLabel
             // 
@@ -287,7 +287,7 @@
             this.yarnSpacingInput.Size = new System.Drawing.Size(120, 20);
             this.yarnSpacingInput.TabIndex = 5;
             this.yarnSpacingInput.Value = new decimal(new int[] {
-            3,
+            1,
             0,
             0,
             0});
@@ -351,6 +351,7 @@
             this.Controls.Add(this.weaveDesignerPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WeaveDesigner";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Weave Designer";
             this.weaveDesignerPanel.ResumeLayout(false);
             this.weaveDesignerPanel.PerformLayout();

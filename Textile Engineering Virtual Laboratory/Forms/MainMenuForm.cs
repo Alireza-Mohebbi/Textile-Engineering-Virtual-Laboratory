@@ -19,7 +19,7 @@ namespace TextileEngineeringVirtualLaboratory
         {
             InitializeComponent();
             DoubleBuffered = true;
-            weaveViewer.Paint += weaveViewer_Paint;
+            textileViewer.Paint += weaveViewer_Paint;
             resultsWindow.Paint += resultsWindow_Paint;
         }
 
@@ -30,8 +30,8 @@ namespace TextileEngineeringVirtualLaboratory
             if (weaveDesigner.ShowDialog() == DialogResult.OK)
             {
                 Weave = weaveDesigner.DesignedWeave;
-                weavePropertiesButton.Enabled = true;
-                weaveViewer.Invalidate();
+                textilePropertiesButton.Enabled = true;
+                textileViewer.Invalidate();
             }
         }
 
@@ -167,7 +167,7 @@ namespace TextileEngineeringVirtualLaboratory
 
             else if (tabControl.SelectedTab == calculateTabPage)
             {
-                switch (calculationParameterTypeComboBox.SelectedIndex)
+                switch (calculationTypeComboBox.SelectedIndex)
                 {
                     // Crimp calculator selected
                     case 0:
@@ -181,7 +181,7 @@ namespace TextileEngineeringVirtualLaboratory
 
             else if (tabControl.SelectedTab == simulateTabPage)
             {
-                switch (plotTypeComboBox.SelectedIndex)
+                switch (simulationTypeComboBox.SelectedIndex)
                 {
                     // Drape 2D simulator selected
                     case 0:

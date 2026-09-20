@@ -10,7 +10,7 @@ namespace TextileEngineeringVirtualLaboratory
     public partial class WeaveDesigner : Form
     {
         public Weave DesignedWeave { get; set; }
-        private Rectangle[,] interactiveIntersectionsOfWeave;
+        private Rectangle[,] interactiveInterlacementsOfWeave;
         private const int displayMargin = 50;
         private const float displayScale = 50;
 
@@ -24,26 +24,28 @@ namespace TextileEngineeringVirtualLaboratory
 
         private void weaveButton_Click(object sender, EventArgs e)
         {
-            DesignedWeave = new Weave((int)warpCountInput.Value, (int)weftCountInput.Value);
-            DesignedWeave.YarnThickness = (float)yarnThicknessInput.Value;
-            DesignedWeave.YarnWidth = (float)yarnWidthInput.Value;
-            DesignedWeave.YarnSpacing = (float)yarnSpacingInput.Value;
-            DesignedWeave.RepeatX = (int)repeatXInput.Value;
-            DesignedWeave.RepeatY = (int)repeatYInput.Value;
+            DesignedWeave = new Weave(
+                (int)warpCountInput.Value,
+                (int)weftCountInput.Value,
+                (float)yarnWidthInput.Value,
+                (float)yarnThicknessInput.Value,
+                (float)yarnSpacingInput.Value,
+                (int)repeatXInput.Value,
+                (int)repeatYInput.Value);
 
-            DefineInteractiveIntersectionsOfWeave();
+            DefineInteractiveInterlacementsOfWeave();
             insertWeaveButton.Enabled = true;
             Invalidate();
         }
 
-        private void DefineInteractiveIntersectionsOfWeave()
+        private void DefineInteractiveInterlacementsOfWeave()
         {
             if (DesignedWeave == null)
             {
                 return;
             }
 
-            interactiveIntersectionsOfWeave = new Rectangle[DesignedWeave.WarpCount, DesignedWeave.WeftCount];
+            interactiveInterlacementsOfWeave = new Rectangle[DesignedWeave.WarpCount, DesignedWeave.WeftCount];
             int interactiveAreaSize = Math.Max(10, (int)(DesignedWeave.YarnWidth * displayScale));
 
             for (int i = 0; i < DesignedWeave.WarpCount; i++)
@@ -53,15 +55,15 @@ namespace TextileEngineeringVirtualLaboratory
                     int x = displayMargin + (int)(i * DesignedWeave.YarnSpacing * displayScale);
                     int y = displayMargin + (int)(j * DesignedWeave.YarnSpacing * displayScale);
 
-                    interactiveIntersectionsOfWeave[i, j] = new Rectangle(x - interactiveAreaSize / 2, y - interactiveAreaSize / 2, interactiveAreaSize, interactiveAreaSize);
+                    interactiveInterlacementsOfWeave[i, j] = new Rectangle(x - interactiveAreaSize / 2, y - interactiveAreaSize / 2, interactiveAreaSize, interactiveAreaSize);
                 }
             }
         }
 
-        // Switch between warp-over-weft or vice versa by clicking on an intersection
+        // Switch between warp-over-weft or vice versa by clicking on an interlacement
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
-            if (DesignedWeave == null || interactiveIntersectionsOfWeave == null)
+            if (DesignedWeave == null || interactiveInterlacementsOfWeave == null)
             {
                 return;
             }
@@ -70,7 +72,7 @@ namespace TextileEngineeringVirtualLaboratory
             {
                 for (int y = 0; y < DesignedWeave.WeftCount; y++)
                 {
-                    if (interactiveIntersectionsOfWeave[x, y].Contains(e.Location))
+                    if (interactiveInterlacementsOfWeave[x, y].Contains(e.Location))
                     {
                         DesignedWeave.IsWarpOverWeft[x, y] = !DesignedWeave.IsWarpOverWeft[x, y];
                         Invalidate();
@@ -97,6 +99,7 @@ namespace TextileEngineeringVirtualLaboratory
 
         private void insertWeaveButton_Click(object sender, EventArgs e)
         {
+            DesignedWeave.CalculateYarnsPathPointsAndLengths();
             DialogResult = DialogResult.OK;
             Close();
         }
