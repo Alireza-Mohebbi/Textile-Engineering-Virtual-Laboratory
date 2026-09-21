@@ -8,16 +8,23 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
     {
         /// Weave physical properties ///
         public int WarpCount { get; set; }
+        public float WarpWidth { get; set; }
+        public float WarpThickness { get; set; }
+        public float WarpSpacing { get; set; }
         public int WeftCount { get; set; }
+        public float WeftWidth { get; set; }
+        public float WeftThickness { get; set; }
+        public float WeftSpacing { get; set; }
         public float YarnWidth { get; set; }        // (mm)
         public float YarnThickness { get; set; }    // (mm)
         public float YarnSpacing { get; set; }      // (mm)
+        public int LayerCount { get { return 1; } }
         public bool[,] IsWarpOverWeft { get; set; }
         public int RepeatX { get; set; }
         public int RepeatY { get; set; }
         public float FabricWidth { get { return YarnSpacing * WarpCount * RepeatX; } }    // (mm)
         public float FabricHeight { get { return YarnSpacing * WeftCount * RepeatY; } }   // (mm)
-        public float FabricThickness { get { return 2 * YarnThickness; } }  // (mm)
+        public float FabricThickness { get { return LayerCount * (WarpThickness + WeftThickness); } }  // (mm)
 
         /// Weave mechanical properties ///
         public float YoungsModulusX { get; set; }       // (MPa)
@@ -43,9 +50,19 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
         {
             WarpCount = warpCount;
             WeftCount = weftCount;
+
             YarnWidth = yarnWidth;
             YarnThickness = yarnThickness;
             YarnSpacing = yarnSpacing;
+
+            WarpWidth = yarnWidth;
+            WarpThickness = yarnThickness;
+            WarpSpacing = yarnSpacing;
+
+            WeftWidth = yarnWidth;
+            WeftThickness = yarnThickness;
+            WeftSpacing = yarnSpacing;
+
             RepeatX = repeatX;
             RepeatY = repeatY;
 
@@ -81,28 +98,25 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
             for (int i = 0; i < WarpCount; i++)
             {
                 // First path point
-                float firdtPointY = IsWarpOverWeft[i, 0] ? YarnThickness : 0;
-                WarpsPathPoints[i, 0] = (new PointF(0, firdtPointY));
+                float firstPointY = IsWarpOverWeft[i, 0] ? WeftThickness / 2 : -WeftThickness / 2;
+                WarpsPathPoints[i, 0] = (new PointF(0, firstPointY));
 
                 // Middle path points
                 for (int j = 0; j < WeftCount; j++)
                 {
-                    float interlacementX = (j * YarnSpacing) + (YarnSpacing / 2);
+                    float warpXAtInterlacement = (j * WeftSpacing) + (WeftSpacing / 2);
                     float warpYAtInterlacement;
-                    float weftYAtInterlacement;
 
                     if (IsWarpOverWeft[i, j])
                     {
-                        warpYAtInterlacement = YarnThickness;
-                        weftYAtInterlacement = 0;
+                        warpYAtInterlacement = WeftThickness / 2;
                     }
                     else
                     {
-                        warpYAtInterlacement = 0;
-                        weftYAtInterlacement = YarnThickness;
+                        warpYAtInterlacement = -WeftThickness / 2;
                     }
 
-                    WarpsPathPoints[i, j + 1] = (new PointF(interlacementX, warpYAtInterlacement));
+                    WarpsPathPoints[i, j + 1] = (new PointF(warpXAtInterlacement, warpYAtInterlacement));
                 }
 
                 // Last path point
@@ -143,28 +157,25 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
             for (int i = 0; i < WeftCount; i++)
             {
                 // First path point
-                float firdtPointY = IsWarpOverWeft[0, i] ? 0 : YarnThickness;
-                WeftsPathPoints[i, 0] = (new PointF(0, firdtPointY));
+                float firstPointY = IsWarpOverWeft[0, i] ? -WarpThickness / 2 : WarpThickness / 2;
+                WeftsPathPoints[i, 0] = (new PointF(0, firstPointY));
 
                 // Middle path points
                 for (int j = 0; j < WarpCount; j++)
                 {
-                    float interlacementX = (j * YarnSpacing) + (YarnSpacing / 2);
+                    float weftXAtInterlacement = (j * WarpSpacing) + (WarpSpacing / 2);
                     float weftYAtInterlacement;
-                    float warpYAtInterlacement;
 
                     if (IsWarpOverWeft[j, i])
                     {
-                        weftYAtInterlacement = 0;
-                        warpYAtInterlacement = YarnThickness;
+                        weftYAtInterlacement = -WarpThickness / 2;
                     }
                     else
                     {
-                        weftYAtInterlacement = YarnThickness;
-                        warpYAtInterlacement = 0;
+                        weftYAtInterlacement = WarpThickness / 2;
                     }
 
-                    WeftsPathPoints[i, j + 1] = (new PointF(interlacementX, weftYAtInterlacement));
+                    WeftsPathPoints[i, j + 1] = (new PointF(weftXAtInterlacement, weftYAtInterlacement));
                 }
 
                 // Last path point
