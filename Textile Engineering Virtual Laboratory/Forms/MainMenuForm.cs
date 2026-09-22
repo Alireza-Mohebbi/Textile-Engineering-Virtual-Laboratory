@@ -31,6 +31,7 @@ namespace TextileEngineeringVirtualLaboratory
             {
                 Weave = weaveDesigner.DesignedWeave;
                 textilePropertiesButton.Enabled = true;
+                tabControl.Visible = true;
                 textileViewer.Invalidate();
             }
         }
@@ -51,7 +52,6 @@ namespace TextileEngineeringVirtualLaboratory
             if (weavePropertiesConfigurer.ShowDialog() == DialogResult.OK)
             {
                 Weave = weavePropertiesConfigurer.Weave;
-                tabControl.Enabled = true;
             }
         }
 
@@ -59,7 +59,7 @@ namespace TextileEngineeringVirtualLaboratory
         {
             switch (plotTypeComboBox.SelectedIndex)
             {
-                // Stress-Strain inputs settings
+                // Stress-Strain Curve
                 case 0:
                     input1.Visible = true;
                     input2.Visible = true;
@@ -70,7 +70,7 @@ namespace TextileEngineeringVirtualLaboratory
                     inputLabel3.Text = "Stress 2 (MPa)";
                     inputLabel4.Text = "Strain 2"; break;
 
-                // Bending moment-Curvature inputs settings
+                // Bending Moment-Curvature Curve
                 case 1:
                     input1.Visible = true;
                     input2.Visible = true;
@@ -81,7 +81,7 @@ namespace TextileEngineeringVirtualLaboratory
                     inputLabel3.Text = "Bending Moment 2 (N.mm)";
                     inputLabel4.Text = "Curvature 2 (mm^-1)"; break;
 
-                // Shear stiffness inputs settings
+                // Shear Stiffness Curve
                 case 2:
                     input1.Visible = true;
                     input2.Visible = true;
@@ -92,18 +92,7 @@ namespace TextileEngineeringVirtualLaboratory
                     inputLabel3.Text = "Shear Stress 2 (MPa)";
                     inputLabel4.Text = "Shear Strain 2"; break;
 
-                // Drape curve inputs settings
-                case 3:
-                    input1.Visible = false;
-                    input2.Visible = false;
-                    input3.Visible = false;
-                    input4.Visible = false;
-                    inputLabel1.Text = "";
-                    inputLabel2.Text = "";
-                    inputLabel3.Text = "";
-                    inputLabel4.Text = ""; break;
-
-                // Default implementation
+                // default
                 default:
                     input1.Visible = false;
                     input2.Visible = false;
@@ -140,9 +129,10 @@ namespace TextileEngineeringVirtualLaboratory
             {
                 switch (plotTypeComboBox.SelectedIndex)
                 {
-                    // Stress-Strain plotter selected
+                    //Stress-Strain Curve
                     case 0: break;
-                        
+
+                    // Bending Moment-Curvature Curve
                     case 1:
                         AbstractPlotter bendingMomentCurvaturePlotter = new BendingMomentCurvaturePlotter(
                             (float)input1.Value,
@@ -151,7 +141,7 @@ namespace TextileEngineeringVirtualLaboratory
                             (float)input4.Value);
                         bendingMomentCurvaturePlotter.Plot(e.Graphics, "Curvature (mm^-1)", "Bending Moment (N.mm)"); break;
 
-                    // Shear stiffness plotter selected
+                    // Shear Stiffness Curve
                     case 2:
                         AbstractPlotter shearStiffnessPlotter = new ShearStiffnessPlotter(
                             (float)input1.Value,
@@ -160,39 +150,60 @@ namespace TextileEngineeringVirtualLaboratory
                             (float)input4.Value);
                         shearStiffnessPlotter.Plot(e.Graphics, "Shear Strain", "Shear Stress (MPa)"); break;
 
-                    // None selected
+                    // Default
                     default: break;
                 }
             }
 
-            else if (tabControl.SelectedTab == calculateTabPage)
+            else if (tabControl.SelectedTab == calculationTabPage)
             {
                 switch (calculationTypeComboBox.SelectedIndex)
                 {
-                    // Crimp calculator selected
+                    // Crmip
                     case 0:
                         AbstractCalculator crimpCalculator = new CrimpCalculator();
-                        crimpCalculator.CalculateCrimp(Weave, "warp"); break;
+                        if (calculationWarpDirectionRadioButton.Checked)
+                        {
+                            crimpCalculator.CalculateCrimp(Weave, "warp");
+                        }
+                        else if (calculationWeftDirectionRadioButton.Checked)
+                        {
+                            crimpCalculator.CalculateCrimp(Weave, "weft");
+                        }
+                        break;
 
-                    // None selected
                     default: break;
                 }
             }
 
-            else if (tabControl.SelectedTab == simulateTabPage)
+            else if (tabControl.SelectedTab == simulationTabPage)
             {
                 switch (simulationTypeComboBox.SelectedIndex)
                 {
-                    // Drape 2D simulator selected
+                    // Drape 2D
                     case 0:
                         AbstractSimulator drapeSimulator = new DrapeSimulator(Weave);
                         drapeSimulator.Simulate(e.Graphics); break;
 
-                    // None selected
+                    // Default
                     default: break;
                 }
             }
+        }
 
+        private void calculationTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (calculationTypeComboBox.SelectedIndex)
+            {
+                // Crimp
+                case 0:
+                    calculationWarpDirectionRadioButton.Visible = true;
+                    calculationWeftDirectionRadioButton.Visible = true; break;
+
+                default:
+                    calculationWarpDirectionRadioButton.Visible = false;
+                    calculationWeftDirectionRadioButton.Visible = false; break;
+            }
         }
     }
 }

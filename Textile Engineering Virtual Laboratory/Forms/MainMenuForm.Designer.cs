@@ -35,11 +35,14 @@
             this.textileViewer = new System.Windows.Forms.PictureBox();
             this.resultsWindow = new System.Windows.Forms.PictureBox();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.calculateTabPage = new System.Windows.Forms.TabPage();
+            this.calculationTabPage = new System.Windows.Forms.TabPage();
+            this.calculationSettingsGroupBox = new System.Windows.Forms.GroupBox();
+            this.calculationWarpDirectionRadioButton = new System.Windows.Forms.RadioButton();
+            this.calculationWeftDirectionRadioButton = new System.Windows.Forms.RadioButton();
             this.calculateButton = new System.Windows.Forms.Button();
             this.calcuationTypeLabel = new System.Windows.Forms.Label();
             this.calculationTypeComboBox = new System.Windows.Forms.ComboBox();
-            this.simulateTabPage = new System.Windows.Forms.TabPage();
+            this.simulationTabPage = new System.Windows.Forms.TabPage();
             this.simulateButton = new System.Windows.Forms.Button();
             this.simulationTypeLabel = new System.Windows.Forms.Label();
             this.simulationTypeComboBox = new System.Windows.Forms.ComboBox();
@@ -56,12 +59,14 @@
             this.inputLabel3 = new System.Windows.Forms.Label();
             this.inputLabel4 = new System.Windows.Forms.Label();
             this.plotTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.textileModelControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textileViewer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsWindow)).BeginInit();
             this.tabControl.SuspendLayout();
-            this.calculateTabPage.SuspendLayout();
-            this.simulateTabPage.SuspendLayout();
+            this.calculationTabPage.SuspendLayout();
+            this.calculationSettingsGroupBox.SuspendLayout();
+            this.simulationTabPage.SuspendLayout();
             this.plotTabPage.SuspendLayout();
             this.plotInputsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.input1)).BeginInit();
@@ -137,8 +142,8 @@
             // 
             // tabControl
             // 
-            this.tabControl.Controls.Add(this.calculateTabPage);
-            this.tabControl.Controls.Add(this.simulateTabPage);
+            this.tabControl.Controls.Add(this.calculationTabPage);
+            this.tabControl.Controls.Add(this.simulationTabPage);
             this.tabControl.Controls.Add(this.plotTabPage);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Right;
             this.tabControl.Location = new System.Drawing.Point(532, 0);
@@ -146,19 +151,59 @@
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(317, 477);
             this.tabControl.TabIndex = 4;
+            this.tabControl.Visible = false;
             // 
-            // calculateTabPage
+            // calculationTabPage
             // 
-            this.calculateTabPage.Controls.Add(this.calculateButton);
-            this.calculateTabPage.Controls.Add(this.calcuationTypeLabel);
-            this.calculateTabPage.Controls.Add(this.calculationTypeComboBox);
-            this.calculateTabPage.Location = new System.Drawing.Point(4, 22);
-            this.calculateTabPage.Name = "calculateTabPage";
-            this.calculateTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.calculateTabPage.Size = new System.Drawing.Size(309, 451);
-            this.calculateTabPage.TabIndex = 1;
-            this.calculateTabPage.Text = "Calculate";
-            this.calculateTabPage.UseVisualStyleBackColor = true;
+            this.calculationTabPage.Controls.Add(this.calculationSettingsGroupBox);
+            this.calculationTabPage.Controls.Add(this.calculateButton);
+            this.calculationTabPage.Controls.Add(this.calcuationTypeLabel);
+            this.calculationTabPage.Controls.Add(this.calculationTypeComboBox);
+            this.calculationTabPage.Location = new System.Drawing.Point(4, 22);
+            this.calculationTabPage.Name = "calculationTabPage";
+            this.calculationTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.calculationTabPage.Size = new System.Drawing.Size(309, 451);
+            this.calculationTabPage.TabIndex = 1;
+            this.calculationTabPage.Text = "Calculation";
+            this.calculationTabPage.UseVisualStyleBackColor = true;
+            // 
+            // calculationSettingsGroupBox
+            // 
+            this.calculationSettingsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.calculationSettingsGroupBox.Controls.Add(this.label1);
+            this.calculationSettingsGroupBox.Controls.Add(this.calculationWarpDirectionRadioButton);
+            this.calculationSettingsGroupBox.Controls.Add(this.calculationWeftDirectionRadioButton);
+            this.calculationSettingsGroupBox.Location = new System.Drawing.Point(6, 86);
+            this.calculationSettingsGroupBox.Name = "calculationSettingsGroupBox";
+            this.calculationSettingsGroupBox.Size = new System.Drawing.Size(295, 321);
+            this.calculationSettingsGroupBox.TabIndex = 12;
+            this.calculationSettingsGroupBox.TabStop = false;
+            this.calculationSettingsGroupBox.Text = "Settings";
+            // 
+            // calculationWarpDirectionRadioButton
+            // 
+            this.calculationWarpDirectionRadioButton.AutoSize = true;
+            this.calculationWarpDirectionRadioButton.Location = new System.Drawing.Point(3, 55);
+            this.calculationWarpDirectionRadioButton.Name = "calculationWarpDirectionRadioButton";
+            this.calculationWarpDirectionRadioButton.Size = new System.Drawing.Size(96, 17);
+            this.calculationWarpDirectionRadioButton.TabIndex = 10;
+            this.calculationWarpDirectionRadioButton.TabStop = true;
+            this.calculationWarpDirectionRadioButton.Text = "Warp Direction";
+            this.calculationWarpDirectionRadioButton.UseVisualStyleBackColor = true;
+            this.calculationWarpDirectionRadioButton.Visible = false;
+            // 
+            // calculationWeftDirectionRadioButton
+            // 
+            this.calculationWeftDirectionRadioButton.AutoSize = true;
+            this.calculationWeftDirectionRadioButton.Location = new System.Drawing.Point(3, 78);
+            this.calculationWeftDirectionRadioButton.Name = "calculationWeftDirectionRadioButton";
+            this.calculationWeftDirectionRadioButton.Size = new System.Drawing.Size(93, 17);
+            this.calculationWeftDirectionRadioButton.TabIndex = 11;
+            this.calculationWeftDirectionRadioButton.TabStop = true;
+            this.calculationWeftDirectionRadioButton.Text = "Weft Direction";
+            this.calculationWeftDirectionRadioButton.UseVisualStyleBackColor = true;
+            this.calculationWeftDirectionRadioButton.Visible = false;
             // 
             // calculateButton
             // 
@@ -192,18 +237,19 @@
             this.calculationTypeComboBox.Size = new System.Drawing.Size(295, 21);
             this.calculationTypeComboBox.TabIndex = 7;
             this.calculationTypeComboBox.Tag = "";
+            this.calculationTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.calculationTypeComboBox_SelectedIndexChanged);
             // 
-            // simulateTabPage
+            // simulationTabPage
             // 
-            this.simulateTabPage.Controls.Add(this.simulateButton);
-            this.simulateTabPage.Controls.Add(this.simulationTypeLabel);
-            this.simulateTabPage.Controls.Add(this.simulationTypeComboBox);
-            this.simulateTabPage.Location = new System.Drawing.Point(4, 22);
-            this.simulateTabPage.Name = "simulateTabPage";
-            this.simulateTabPage.Size = new System.Drawing.Size(309, 451);
-            this.simulateTabPage.TabIndex = 2;
-            this.simulateTabPage.Text = "Simulate";
-            this.simulateTabPage.UseVisualStyleBackColor = true;
+            this.simulationTabPage.Controls.Add(this.simulateButton);
+            this.simulationTabPage.Controls.Add(this.simulationTypeLabel);
+            this.simulationTabPage.Controls.Add(this.simulationTypeComboBox);
+            this.simulationTabPage.Location = new System.Drawing.Point(4, 22);
+            this.simulationTabPage.Name = "simulationTabPage";
+            this.simulationTabPage.Size = new System.Drawing.Size(309, 451);
+            this.simulationTabPage.TabIndex = 2;
+            this.simulationTabPage.Text = "Simulation";
+            this.simulationTabPage.UseVisualStyleBackColor = true;
             // 
             // simulateButton
             // 
@@ -346,7 +392,7 @@
             // inputLabel1
             // 
             this.inputLabel1.AutoSize = true;
-            this.inputLabel1.Location = new System.Drawing.Point(10, 35);
+            this.inputLabel1.Location = new System.Drawing.Point(0, 35);
             this.inputLabel1.Name = "inputLabel1";
             this.inputLabel1.Size = new System.Drawing.Size(40, 13);
             this.inputLabel1.TabIndex = 14;
@@ -355,7 +401,7 @@
             // inputLabel2
             // 
             this.inputLabel2.AutoSize = true;
-            this.inputLabel2.Location = new System.Drawing.Point(10, 61);
+            this.inputLabel2.Location = new System.Drawing.Point(0, 61);
             this.inputLabel2.Name = "inputLabel2";
             this.inputLabel2.Size = new System.Drawing.Size(40, 13);
             this.inputLabel2.TabIndex = 18;
@@ -364,7 +410,7 @@
             // inputLabel3
             // 
             this.inputLabel3.AutoSize = true;
-            this.inputLabel3.Location = new System.Drawing.Point(10, 87);
+            this.inputLabel3.Location = new System.Drawing.Point(0, 87);
             this.inputLabel3.Name = "inputLabel3";
             this.inputLabel3.Size = new System.Drawing.Size(40, 13);
             this.inputLabel3.TabIndex = 15;
@@ -373,7 +419,7 @@
             // inputLabel4
             // 
             this.inputLabel4.AutoSize = true;
-            this.inputLabel4.Location = new System.Drawing.Point(10, 113);
+            this.inputLabel4.Location = new System.Drawing.Point(0, 113);
             this.inputLabel4.Name = "inputLabel4";
             this.inputLabel4.Size = new System.Drawing.Size(40, 13);
             this.inputLabel4.TabIndex = 19;
@@ -395,6 +441,15 @@
             this.plotTypeComboBox.Tag = "";
             this.plotTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.plotTypeComboBox_SelectedIndexChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(0, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Direction";
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -412,10 +467,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.textileViewer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsWindow)).EndInit();
             this.tabControl.ResumeLayout(false);
-            this.calculateTabPage.ResumeLayout(false);
-            this.calculateTabPage.PerformLayout();
-            this.simulateTabPage.ResumeLayout(false);
-            this.simulateTabPage.PerformLayout();
+            this.calculationTabPage.ResumeLayout(false);
+            this.calculationTabPage.PerformLayout();
+            this.calculationSettingsGroupBox.ResumeLayout(false);
+            this.calculationSettingsGroupBox.PerformLayout();
+            this.simulationTabPage.ResumeLayout(false);
+            this.simulationTabPage.PerformLayout();
             this.plotTabPage.ResumeLayout(false);
             this.plotTabPage.PerformLayout();
             this.plotInputsGroupBox.ResumeLayout(false);
@@ -437,7 +494,7 @@
         private System.Windows.Forms.Label textileViewLabel;
         private System.Windows.Forms.PictureBox resultsWindow;
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage calculateTabPage;
+        private System.Windows.Forms.TabPage calculationTabPage;
         private System.Windows.Forms.Button calculateButton;
         private System.Windows.Forms.TabPage plotTabPage;
         private System.Windows.Forms.Button plotButton;
@@ -452,11 +509,15 @@
         private System.Windows.Forms.Label inputLabel3;
         private System.Windows.Forms.Label inputLabel4;
         private System.Windows.Forms.ComboBox plotTypeComboBox;
-        private System.Windows.Forms.TabPage simulateTabPage;
+        private System.Windows.Forms.TabPage simulationTabPage;
         private System.Windows.Forms.Button simulateButton;
         private System.Windows.Forms.Label simulationTypeLabel;
         private System.Windows.Forms.ComboBox simulationTypeComboBox;
         private System.Windows.Forms.Label calcuationTypeLabel;
         private System.Windows.Forms.ComboBox calculationTypeComboBox;
+        private System.Windows.Forms.RadioButton calculationWeftDirectionRadioButton;
+        private System.Windows.Forms.RadioButton calculationWarpDirectionRadioButton;
+        private System.Windows.Forms.GroupBox calculationSettingsGroupBox;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -56,7 +56,16 @@ namespace TextileEngineeringVirtualLaboratory.Calculator
                 crimpOfEachWeft[i] = ((weave.WeftsCurvedLengths[i] - weave.WeftsStraightLengths[i]) / weave.WeftsStraightLengths[i]) * 100;
             }
 
-            totalFabricCrimpInWeftsDirection = ((weave.SumOfWarpsCurvedLengths - weave.SumOfWarpsStraightLengths) / (weave.SumOfWarpsStraightLengths)) * 100;
+            totalFabricCrimpInWeftsDirection = ((weave.SumOfWeftsCurvedLengths - weave.SumOfWeftsStraightLengths) / (weave.SumOfWeftsStraightLengths)) * 100;
+
+            // Print crimp values
+            string messageNew = "";
+            for (int i = 0; i < weave.WeftCount; i++)
+            {
+                messageNew += ("Weft " + (i + 1) + " crimp: " + crimpOfEachWeft[i]) + "%" + "\n";
+            }
+
+            MessageBox.Show(messageNew + "\nFabric total crimp in weft direction = " + totalFabricCrimpInWeftsDirection.ToString() + "%");
         }
     }
 }
