@@ -197,10 +197,12 @@ namespace TextileEngineeringVirtualLaboratory
             {
                 // Crimp
                 case 0:
+                    calculationDirectionLabel.Visible = true;
                     calculationWarpDirectionRadioButton.Visible = true;
                     calculationWeftDirectionRadioButton.Visible = true; break;
 
                 default:
+                    calculationDirectionLabel.Visible = false;
                     calculationWarpDirectionRadioButton.Visible = false;
                     calculationWeftDirectionRadioButton.Visible = false; break;
             }

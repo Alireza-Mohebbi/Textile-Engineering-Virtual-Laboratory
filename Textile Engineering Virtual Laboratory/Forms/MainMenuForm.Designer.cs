@@ -37,6 +37,7 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.calculationTabPage = new System.Windows.Forms.TabPage();
             this.calculationSettingsGroupBox = new System.Windows.Forms.GroupBox();
+            this.calculationDirectionLabel = new System.Windows.Forms.Label();
             this.calculationWarpDirectionRadioButton = new System.Windows.Forms.RadioButton();
             this.calculationWeftDirectionRadioButton = new System.Windows.Forms.RadioButton();
             this.calculateButton = new System.Windows.Forms.Button();
@@ -59,7 +60,6 @@
             this.inputLabel3 = new System.Windows.Forms.Label();
             this.inputLabel4 = new System.Windows.Forms.Label();
             this.plotTypeComboBox = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.textileModelControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textileViewer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsWindow)).BeginInit();
@@ -171,7 +171,7 @@
             // 
             this.calculationSettingsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.calculationSettingsGroupBox.Controls.Add(this.label1);
+            this.calculationSettingsGroupBox.Controls.Add(this.calculationDirectionLabel);
             this.calculationSettingsGroupBox.Controls.Add(this.calculationWarpDirectionRadioButton);
             this.calculationSettingsGroupBox.Controls.Add(this.calculationWeftDirectionRadioButton);
             this.calculationSettingsGroupBox.Location = new System.Drawing.Point(6, 86);
@@ -180,6 +180,16 @@
             this.calculationSettingsGroupBox.TabIndex = 12;
             this.calculationSettingsGroupBox.TabStop = false;
             this.calculationSettingsGroupBox.Text = "Settings";
+            // 
+            // calculationDirectionLabel
+            // 
+            this.calculationDirectionLabel.AutoSize = true;
+            this.calculationDirectionLabel.Location = new System.Drawing.Point(0, 30);
+            this.calculationDirectionLabel.Name = "calculationDirectionLabel";
+            this.calculationDirectionLabel.Size = new System.Drawing.Size(49, 13);
+            this.calculationDirectionLabel.TabIndex = 13;
+            this.calculationDirectionLabel.Text = "Direction";
+            this.calculationDirectionLabel.Visible = false;
             // 
             // calculationWarpDirectionRadioButton
             // 
@@ -441,15 +451,6 @@
             this.plotTypeComboBox.Tag = "";
             this.plotTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.plotTypeComboBox_SelectedIndexChanged);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Direction";
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -518,6 +519,6 @@
         private System.Windows.Forms.RadioButton calculationWeftDirectionRadioButton;
         private System.Windows.Forms.RadioButton calculationWarpDirectionRadioButton;
         private System.Windows.Forms.GroupBox calculationSettingsGroupBox;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label calculationDirectionLabel;
     }
 }
