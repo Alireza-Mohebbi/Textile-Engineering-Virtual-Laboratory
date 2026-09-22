@@ -25,24 +25,24 @@ namespace TextileEngineeringVirtualLaboratory.Renderer
 
         private void DrawTopView()
         {
-            using (Pen warpPen = new Pen(Color.Red, weave.YarnWidth))
-            using (Pen weftPen = new Pen(Color.Blue, weave.YarnWidth))
+            using (Pen warpPen = new Pen(Color.Red, weave.WarpWidth))
+            using (Pen weftPen = new Pen(Color.Blue, weave.WeftWidth))
             {
-                // Draw weave
+                // Draw warps
                 for (int i = 0; i < weave.WarpCount; i++)
                 {
-                    float x = i * weave.YarnSpacing;
-                    g.DrawLine(warpPen, x, 0, x, (weave.WeftCount - 1) * weave.YarnSpacing);
+                    float x = i * weave.WarpSpacing;
+                    g.DrawLine(warpPen, x, 0, x, (weave.WeftCount - 1) * weave.WarpSpacing);
                 }
+
+                // Draw wefts
                 for (int i = 0; i < weave.WeftCount; i++)
                 {
-                    float y = i * weave.YarnSpacing;
-                    g.DrawLine( weftPen, 0, y, (weave.WarpCount - 1) * weave.YarnSpacing, y);
+                    float y = i * weave.WeftSpacing;
+                    g.DrawLine(weftPen, 0, y, (weave.WarpCount - 1) * weave.WeftSpacing, y);
                 }
 
-                // Draw warp-weft intersections
-                float gap = weave.YarnWidth;
-
+                // Draw interlacements
                 for (int x = 0; x < weave.WarpCount; x++)
                 {
                     for (int y = 0; y < weave.WeftCount; y++)
@@ -52,13 +52,13 @@ namespace TextileEngineeringVirtualLaboratory.Renderer
 
                         if (weave.IsWarpOverWeft[x, y])
                         {
-                            g.DrawLine(weftPen, cx - gap, cy, cx + gap, cy);
-                            g.DrawLine(warpPen, cx, cy - gap, cx, cy + gap);
+                            g.DrawLine(weftPen, cx - weave.WeftWidth, cy, cx + weave.WeftWidth, cy);
+                            g.DrawLine(warpPen, cx, cy - weave.WarpWidth, cx, cy + weave.WarpWidth);
                         }
                         else
                         {
-                            g.DrawLine(warpPen, cx, cy - gap, cx, cy + gap);
-                            g.DrawLine(weftPen, cx - gap, cy, cx + gap, cy);
+                            g.DrawLine(warpPen, cx, cy - weave.WarpWidth, cx, cy + weave.WarpWidth);
+                            g.DrawLine(weftPen, cx - weave.WeftWidth, cy, cx + weave.WeftWidth, cy);
                         }
                     }
                 }
@@ -67,42 +67,36 @@ namespace TextileEngineeringVirtualLaboratory.Renderer
 
         private void DrawCrossSection()
         {
-            if (weave.WarpCount == 0 || weave.WeftCount == 0)
-            {
-                return;
-            }
+            int bottomRowWeftIndex = weave.WeftCount - 1;
 
-            float crossSectionY = weave.WeftCount * (weave.YarnWidth + weave.YarnSpacing) - weave.YarnSpacing;
-            int bottomRowWeft = weave.WeftCount - 1;
-
-            using (Pen weftPen = new Pen(Color.Blue, weave.YarnThickness))
+            using (Pen weftPen = new Pen(Color.Blue, weave.WeftThickness))
             {
-                weftPen.SetLineCap( LineCap.Round, LineCap.Round, DashCap.Flat);
+                weftPen.SetLineCap(LineCap.Round, LineCap.Round, DashCap.Flat);
                 PointF[] weftCurveControlPoints = new PointF[weave.WarpCount];
 
                 for (int i = 0; i < weave.WarpCount; i++)
                 {
-                    float crossSectionX = i * weave.YarnSpacing;
-                    bool isWarpOverWeft = weave.IsWarpOverWeft[i, bottomRowWeft];
+                    float warpCrossSectionX = i * weave.WarpSpacing;
+                    bool isWarpOverWeft = weave.IsWarpOverWeft[i, bottomRowWeftIndex];
                     float warpY;
                     float weftY;
 
                     if (isWarpOverWeft)
                     {
-                        warpY = crossSectionY - weave.YarnThickness / 2f;
-                        weftY = crossSectionY + weave.YarnThickness / 2f;
+                        warpY = (weave.FabricHeight / weave.RepeatY) - (weave.WeftThickness / 2);
+                        weftY = (weave.FabricHeight / weave.RepeatY) + (weave.WeftThickness / 2);
                     }
                     else
                     {
-                        warpY = crossSectionY + weave.YarnThickness / 2f;
-                        weftY = crossSectionY - weave.YarnThickness / 2f;
+                        warpY = (weave.FabricHeight / weave.RepeatY) + weave.WeftThickness / 2f;
+                        weftY = (weave.FabricHeight / weave.RepeatY) - weave.WeftThickness / 2f;
                     }
 
-                    weftCurveControlPoints[i] = new PointF(crossSectionX, weftY);
+                    weftCurveControlPoints[i] = new PointF(warpCrossSectionX, weftY);
 
                     using (Brush warpBrush = new SolidBrush(Color.Red))
                     {
-                        g.FillEllipse(warpBrush, crossSectionX - weave.YarnWidth / 2f, warpY - weave.YarnThickness / 2f, weave.YarnWidth, weave.YarnThickness);
+                        g.FillEllipse(warpBrush, warpCrossSectionX - weave.YarnWidth / 2f, warpY - weave.YarnThickness / 2f, weave.YarnWidth, weave.YarnThickness);
                     }
                 }
 

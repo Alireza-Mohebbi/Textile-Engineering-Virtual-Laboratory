@@ -22,8 +22,8 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
         public bool[,] IsWarpOverWeft { get; set; }
         public int RepeatX { get; set; }
         public int RepeatY { get; set; }
-        public float FabricWidth { get { return YarnSpacing * WarpCount * RepeatX; } }    // (mm)
-        public float FabricHeight { get { return YarnSpacing * WeftCount * RepeatY; } }   // (mm)
+        public float FabricWidth { get { return WarpSpacing * WarpCount * RepeatX; } }    // (mm)
+        public float FabricHeight { get { return WeftSpacing * WeftCount * RepeatY; } }   // (mm)
         public float FabricThickness { get { return LayerCount * (WarpThickness + WeftThickness); } }  // (mm)
 
         /// Weave mechanical properties ///
@@ -35,16 +35,16 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
         private const float gravitaionalAcceleration = 9810;    // (mm/s^2)
 
         /// Warps and wefts path points and lengths ///
-        public PointF[,] WarpsPathPoints { get; set; }
-        public float[] WarpsStraightLengths { get; set; }
-        public float[] WarpsCurvedLengths { get; set; }
-        public float SumOfWarpsStraightLengths { get; set; }
-        public float SumOfWarpsCurvedLengths { get; set; }
-        public PointF[,] WeftsPathPoints { get; set; }
-        public float[] WeftsStraightLengths { get; set; }
-        public float[] WeftsCurvedLengths { get; set; }
-        public float SumOfWeftsStraightLengths { get; set; }
-        public float SumOfWeftsCurvedLengths { get; set; }
+        public PointF[,] WarpsPathPoints { get; private set; }
+        public float[] WarpsStraightLengths { get; private set; }
+        public float[] WarpsCurvedLengths { get; private set; }
+        public float SumOfWarpsStraightLengths { get; private set; }
+        public float SumOfWarpsCurvedLengths { get; private set; }
+        public PointF[,] WeftsPathPoints { get; private set; }
+        public float[] WeftsStraightLengths { get; private set; }
+        public float[] WeftsCurvedLengths { get; private set; }
+        public float SumOfWeftsStraightLengths { get; private set; }
+        public float SumOfWeftsCurvedLengths { get; private set; }
 
         public Weave(int warpCount, int weftCount, float yarnWidth, float yarnThickness, float yarnSpacing, int repeatX, int repeatY)
         {
