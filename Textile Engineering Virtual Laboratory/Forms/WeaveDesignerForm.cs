@@ -45,17 +45,35 @@ namespace TextileEngineeringVirtualLaboratory
                 return;
             }
 
-            interactiveInterlacementsOfWeave = new Rectangle[DesignedWeave.WarpCount, DesignedWeave.WeftCount];
-            int interactiveAreaSize = Math.Max(10, (int)(DesignedWeave.YarnWidth * displayScale));
+            interactiveInterlacementsOfWeave =
+                new Rectangle[DesignedWeave.WarpCount, DesignedWeave.WeftCount];
+
+            int interactiveAreaSize = Math.Max(
+                10,
+                (int)(Math.Min(
+                    DesignedWeave.WarpWidth,
+                    DesignedWeave.WeftWidth) * displayScale));
 
             for (int i = 0; i < DesignedWeave.WarpCount; i++)
             {
                 for (int j = 0; j < DesignedWeave.WeftCount; j++)
                 {
-                    int x = displayMargin + (int)(i * DesignedWeave.YarnSpacing * displayScale);
-                    int y = displayMargin + (int)(j * DesignedWeave.YarnSpacing * displayScale);
+                    // Center of the warp/weft intersection.
+                    // X is determined by WarpSpacing, Y by WeftSpacing.
+                    int centerX = displayMargin +
+                        (int)((i * DesignedWeave.WarpSpacing +
+                               DesignedWeave.WarpSpacing / 2f) * displayScale);
 
-                    interactiveInterlacementsOfWeave[i, j] = new Rectangle(x - interactiveAreaSize / 2, y - interactiveAreaSize / 2, interactiveAreaSize, interactiveAreaSize);
+                    int centerY = displayMargin +
+                        (int)((j * DesignedWeave.WeftSpacing +
+                               DesignedWeave.WeftSpacing / 2f) * displayScale);
+
+                    interactiveInterlacementsOfWeave[i, j] =
+                        new Rectangle(
+                            centerX - interactiveAreaSize / 2,
+                            centerY - interactiveAreaSize / 2,
+                            interactiveAreaSize,
+                            interactiveAreaSize);
                 }
             }
         }

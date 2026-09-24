@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using TextileEngineeringVirtualLaboratory.Textiles;
 
@@ -28,37 +29,40 @@ namespace TextileEngineeringVirtualLaboratory.Renderer
             using (Pen warpPen = new Pen(Color.Red, weave.WarpWidth))
             using (Pen weftPen = new Pen(Color.Blue, weave.WeftWidth))
             {
+
                 // Draw warps
                 for (int i = 0; i < weave.WarpCount; i++)
                 {
-                    float x = i * weave.WarpSpacing;
-                    g.DrawLine(warpPen, x, 0, x, (weave.WeftCount - 1) * weave.WarpSpacing);
+                    g.DrawLine(warpPen, i * weave.WarpSpacing + weave.WarpSpacing / 2, 0, i * weave.WarpSpacing + weave.WarpSpacing / 2, weave.FabricHeight / weave.RepeatY);
                 }
 
                 // Draw wefts
                 for (int i = 0; i < weave.WeftCount; i++)
                 {
-                    float y = i * weave.WeftSpacing;
-                    g.DrawLine(weftPen, 0, y, (weave.WarpCount - 1) * weave.WeftSpacing, y);
+                    g.DrawLine(weftPen, 0, i * weave.WeftSpacing + weave.WeftSpacing / 2, weave.FabricWidth / weave.RepeatX, i * weave.WeftSpacing + weave.WeftSpacing / 2);
                 }
 
                 // Draw interlacements
-                for (int x = 0; x < weave.WarpCount; x++)
+                for (int i = 0; i < weave.WarpCount; i++)
                 {
-                    for (int y = 0; y < weave.WeftCount; y++)
+                    for (int j = 0; j < weave.WeftCount; j++)
                     {
-                        float cx = x * weave.YarnSpacing;
-                        float cy = y * weave.YarnSpacing;
+                        float interlacementCenterX = i * weave.WarpSpacing + weave.WarpSpacing / 2f;
+                        float interlacementCenterY = j * weave.WeftSpacing + weave.WeftSpacing / 2f;
 
-                        if (weave.IsWarpOverWeft[x, y])
+                        float interlacementBoundingBoxLeft = interlacementCenterX - weave.WarpWidth / 2f;
+                        float interlacementBoundingBoxTop = interlacementCenterY - weave.WarpWidth / 2f;
+
+                        RectangleF warpInterlacementBoundingBox = new RectangleF(interlacementBoundingBoxLeft, interlacementBoundingBoxTop, weave.WarpWidth, weave.WarpWidth);
+                        RectangleF weftInterlacementBoundingBox = new RectangleF(interlacementBoundingBoxLeft, interlacementBoundingBoxTop, weave.WeftWidth, weave.WeftWidth);
+
+                        if (weave.IsWarpOverWeft[i, j])
                         {
-                            g.DrawLine(weftPen, cx - weave.WeftWidth, cy, cx + weave.WeftWidth, cy);
-                            g.DrawLine(warpPen, cx, cy - weave.WarpWidth, cx, cy + weave.WarpWidth);
+                            g.FillRectangle(Brushes.Red, warpInterlacementBoundingBox);
                         }
                         else
                         {
-                            g.DrawLine(warpPen, cx, cy - weave.WarpWidth, cx, cy + weave.WarpWidth);
-                            g.DrawLine(weftPen, cx - weave.WeftWidth, cy, cx + weave.WeftWidth, cy);
+                            g.FillRectangle(Brushes.Blue, weftInterlacementBoundingBox);
                         }
                     }
                 }
@@ -71,39 +75,41 @@ namespace TextileEngineeringVirtualLaboratory.Renderer
 
             using (Pen weftPen = new Pen(Color.Blue, weave.WeftThickness))
             {
-                weftPen.SetLineCap(LineCap.Round, LineCap.Round, DashCap.Flat);
-                PointF[] weftCurveControlPoints = new PointF[weave.WarpCount];
+                PointF[] weftCurveControlPoints = new PointF[weave.WarpCount + 2];
 
                 for (int i = 0; i < weave.WarpCount; i++)
                 {
-                    float warpCrossSectionX = i * weave.WarpSpacing;
+                    float warpCrossSectionX = i * weave.WarpSpacing + weave.WarpSpacing / 2f;
                     bool isWarpOverWeft = weave.IsWarpOverWeft[i, bottomRowWeftIndex];
                     float warpY;
                     float weftY;
 
                     if (isWarpOverWeft)
                     {
-                        warpY = (weave.FabricHeight / weave.RepeatY) - (weave.WeftThickness / 2);
-                        weftY = (weave.FabricHeight / weave.RepeatY) + (weave.WeftThickness / 2);
+                        warpY = (weave.FabricHeight / weave.RepeatY) - (weave.WeftThickness / 2f) + weave.FabricThickness / 2;
+                        weftY = (weave.FabricHeight / weave.RepeatY) + (weave.WarpThickness / 2f) + weave.FabricThickness / 2;
                     }
                     else
                     {
-                        warpY = (weave.FabricHeight / weave.RepeatY) + weave.WeftThickness / 2f;
-                        weftY = (weave.FabricHeight / weave.RepeatY) - weave.WeftThickness / 2f;
+                        warpY = (weave.FabricHeight / weave.RepeatY) + (weave.WeftThickness / 2f) + weave.FabricThickness / 2;
+                        weftY = (weave.FabricHeight / weave.RepeatY) - (weave.WarpThickness / 2f) + weave.FabricThickness / 2;
                     }
 
-                    weftCurveControlPoints[i] = new PointF(warpCrossSectionX, weftY);
+                    weftCurveControlPoints[i + 1] = new PointF(warpCrossSectionX, weftY);
 
                     using (Brush warpBrush = new SolidBrush(Color.Red))
                     {
-                        g.FillEllipse(warpBrush, warpCrossSectionX - weave.YarnWidth / 2f, warpY - weave.YarnThickness / 2f, weave.YarnWidth, weave.YarnThickness);
+                        g.FillEllipse(warpBrush, warpCrossSectionX - weave.WarpWidth / 2f, warpY - weave.WarpThickness / 2f, weave.WarpWidth, weave.WarpThickness);
                     }
                 }
 
-                if (weftCurveControlPoints.Length > 1)
-                {
-                    g.DrawCurve(weftPen, weftCurveControlPoints);
-                }
+                // Extend the curve horizontally from the first interlacement
+                weftCurveControlPoints[0] = new PointF(0, weftCurveControlPoints[1].Y);
+
+                // Extend the curve horizontally after the last interlacement
+                float lastInterlacementX = weftCurveControlPoints[weave.WarpCount].X;
+                weftCurveControlPoints[weave.WarpCount + 1] = new PointF(lastInterlacementX + weave.WarpSpacing / 2f, weftCurveControlPoints[weave.WarpCount].Y);
+                g.DrawCurve(weftPen, weftCurveControlPoints);
             }
         }
     }
