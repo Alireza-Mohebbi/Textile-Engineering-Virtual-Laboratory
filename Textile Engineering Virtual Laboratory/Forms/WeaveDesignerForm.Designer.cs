@@ -31,13 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WeaveDesigner));
             this.weaveDesignerPanel = new System.Windows.Forms.Panel();
             this.weaveInputsGroupBox = new System.Windows.Forms.GroupBox();
-            this.weftCountInput = new System.Windows.Forms.NumericUpDown();
+            this.numberOfWeftsInput = new System.Windows.Forms.NumericUpDown();
             this.repeatYLabel = new System.Windows.Forms.Label();
-            this.warpCountInput = new System.Windows.Forms.NumericUpDown();
+            this.numberOfWarpsInput = new System.Windows.Forms.NumericUpDown();
             this.repeatXLabel = new System.Windows.Forms.Label();
-            this.warpCountLabel = new System.Windows.Forms.Label();
+            this.numberOfWarpsLabel = new System.Windows.Forms.Label();
             this.repeatYInput = new System.Windows.Forms.NumericUpDown();
-            this.weftCountLabel = new System.Windows.Forms.Label();
+            this.numberOfWeftsLabel = new System.Windows.Forms.Label();
             this.repeatXInput = new System.Windows.Forms.NumericUpDown();
             this.yarnWidthInput = new System.Windows.Forms.NumericUpDown();
             this.yarnThicknessInput = new System.Windows.Forms.NumericUpDown();
@@ -50,8 +50,8 @@
             this.weaveButton = new System.Windows.Forms.Button();
             this.weaveDesignerPanel.SuspendLayout();
             this.weaveInputsGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.weftCountInput)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.warpCountInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numberOfWeftsInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numberOfWarpsInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repeatYInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repeatXInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yarnWidthInput)).BeginInit();
@@ -79,13 +79,13 @@
             // 
             this.weaveInputsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.weaveInputsGroupBox.Controls.Add(this.weftCountInput);
+            this.weaveInputsGroupBox.Controls.Add(this.numberOfWeftsInput);
             this.weaveInputsGroupBox.Controls.Add(this.repeatYLabel);
-            this.weaveInputsGroupBox.Controls.Add(this.warpCountInput);
+            this.weaveInputsGroupBox.Controls.Add(this.numberOfWarpsInput);
             this.weaveInputsGroupBox.Controls.Add(this.repeatXLabel);
-            this.weaveInputsGroupBox.Controls.Add(this.warpCountLabel);
+            this.weaveInputsGroupBox.Controls.Add(this.numberOfWarpsLabel);
             this.weaveInputsGroupBox.Controls.Add(this.repeatYInput);
-            this.weaveInputsGroupBox.Controls.Add(this.weftCountLabel);
+            this.weaveInputsGroupBox.Controls.Add(this.numberOfWeftsLabel);
             this.weaveInputsGroupBox.Controls.Add(this.repeatXInput);
             this.weaveInputsGroupBox.Controls.Add(this.yarnWidthInput);
             this.weaveInputsGroupBox.Controls.Add(this.yarnThicknessInput);
@@ -100,23 +100,23 @@
             this.weaveInputsGroupBox.TabStop = false;
             this.weaveInputsGroupBox.Text = "Weave Inputs";
             // 
-            // weftCountInput
+            // numberOfWeftsInput
             // 
-            this.weftCountInput.Location = new System.Drawing.Point(157, 69);
-            this.weftCountInput.Maximum = new decimal(new int[] {
+            this.numberOfWeftsInput.Location = new System.Drawing.Point(157, 69);
+            this.numberOfWeftsInput.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.weftCountInput.Minimum = new decimal(new int[] {
+            this.numberOfWeftsInput.Minimum = new decimal(new int[] {
             2,
             0,
             0,
             0});
-            this.weftCountInput.Name = "weftCountInput";
-            this.weftCountInput.Size = new System.Drawing.Size(120, 20);
-            this.weftCountInput.TabIndex = 2;
-            this.weftCountInput.Value = new decimal(new int[] {
+            this.numberOfWeftsInput.Name = "numberOfWeftsInput";
+            this.numberOfWeftsInput.Size = new System.Drawing.Size(120, 20);
+            this.numberOfWeftsInput.TabIndex = 2;
+            this.numberOfWeftsInput.Value = new decimal(new int[] {
             2,
             0,
             0,
@@ -131,23 +131,23 @@
             this.repeatYLabel.TabIndex = 16;
             this.repeatYLabel.Text = "Repeat Y";
             // 
-            // warpCountInput
+            // numberOfWarpsInput
             // 
-            this.warpCountInput.Location = new System.Drawing.Point(157, 32);
-            this.warpCountInput.Maximum = new decimal(new int[] {
+            this.numberOfWarpsInput.Location = new System.Drawing.Point(157, 32);
+            this.numberOfWarpsInput.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.warpCountInput.Minimum = new decimal(new int[] {
+            this.numberOfWarpsInput.Minimum = new decimal(new int[] {
             2,
             0,
             0,
             0});
-            this.warpCountInput.Name = "warpCountInput";
-            this.warpCountInput.Size = new System.Drawing.Size(120, 20);
-            this.warpCountInput.TabIndex = 1;
-            this.warpCountInput.Value = new decimal(new int[] {
+            this.numberOfWarpsInput.Name = "numberOfWarpsInput";
+            this.numberOfWarpsInput.Size = new System.Drawing.Size(120, 20);
+            this.numberOfWarpsInput.TabIndex = 1;
+            this.numberOfWarpsInput.Value = new decimal(new int[] {
             2,
             0,
             0,
@@ -162,14 +162,14 @@
             this.repeatXLabel.TabIndex = 15;
             this.repeatXLabel.Text = "Repeat X";
             // 
-            // warpCountLabel
+            // numberOfWarpsLabel
             // 
-            this.warpCountLabel.AutoSize = true;
-            this.warpCountLabel.Location = new System.Drawing.Point(14, 39);
-            this.warpCountLabel.Name = "warpCountLabel";
-            this.warpCountLabel.Size = new System.Drawing.Size(63, 13);
-            this.warpCountLabel.TabIndex = 6;
-            this.warpCountLabel.Text = "Warp count";
+            this.numberOfWarpsLabel.AutoSize = true;
+            this.numberOfWarpsLabel.Location = new System.Drawing.Point(14, 39);
+            this.numberOfWarpsLabel.Name = "numberOfWarpsLabel";
+            this.numberOfWarpsLabel.Size = new System.Drawing.Size(90, 13);
+            this.numberOfWarpsLabel.TabIndex = 6;
+            this.numberOfWarpsLabel.Text = "Number of Warps";
             // 
             // repeatYInput
             // 
@@ -188,14 +188,14 @@
             0,
             0});
             // 
-            // weftCountLabel
+            // numberOfWeftsLabel
             // 
-            this.weftCountLabel.AutoSize = true;
-            this.weftCountLabel.Location = new System.Drawing.Point(14, 76);
-            this.weftCountLabel.Name = "weftCountLabel";
-            this.weftCountLabel.Size = new System.Drawing.Size(60, 13);
-            this.weftCountLabel.TabIndex = 7;
-            this.weftCountLabel.Text = "Weft count";
+            this.numberOfWeftsLabel.AutoSize = true;
+            this.numberOfWeftsLabel.Location = new System.Drawing.Point(14, 76);
+            this.numberOfWeftsLabel.Name = "numberOfWeftsLabel";
+            this.numberOfWeftsLabel.Size = new System.Drawing.Size(87, 13);
+            this.numberOfWeftsLabel.TabIndex = 7;
+            this.numberOfWeftsLabel.Text = "Number of Wefts";
             // 
             // repeatXInput
             // 
@@ -357,8 +357,8 @@
             this.weaveDesignerPanel.PerformLayout();
             this.weaveInputsGroupBox.ResumeLayout(false);
             this.weaveInputsGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.weftCountInput)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.warpCountInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numberOfWeftsInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numberOfWarpsInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repeatYInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repeatXInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.yarnWidthInput)).EndInit();
@@ -372,8 +372,8 @@
 
         private System.Windows.Forms.Panel weaveDesignerPanel;
         private System.Windows.Forms.NumericUpDown yarnWidthInput;
-        private System.Windows.Forms.NumericUpDown weftCountInput;
-        private System.Windows.Forms.NumericUpDown warpCountInput;
+        private System.Windows.Forms.NumericUpDown numberOfWeftsInput;
+        private System.Windows.Forms.NumericUpDown numberOfWarpsInput;
         private System.Windows.Forms.Button weaveButton;
         private System.Windows.Forms.NumericUpDown yarnSpacingInput;
         private System.Windows.Forms.NumericUpDown yarnThicknessInput;
@@ -381,8 +381,8 @@
         private System.Windows.Forms.Label yarnSpacingLabel;
         private System.Windows.Forms.Label yarnThicknessLabel;
         private System.Windows.Forms.Label yarnWidthLabel;
-        private System.Windows.Forms.Label weftCountLabel;
-        private System.Windows.Forms.Label warpCountLabel;
+        private System.Windows.Forms.Label numberOfWeftsLabel;
+        private System.Windows.Forms.Label numberOfWarpsLabel;
         private System.Windows.Forms.Button insertWeaveButton;
         private System.Windows.Forms.Label repeatYLabel;
         private System.Windows.Forms.Label repeatXLabel;

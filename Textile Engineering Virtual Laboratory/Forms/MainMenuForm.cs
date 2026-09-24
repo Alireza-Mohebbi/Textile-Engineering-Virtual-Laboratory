@@ -155,7 +155,7 @@ namespace TextileEngineeringVirtualLaboratory
                 }
             }
 
-            else if (tabControl.SelectedTab == calculationTabPage)
+            else if (tabControl.SelectedTab == fabricParametersTabPage)
             {
                 switch (calculationTypeComboBox.SelectedIndex)
                 {

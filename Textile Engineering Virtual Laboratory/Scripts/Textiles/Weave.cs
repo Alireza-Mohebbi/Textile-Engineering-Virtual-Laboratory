@@ -7,24 +7,24 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
     public class Weave
     {
         /// Weave physical properties ///
-        public int WarpCount { get; set; }
+        public int NumberOfWarps { get; set; }
         public float WarpWidth { get; set; }
         public float WarpThickness { get; set; }
         public float WarpSpacing { get; set; }
-        public int WeftCount { get; set; }
+        public int NumberOfWefts { get; set; }
         public float WeftWidth { get; set; }
         public float WeftThickness { get; set; }
         public float WeftSpacing { get; set; }
         public float YarnWidth { get; set; }        // (mm)
         public float YarnThickness { get; set; }    // (mm)
         public float YarnSpacing { get; set; }      // (mm)
-        public int LayerCount { get { return 1; } }
         public bool[,] IsWarpOverWeft { get; set; }
         public int RepeatX { get; set; }
         public int RepeatY { get; set; }
-        public float FabricWidth { get { return WarpSpacing * WarpCount * RepeatX; } }    // (mm)
-        public float FabricHeight { get { return WeftSpacing * WeftCount * RepeatY; } }   // (mm)
-        public float FabricThickness { get { return LayerCount * (WarpThickness + WeftThickness); } }  // (mm)
+        public int NumberOfLayers { get { return 1; } }
+        public float FabricWidth { get { return WarpSpacing * NumberOfWarps * RepeatX; } }    // (mm)
+        public float FabricHeight { get { return WeftSpacing * NumberOfWefts * RepeatY; } }   // (mm)
+        public float FabricThickness { get { return NumberOfLayers * (WarpThickness + WeftThickness); } }  // (mm)
 
         /// Weave mechanical properties ///
         public float YoungsModulusX { get; set; }       // (MPa)
@@ -46,10 +46,10 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
         public float SumOfWeftsStraightLengths { get; private set; }
         public float SumOfWeftsCurvedLengths { get; private set; }
 
-        public Weave(int warpCount, int weftCount, float yarnWidth, float yarnThickness, float yarnSpacing, int repeatX, int repeatY)
+        public Weave(int numberOfWarps, int numberOfWefts, float yarnWidth, float yarnThickness, float yarnSpacing, int repeatX, int repeatY)
         {
-            WarpCount = warpCount;
-            WeftCount = weftCount;
+            NumberOfWarps = numberOfWarps;
+            NumberOfWefts = numberOfWefts;
 
             YarnWidth = yarnWidth;
             YarnThickness = yarnThickness;
@@ -71,11 +71,11 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
 
         private void MakeInterlacementMatrix()
         {
-            IsWarpOverWeft = new bool[WarpCount, WeftCount];
+            IsWarpOverWeft = new bool[NumberOfWarps, NumberOfWefts];
 
-            for (int i = 0; i < WarpCount; i++)
+            for (int i = 0; i < NumberOfWarps; i++)
             {
-                for (int j = 0; j < WeftCount; j++)
+                for (int j = 0; j < NumberOfWefts; j++)
                 {
                     IsWarpOverWeft[i, j] = (i + j) % 2 == 0;
                 }
@@ -93,16 +93,16 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
 
         private void DefinePathPointsForEachWarp()
         {
-            WarpsPathPoints = new PointF[WarpCount, WeftCount + 2];
+            WarpsPathPoints = new PointF[NumberOfWarps, NumberOfWefts + 2];
 
-            for (int i = 0; i < WarpCount; i++)
+            for (int i = 0; i < NumberOfWarps; i++)
             {
                 // First path point
                 float firstPointY = IsWarpOverWeft[i, 0] ? WeftThickness / 2 : -WeftThickness / 2;
                 WarpsPathPoints[i, 0] = (new PointF(0, firstPointY));
 
                 // Middle path points
-                for (int j = 0; j < WeftCount; j++)
+                for (int j = 0; j < NumberOfWefts; j++)
                 {
                     float warpXAtInterlacement = (j * WeftSpacing) + (WeftSpacing / 2);
                     float warpYAtInterlacement;
@@ -130,12 +130,12 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
             SumOfWarpsStraightLengths = 0;
             SumOfWarpsCurvedLengths = 0;
 
-            WarpsStraightLengths = new float[WarpCount];
-            WarpsCurvedLengths = new float[WarpCount];
+            WarpsStraightLengths = new float[NumberOfWarps];
+            WarpsCurvedLengths = new float[NumberOfWarps];
 
-            for (int i = 0; i < WarpCount; i++)
+            for (int i = 0; i < NumberOfWarps; i++)
             {
-                for (int j = 0; j < WeftCount + 1; j++)
+                for (int j = 0; j < NumberOfWefts + 1; j++)
                 {
                     float warpSegmentAngle = (float)Math.Atan(Math.Abs((WarpsPathPoints[i, j + 1].Y - WarpsPathPoints[i, j].Y) / (WarpsPathPoints[i, j + 1].X - WarpsPathPoints[i, j].X)));
                     float warpSegmentStraightLength = Math.Abs(WarpsPathPoints[i, j + 1].X - WarpsPathPoints[i, j].X);
@@ -152,16 +152,16 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
 
         private void DefinePathPointsForEachWeft()
         {
-            WeftsPathPoints = new PointF[WeftCount, WarpCount + 2];
+            WeftsPathPoints = new PointF[NumberOfWefts, NumberOfWarps + 2];
 
-            for (int i = 0; i < WeftCount; i++)
+            for (int i = 0; i < NumberOfWefts; i++)
             {
                 // First path point
                 float firstPointY = IsWarpOverWeft[0, i] ? -WarpThickness / 2 : WarpThickness / 2;
                 WeftsPathPoints[i, 0] = (new PointF(0, firstPointY));
 
                 // Middle path points
-                for (int j = 0; j < WarpCount; j++)
+                for (int j = 0; j < NumberOfWarps; j++)
                 {
                     float weftXAtInterlacement = (j * WarpSpacing) + (WarpSpacing / 2);
                     float weftYAtInterlacement;
@@ -189,12 +189,12 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
             SumOfWeftsStraightLengths = 0;
             SumOfWeftsCurvedLengths = 0;
 
-            WeftsStraightLengths = new float[WeftCount];
-            WeftsCurvedLengths = new float[WeftCount];
+            WeftsStraightLengths = new float[NumberOfWefts];
+            WeftsCurvedLengths = new float[NumberOfWefts];
 
-            for (int i = 0; i < WeftCount; i++)
+            for (int i = 0; i < NumberOfWefts; i++)
             {
-                for (int j = 0; j < WarpCount + 1; j++)
+                for (int j = 0; j < NumberOfWarps + 1; j++)
                 {
                     float weftSegmentAngle = (float)Math.Atan(Math.Abs((WeftsPathPoints[i, j + 1].Y - WeftsPathPoints[i, j].Y) / (WeftsPathPoints[i, j + 1].X - WeftsPathPoints[i, j].X)));
                     float weftSegmentStraightLength = Math.Abs(WeftsPathPoints[i, j + 1].X - WeftsPathPoints[i, j].X);

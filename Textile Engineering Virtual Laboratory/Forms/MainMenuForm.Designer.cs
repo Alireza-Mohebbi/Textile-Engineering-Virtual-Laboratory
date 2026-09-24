@@ -35,7 +35,7 @@
             this.textileViewer = new System.Windows.Forms.PictureBox();
             this.resultsWindow = new System.Windows.Forms.PictureBox();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.calculationTabPage = new System.Windows.Forms.TabPage();
+            this.fabricParametersTabPage = new System.Windows.Forms.TabPage();
             this.calculationSettingsGroupBox = new System.Windows.Forms.GroupBox();
             this.calculationDirectionLabel = new System.Windows.Forms.Label();
             this.calculationWarpDirectionRadioButton = new System.Windows.Forms.RadioButton();
@@ -64,7 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textileViewer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsWindow)).BeginInit();
             this.tabControl.SuspendLayout();
-            this.calculationTabPage.SuspendLayout();
+            this.fabricParametersTabPage.SuspendLayout();
             this.calculationSettingsGroupBox.SuspendLayout();
             this.simulationTabPage.SuspendLayout();
             this.plotTabPage.SuspendLayout();
@@ -142,7 +142,7 @@
             // 
             // tabControl
             // 
-            this.tabControl.Controls.Add(this.calculationTabPage);
+            this.tabControl.Controls.Add(this.fabricParametersTabPage);
             this.tabControl.Controls.Add(this.simulationTabPage);
             this.tabControl.Controls.Add(this.plotTabPage);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Right;
@@ -153,19 +153,19 @@
             this.tabControl.TabIndex = 4;
             this.tabControl.Visible = false;
             // 
-            // calculationTabPage
+            // fabricParametersTabPage
             // 
-            this.calculationTabPage.Controls.Add(this.calculationSettingsGroupBox);
-            this.calculationTabPage.Controls.Add(this.calculateButton);
-            this.calculationTabPage.Controls.Add(this.calcuationTypeLabel);
-            this.calculationTabPage.Controls.Add(this.calculationTypeComboBox);
-            this.calculationTabPage.Location = new System.Drawing.Point(4, 22);
-            this.calculationTabPage.Name = "calculationTabPage";
-            this.calculationTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.calculationTabPage.Size = new System.Drawing.Size(309, 451);
-            this.calculationTabPage.TabIndex = 1;
-            this.calculationTabPage.Text = "Calculation";
-            this.calculationTabPage.UseVisualStyleBackColor = true;
+            this.fabricParametersTabPage.Controls.Add(this.calculationSettingsGroupBox);
+            this.fabricParametersTabPage.Controls.Add(this.calculateButton);
+            this.fabricParametersTabPage.Controls.Add(this.calcuationTypeLabel);
+            this.fabricParametersTabPage.Controls.Add(this.calculationTypeComboBox);
+            this.fabricParametersTabPage.Location = new System.Drawing.Point(4, 22);
+            this.fabricParametersTabPage.Name = "fabricParametersTabPage";
+            this.fabricParametersTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.fabricParametersTabPage.Size = new System.Drawing.Size(309, 451);
+            this.fabricParametersTabPage.TabIndex = 1;
+            this.fabricParametersTabPage.Text = "Fabric Parameters";
+            this.fabricParametersTabPage.UseVisualStyleBackColor = true;
             // 
             // calculationSettingsGroupBox
             // 
@@ -468,8 +468,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.textileViewer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsWindow)).EndInit();
             this.tabControl.ResumeLayout(false);
-            this.calculationTabPage.ResumeLayout(false);
-            this.calculationTabPage.PerformLayout();
+            this.fabricParametersTabPage.ResumeLayout(false);
+            this.fabricParametersTabPage.PerformLayout();
             this.calculationSettingsGroupBox.ResumeLayout(false);
             this.calculationSettingsGroupBox.PerformLayout();
             this.simulationTabPage.ResumeLayout(false);
@@ -495,7 +495,7 @@
         private System.Windows.Forms.Label textileViewLabel;
         private System.Windows.Forms.PictureBox resultsWindow;
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage calculationTabPage;
+        private System.Windows.Forms.TabPage fabricParametersTabPage;
         private System.Windows.Forms.Button calculateButton;
         private System.Windows.Forms.TabPage plotTabPage;
         private System.Windows.Forms.Button plotButton;

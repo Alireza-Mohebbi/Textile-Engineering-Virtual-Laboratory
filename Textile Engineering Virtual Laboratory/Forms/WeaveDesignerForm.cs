@@ -25,8 +25,8 @@ namespace TextileEngineeringVirtualLaboratory
         private void weaveButton_Click(object sender, EventArgs e)
         {
             DesignedWeave = new Weave(
-                (int)warpCountInput.Value,
-                (int)weftCountInput.Value,
+                (int)numberOfWarpsInput.Value,
+                (int)numberOfWeftsInput.Value,
                 (float)yarnWidthInput.Value,
                 (float)yarnThicknessInput.Value,
                 (float)yarnSpacingInput.Value,
@@ -45,35 +45,18 @@ namespace TextileEngineeringVirtualLaboratory
                 return;
             }
 
-            interactiveInterlacementsOfWeave =
-                new Rectangle[DesignedWeave.WarpCount, DesignedWeave.WeftCount];
+            interactiveInterlacementsOfWeave = new Rectangle[DesignedWeave.NumberOfWarps, DesignedWeave.NumberOfWefts];
+            int interactiveAreaSize = Math.Max(10, (int)(Math.Min(DesignedWeave.WarpWidth, DesignedWeave.WeftWidth) * displayScale));
 
-            int interactiveAreaSize = Math.Max(
-                10,
-                (int)(Math.Min(
-                    DesignedWeave.WarpWidth,
-                    DesignedWeave.WeftWidth) * displayScale));
-
-            for (int i = 0; i < DesignedWeave.WarpCount; i++)
+            for (int i = 0; i < DesignedWeave.NumberOfWarps; i++)
             {
-                for (int j = 0; j < DesignedWeave.WeftCount; j++)
+                for (int j = 0; j < DesignedWeave.NumberOfWefts; j++)
                 {
                     // Center of the warp/weft intersection.
                     // X is determined by WarpSpacing, Y by WeftSpacing.
-                    int centerX = displayMargin +
-                        (int)((i * DesignedWeave.WarpSpacing +
-                               DesignedWeave.WarpSpacing / 2f) * displayScale);
-
-                    int centerY = displayMargin +
-                        (int)((j * DesignedWeave.WeftSpacing +
-                               DesignedWeave.WeftSpacing / 2f) * displayScale);
-
-                    interactiveInterlacementsOfWeave[i, j] =
-                        new Rectangle(
-                            centerX - interactiveAreaSize / 2,
-                            centerY - interactiveAreaSize / 2,
-                            interactiveAreaSize,
-                            interactiveAreaSize);
+                    int centerX = displayMargin + (int)((i * DesignedWeave.WarpSpacing + DesignedWeave.WarpSpacing / 2f) * displayScale);
+                    int centerY = displayMargin + (int)((j * DesignedWeave.WeftSpacing + DesignedWeave.WeftSpacing / 2f) * displayScale);
+                    interactiveInterlacementsOfWeave[i, j] = new Rectangle( centerX - interactiveAreaSize / 2, centerY - interactiveAreaSize / 2, interactiveAreaSize, interactiveAreaSize);
                 }
             }
         }
@@ -86,9 +69,9 @@ namespace TextileEngineeringVirtualLaboratory
                 return;
             }
 
-            for (int x = 0; x < DesignedWeave.WarpCount; x++)
+            for (int x = 0; x < DesignedWeave.NumberOfWarps; x++)
             {
-                for (int y = 0; y < DesignedWeave.WeftCount; y++)
+                for (int y = 0; y < DesignedWeave.NumberOfWefts; y++)
                 {
                     if (interactiveInterlacementsOfWeave[x, y].Contains(e.Location))
                     {
