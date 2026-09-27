@@ -162,14 +162,13 @@ namespace TextileEngineeringVirtualLaboratory
                     // Crmip
                     case 0:
                         AbstractCalculator crimpCalculator = new CrimpCalculator();
-                        if (fabricParameterWarpDirectionRadioButton.Checked)
-                        {
-                            crimpCalculator.CalculateCrimp(Weave, "warp");
-                        }
-                        else if (fabricParameterWeftDirectionRadioButton.Checked)
-                        {
-                            crimpCalculator.CalculateCrimp(Weave, "weft");
-                        }
+                        crimpCalculator.Calculate(Weave);
+                        break;
+
+                    // Porosity
+                    case 1:
+                        AbstractCalculator porosityCalculator = new PorosityCalculator();
+                        porosityCalculator.Calculate(Weave);
                         break;
 
                     default: break;
@@ -188,23 +187,6 @@ namespace TextileEngineeringVirtualLaboratory
                     // Default
                     default: break;
                 }
-            }
-        }
-
-        private void calculationTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (fabricParameterTypeComboBox.SelectedIndex)
-            {
-                // Crimp
-                case 0:
-                    fabricParameterDirectionLabel.Visible = true;
-                    fabricParameterWarpDirectionRadioButton.Visible = true;
-                    fabricParameterWeftDirectionRadioButton.Visible = true; break;
-
-                default:
-                    fabricParameterDirectionLabel.Visible = false;
-                    fabricParameterWarpDirectionRadioButton.Visible = false;
-                    fabricParameterWeftDirectionRadioButton.Visible = false; break;
             }
         }
     }

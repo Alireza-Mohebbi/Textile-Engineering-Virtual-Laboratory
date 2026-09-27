@@ -10,7 +10,6 @@ namespace TextileEngineeringVirtualLaboratory.Calculator
         protected const int displayMargin = 700;
         protected const int displayScale = 15;
 
-        // Crimp calculator methods
-        public abstract void CalculateCrimp(Weave weave, string direction);
+        public abstract void Calculate(Weave weave);
     }
 }

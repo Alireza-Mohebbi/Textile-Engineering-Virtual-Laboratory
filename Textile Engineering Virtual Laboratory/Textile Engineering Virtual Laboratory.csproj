@@ -59,6 +59,7 @@
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Scripts\Calculator\AbstractCalculator.cs" />
+    <Compile Include="Scripts\Calculator\PorosityCalculator.cs" />
     <Compile Include="Scripts\Calculator\CrimpCalculator.cs" />
     <Compile Include="Scripts\Plotter\ShearStiffnessPlotter.cs" />
     <Compile Include="Scripts\Plotter\BendingMomentCurvaturePlotter.cs" />

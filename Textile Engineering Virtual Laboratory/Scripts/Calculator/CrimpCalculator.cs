@@ -11,17 +11,11 @@ namespace TextileEngineeringVirtualLaboratory.Calculator
     {
         private Weave weave;
 
-        public override void CalculateCrimp(Weave weave, string direction)
+        public override void Calculate(Weave weave)
         {
             this.weave = weave;
-            if (direction == "warp")
-            {
-                CalculateCrimpInWarpsDirection();
-            }
-            else
-            {
-                CalculateCrimpInWeftsDirection();
-            }
+            CalculateCrimpInWarpsDirection();
+            CalculateCrimpInWeftsDirection();
         }
 
         private void CalculateCrimpInWarpsDirection()

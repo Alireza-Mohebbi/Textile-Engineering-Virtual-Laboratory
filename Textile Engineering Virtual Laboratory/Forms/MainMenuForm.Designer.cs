@@ -36,10 +36,6 @@
             this.resultsWindow = new System.Windows.Forms.PictureBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.fabricParametersTabPage = new System.Windows.Forms.TabPage();
-            this.fabricParametersSettingsGroupBox = new System.Windows.Forms.GroupBox();
-            this.fabricParameterDirectionLabel = new System.Windows.Forms.Label();
-            this.fabricParameterWarpDirectionRadioButton = new System.Windows.Forms.RadioButton();
-            this.fabricParameterWeftDirectionRadioButton = new System.Windows.Forms.RadioButton();
             this.calculateButton = new System.Windows.Forms.Button();
             this.fabricParameterTypeLabel = new System.Windows.Forms.Label();
             this.fabricParameterTypeComboBox = new System.Windows.Forms.ComboBox();
@@ -65,7 +61,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.resultsWindow)).BeginInit();
             this.tabControl.SuspendLayout();
             this.fabricParametersTabPage.SuspendLayout();
-            this.fabricParametersSettingsGroupBox.SuspendLayout();
             this.simulationTabPage.SuspendLayout();
             this.plotTabPage.SuspendLayout();
             this.plotInputsGroupBox.SuspendLayout();
@@ -155,7 +150,6 @@
             // 
             // fabricParametersTabPage
             // 
-            this.fabricParametersTabPage.Controls.Add(this.fabricParametersSettingsGroupBox);
             this.fabricParametersTabPage.Controls.Add(this.calculateButton);
             this.fabricParametersTabPage.Controls.Add(this.fabricParameterTypeLabel);
             this.fabricParametersTabPage.Controls.Add(this.fabricParameterTypeComboBox);
@@ -166,54 +160,6 @@
             this.fabricParametersTabPage.TabIndex = 1;
             this.fabricParametersTabPage.Text = "Fabric Parameters";
             this.fabricParametersTabPage.UseVisualStyleBackColor = true;
-            // 
-            // fabricParametersSettingsGroupBox
-            // 
-            this.fabricParametersSettingsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.fabricParametersSettingsGroupBox.Controls.Add(this.fabricParameterDirectionLabel);
-            this.fabricParametersSettingsGroupBox.Controls.Add(this.fabricParameterWarpDirectionRadioButton);
-            this.fabricParametersSettingsGroupBox.Controls.Add(this.fabricParameterWeftDirectionRadioButton);
-            this.fabricParametersSettingsGroupBox.Location = new System.Drawing.Point(6, 86);
-            this.fabricParametersSettingsGroupBox.Name = "fabricParametersSettingsGroupBox";
-            this.fabricParametersSettingsGroupBox.Size = new System.Drawing.Size(295, 321);
-            this.fabricParametersSettingsGroupBox.TabIndex = 12;
-            this.fabricParametersSettingsGroupBox.TabStop = false;
-            this.fabricParametersSettingsGroupBox.Text = "Settings";
-            // 
-            // fabricParameterDirectionLabel
-            // 
-            this.fabricParameterDirectionLabel.AutoSize = true;
-            this.fabricParameterDirectionLabel.Location = new System.Drawing.Point(0, 30);
-            this.fabricParameterDirectionLabel.Name = "fabricParameterDirectionLabel";
-            this.fabricParameterDirectionLabel.Size = new System.Drawing.Size(49, 13);
-            this.fabricParameterDirectionLabel.TabIndex = 13;
-            this.fabricParameterDirectionLabel.Text = "Direction";
-            this.fabricParameterDirectionLabel.Visible = false;
-            // 
-            // fabricParameterWarpDirectionRadioButton
-            // 
-            this.fabricParameterWarpDirectionRadioButton.AutoSize = true;
-            this.fabricParameterWarpDirectionRadioButton.Location = new System.Drawing.Point(3, 55);
-            this.fabricParameterWarpDirectionRadioButton.Name = "fabricParameterWarpDirectionRadioButton";
-            this.fabricParameterWarpDirectionRadioButton.Size = new System.Drawing.Size(94, 17);
-            this.fabricParameterWarpDirectionRadioButton.TabIndex = 10;
-            this.fabricParameterWarpDirectionRadioButton.TabStop = true;
-            this.fabricParameterWarpDirectionRadioButton.Text = "Warp direction";
-            this.fabricParameterWarpDirectionRadioButton.UseVisualStyleBackColor = true;
-            this.fabricParameterWarpDirectionRadioButton.Visible = false;
-            // 
-            // fabricParameterWeftDirectionRadioButton
-            // 
-            this.fabricParameterWeftDirectionRadioButton.AutoSize = true;
-            this.fabricParameterWeftDirectionRadioButton.Location = new System.Drawing.Point(3, 78);
-            this.fabricParameterWeftDirectionRadioButton.Name = "fabricParameterWeftDirectionRadioButton";
-            this.fabricParameterWeftDirectionRadioButton.Size = new System.Drawing.Size(91, 17);
-            this.fabricParameterWeftDirectionRadioButton.TabIndex = 11;
-            this.fabricParameterWeftDirectionRadioButton.TabStop = true;
-            this.fabricParameterWeftDirectionRadioButton.Text = "Weft direction";
-            this.fabricParameterWeftDirectionRadioButton.UseVisualStyleBackColor = true;
-            this.fabricParameterWeftDirectionRadioButton.Visible = false;
             // 
             // calculateButton
             // 
@@ -241,13 +187,13 @@
             this.fabricParameterTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.fabricParameterTypeComboBox.FormattingEnabled = true;
             this.fabricParameterTypeComboBox.Items.AddRange(new object[] {
-            "Crimp"});
+            "Crimp",
+            "Porosity"});
             this.fabricParameterTypeComboBox.Location = new System.Drawing.Point(6, 48);
             this.fabricParameterTypeComboBox.Name = "fabricParameterTypeComboBox";
             this.fabricParameterTypeComboBox.Size = new System.Drawing.Size(295, 21);
             this.fabricParameterTypeComboBox.TabIndex = 7;
             this.fabricParameterTypeComboBox.Tag = "";
-            this.fabricParameterTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.calculationTypeComboBox_SelectedIndexChanged);
             // 
             // simulationTabPage
             // 
@@ -470,8 +416,6 @@
             this.tabControl.ResumeLayout(false);
             this.fabricParametersTabPage.ResumeLayout(false);
             this.fabricParametersTabPage.PerformLayout();
-            this.fabricParametersSettingsGroupBox.ResumeLayout(false);
-            this.fabricParametersSettingsGroupBox.PerformLayout();
             this.simulationTabPage.ResumeLayout(false);
             this.simulationTabPage.PerformLayout();
             this.plotTabPage.ResumeLayout(false);
@@ -516,9 +460,5 @@
         private System.Windows.Forms.ComboBox simulationTypeComboBox;
         private System.Windows.Forms.Label fabricParameterTypeLabel;
         private System.Windows.Forms.ComboBox fabricParameterTypeComboBox;
-        private System.Windows.Forms.RadioButton fabricParameterWeftDirectionRadioButton;
-        private System.Windows.Forms.RadioButton fabricParameterWarpDirectionRadioButton;
-        private System.Windows.Forms.GroupBox fabricParametersSettingsGroupBox;
-        private System.Windows.Forms.Label fabricParameterDirectionLabel;
     }
 }
