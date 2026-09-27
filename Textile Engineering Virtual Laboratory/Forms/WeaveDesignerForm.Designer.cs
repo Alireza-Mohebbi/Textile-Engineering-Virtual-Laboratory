@@ -167,9 +167,9 @@
             this.numberOfWarpsLabel.AutoSize = true;
             this.numberOfWarpsLabel.Location = new System.Drawing.Point(14, 39);
             this.numberOfWarpsLabel.Name = "numberOfWarpsLabel";
-            this.numberOfWarpsLabel.Size = new System.Drawing.Size(90, 13);
+            this.numberOfWarpsLabel.Size = new System.Drawing.Size(87, 13);
             this.numberOfWarpsLabel.TabIndex = 6;
-            this.numberOfWarpsLabel.Text = "Number of Warps";
+            this.numberOfWarpsLabel.Text = "Number of warps";
             // 
             // repeatYInput
             // 
@@ -193,9 +193,9 @@
             this.numberOfWeftsLabel.AutoSize = true;
             this.numberOfWeftsLabel.Location = new System.Drawing.Point(14, 76);
             this.numberOfWeftsLabel.Name = "numberOfWeftsLabel";
-            this.numberOfWeftsLabel.Size = new System.Drawing.Size(87, 13);
+            this.numberOfWeftsLabel.Size = new System.Drawing.Size(84, 13);
             this.numberOfWeftsLabel.TabIndex = 7;
-            this.numberOfWeftsLabel.Text = "Number of Wefts";
+            this.numberOfWeftsLabel.Text = "Number of wefts";
             // 
             // repeatXInput
             // 

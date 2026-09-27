@@ -157,16 +157,16 @@ namespace TextileEngineeringVirtualLaboratory
 
             else if (tabControl.SelectedTab == fabricParametersTabPage)
             {
-                switch (calculationTypeComboBox.SelectedIndex)
+                switch (fabricParameterTypeComboBox.SelectedIndex)
                 {
                     // Crmip
                     case 0:
                         AbstractCalculator crimpCalculator = new CrimpCalculator();
-                        if (calculationWarpDirectionRadioButton.Checked)
+                        if (fabricParameterWarpDirectionRadioButton.Checked)
                         {
                             crimpCalculator.CalculateCrimp(Weave, "warp");
                         }
-                        else if (calculationWeftDirectionRadioButton.Checked)
+                        else if (fabricParameterWeftDirectionRadioButton.Checked)
                         {
                             crimpCalculator.CalculateCrimp(Weave, "weft");
                         }
@@ -193,18 +193,18 @@ namespace TextileEngineeringVirtualLaboratory
 
         private void calculationTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (calculationTypeComboBox.SelectedIndex)
+            switch (fabricParameterTypeComboBox.SelectedIndex)
             {
                 // Crimp
                 case 0:
-                    calculationDirectionLabel.Visible = true;
-                    calculationWarpDirectionRadioButton.Visible = true;
-                    calculationWeftDirectionRadioButton.Visible = true; break;
+                    fabricParameterDirectionLabel.Visible = true;
+                    fabricParameterWarpDirectionRadioButton.Visible = true;
+                    fabricParameterWeftDirectionRadioButton.Visible = true; break;
 
                 default:
-                    calculationDirectionLabel.Visible = false;
-                    calculationWarpDirectionRadioButton.Visible = false;
-                    calculationWeftDirectionRadioButton.Visible = false; break;
+                    fabricParameterDirectionLabel.Visible = false;
+                    fabricParameterWarpDirectionRadioButton.Visible = false;
+                    fabricParameterWeftDirectionRadioButton.Visible = false; break;
             }
         }
     }

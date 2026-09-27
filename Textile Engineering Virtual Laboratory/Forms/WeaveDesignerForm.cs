@@ -11,7 +11,7 @@ namespace TextileEngineeringVirtualLaboratory
     {
         public Weave DesignedWeave { get; set; }
         private Rectangle[,] interactiveInterlacementsOfWeave;
-        private const int displayMargin = 50;
+        private const int displayMargin = 25;
         private const float displayScale = 50;
 
         public WeaveDesigner()
@@ -52,11 +52,9 @@ namespace TextileEngineeringVirtualLaboratory
             {
                 for (int j = 0; j < DesignedWeave.NumberOfWefts; j++)
                 {
-                    // Center of the warp/weft intersection.
-                    // X is determined by WarpSpacing, Y by WeftSpacing.
-                    int centerX = displayMargin + (int)((i * DesignedWeave.WarpSpacing + DesignedWeave.WarpSpacing / 2f) * displayScale);
-                    int centerY = displayMargin + (int)((j * DesignedWeave.WeftSpacing + DesignedWeave.WeftSpacing / 2f) * displayScale);
-                    interactiveInterlacementsOfWeave[i, j] = new Rectangle( centerX - interactiveAreaSize / 2, centerY - interactiveAreaSize / 2, interactiveAreaSize, interactiveAreaSize);
+                    int InterlacementCenterX = displayMargin + (int)((i * DesignedWeave.WarpSpacing + DesignedWeave.WarpSpacing / 2f) * displayScale);
+                    int InterlacementCenterY = displayMargin + (int)((j * DesignedWeave.WeftSpacing + DesignedWeave.WeftSpacing / 2f) * displayScale);
+                    interactiveInterlacementsOfWeave[i, j] = new Rectangle( InterlacementCenterX - interactiveAreaSize / 2, InterlacementCenterY - interactiveAreaSize / 2, interactiveAreaSize, interactiveAreaSize);
                 }
             }
         }
