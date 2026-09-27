@@ -40,6 +40,8 @@ namespace TextileEngineeringVirtualLaboratory.Plotter
                 PointF clampWallStartPoint = new PointF(points[0].X, points[0].Y - 20);
                 PointF clampWallEndPoint = new PointF(points[0].X, points[0].Y + 20);
 
+                g.TranslateTransform(60, 600);
+                g.ScaleTransform(displayScale, displayScale);
                 g.DrawCurve(Pens.Blue, points);
                 g.DrawLine(Pens.Black, clampWallStartPoint, clampWallEndPoint);
             }
@@ -50,9 +52,10 @@ namespace TextileEngineeringVirtualLaboratory.Plotter
 
             // Textual info
             g.ResetTransform();
-            g.DrawString("Bending Rigidity (N/mm^2) = " + bendingRigidity.ToString(), new Font("Arial", 10), Brushes.Black, 20, 20);
-            g.DrawString("Fabric Arial Density (Kg/mm^2) = " + arialDensity.ToString(), new Font("Arial", 10), Brushes.Black, 20, 40);
-            g.DrawString("Fabric Length (mm) = " + length.ToString("0.000"), new Font("Arial", 10), Brushes.Black, 20, 60);
+            g.DrawString("Drape 2D Calculated Parameteres:", new Font("Arial", 15, FontStyle.Bold), Brushes.Black, 20, 20);
+            g.DrawString("Bending Rigidity (N/mm^2) = " + bendingRigidity.ToString(), new Font("Arial", 10), Brushes.Black, 20, 60);
+            g.DrawString("Fabric Arial Density (Kg/mm^2) = " + arialDensity.ToString(), new Font("Arial", 10), Brushes.Black, 20, 80);
+            g.DrawString("Fabric Length (mm) = " + length.ToString("0.000"), new Font("Arial", 10), Brushes.Black, 20, 100);
         }
     }
 }

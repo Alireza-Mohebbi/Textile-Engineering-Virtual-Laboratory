@@ -10,6 +10,7 @@ namespace TextileEngineeringVirtualLaboratory.Calculator
         protected const int displayMargin = 700;
         protected const int displayScale = 15;
 
-        public abstract void Calculate(Weave weave);
+        public abstract void Calculate(Weave weave, Graphics g);
+        protected abstract void ShowResults();
     }
 }

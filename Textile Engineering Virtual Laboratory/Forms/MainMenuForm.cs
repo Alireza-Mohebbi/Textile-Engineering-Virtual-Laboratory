@@ -82,13 +82,13 @@ namespace TextileEngineeringVirtualLaboratory
                     // Crmip
                     case 0:
                         AbstractCalculator crimpCalculator = new CrimpCalculator();
-                        crimpCalculator.Calculate(Weave);
+                        crimpCalculator.Calculate(Weave, e.Graphics);
                         break;
 
                     // Porosity
                     case 1:
                         AbstractCalculator porosityCalculator = new PorosityCalculator();
-                        porosityCalculator.Calculate(Weave);
+                        porosityCalculator.Calculate(Weave, e.Graphics);
                         break;
 
                     default: break;
