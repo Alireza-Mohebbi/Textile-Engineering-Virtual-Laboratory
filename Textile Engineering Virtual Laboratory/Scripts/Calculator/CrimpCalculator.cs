@@ -25,10 +25,10 @@ namespace TextileEngineeringVirtualLaboratory.Calculator
 
             for (int i = 0; i < weave.NumberOfWarps; i++)
             {
-                crimpOfEachWarp[i] = ((weave.WarpsCurvedLengths[i] - weave.WarpsStraightLengths[i]) / weave.WarpsStraightLengths[i]) * 100;
+                crimpOfEachWarp[i] = ((weave.WarpsCurvedLengthsInUnitCell[i] - weave.WarpsStraightLengthsInUnitCell[i]) / weave.WarpsStraightLengthsInUnitCell[i]) * 100;
             }
 
-            totalFabricCrimpInWarpsDirection = ((weave.SumOfWarpsCurvedLengths - weave.SumOfWarpsStraightLengths) / (weave.SumOfWarpsStraightLengths)) * 100;
+            totalFabricCrimpInWarpsDirection = ((weave.SumOfWarpsCurvedLengthsInUnitCell - weave.SumOfWarpsStraightLengthsInUnitCell) / (weave.SumOfWarpsStraightLengthsInUnitCell)) * 100;
 
             // Print crimp values
             string messageNew = "";
@@ -47,10 +47,10 @@ namespace TextileEngineeringVirtualLaboratory.Calculator
 
             for (int i = 0; i < weave.NumberOfWefts; i++)
             {
-                crimpOfEachWeft[i] = ((weave.WeftsCurvedLengths[i] - weave.WeftsStraightLengths[i]) / weave.WeftsStraightLengths[i]) * 100;
+                crimpOfEachWeft[i] = ((weave.WeftsCurvedLengthsInUnitCell[i] - weave.WeftsStraightLengthsInUnitCell[i]) / weave.WeftsStraightLengthsInUnitCell[i]) * 100;
             }
 
-            totalFabricCrimpInWeftsDirection = ((weave.SumOfWeftsCurvedLengths - weave.SumOfWeftsStraightLengths) / (weave.SumOfWeftsStraightLengths)) * 100;
+            totalFabricCrimpInWeftsDirection = ((weave.SumOfWeftsCurvedLengthsInUnitCell - weave.SumOfWeftsStraightLengthsInUnitCell) / (weave.SumOfWeftsStraightLengthsInUnitCell)) * 100;
 
             // Print crimp values
             string messageNew = "";

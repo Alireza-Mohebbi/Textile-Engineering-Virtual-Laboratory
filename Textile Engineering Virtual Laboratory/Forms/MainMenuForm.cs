@@ -55,6 +55,89 @@ namespace TextileEngineeringVirtualLaboratory
             }
         }
 
+        private void calculateButton_Click(object sender, EventArgs e)
+        {
+            resultsWindow.Invalidate();
+        }
+
+        private void simulateButton_Click(object sender, EventArgs e)
+        {
+            resultsWindow.Invalidate();
+        }
+
+        private void plotButton_Click(object sender, EventArgs e)
+        {
+            resultsWindow.Invalidate();
+        }
+
+        private void resultsWindow_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.Clear(Color.White);
+            e.Graphics.ScaleTransform(0.5f, 0.5f);
+
+            if (tabControl.SelectedTab == fabricParametersTabPage)
+            {
+                switch (fabricParameterTypeComboBox.SelectedIndex)
+                {
+                    // Crmip
+                    case 0:
+                        AbstractCalculator crimpCalculator = new CrimpCalculator();
+                        crimpCalculator.Calculate(Weave);
+                        break;
+
+                    // Porosity
+                    case 1:
+                        AbstractCalculator porosityCalculator = new PorosityCalculator();
+                        porosityCalculator.Calculate(Weave);
+                        break;
+
+                    default: break;
+                }
+            }
+
+            else if (tabControl.SelectedTab == simulationTabPage)
+            {
+                switch (simulationTypeComboBox.SelectedIndex)
+                {
+                    // Drape 2D
+                    case 0:
+                        AbstractSimulator drapeSimulator = new DrapeSimulator(Weave);
+                        drapeSimulator.Simulate(e.Graphics); break;
+
+                    default: break;
+                }
+            }
+
+            else if (tabControl.SelectedTab == plotTabPage)
+            {
+                switch (plotTypeComboBox.SelectedIndex)
+                {
+                    //Stress-Strain Curve
+                    case 0: break;
+
+                    // Bending Moment-Curvature Curve
+                    case 1:
+                        AbstractPlotter bendingMomentCurvaturePlotter = new BendingMomentCurvaturePlotter(
+                            (float)input1.Value,
+                            (float)input2.Value,
+                            (float)input3.Value,
+                            (float)input4.Value);
+                        bendingMomentCurvaturePlotter.Plot(e.Graphics, "Curvature (mm^-1)", "Bending Moment (N.mm)"); break;
+
+                    // Shear Stiffness Curve
+                    case 2:
+                        AbstractPlotter shearStiffnessPlotter = new ShearStiffnessPlotter(
+                            (float)input1.Value,
+                            (float)input2.Value,
+                            (float)input3.Value,
+                            (float)input4.Value);
+                        shearStiffnessPlotter.Plot(e.Graphics, "Shear Strain", "Shear Stress (MPa)"); break;
+
+                    default: break;
+                }
+            }
+        }
+
         private void plotTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (plotTypeComboBox.SelectedIndex)
@@ -102,91 +185,6 @@ namespace TextileEngineeringVirtualLaboratory
                     inputLabel2.Text = "";
                     inputLabel3.Text = "";
                     inputLabel4.Text = ""; break;
-            }
-        }
-
-        private void calculateButton_Click(object sender, EventArgs e)
-        {
-            resultsWindow.Invalidate();
-        }
-
-        private void simulateButton_Click(object sender, EventArgs e)
-        {
-            resultsWindow.Invalidate();
-        }
-
-        private void plotButton_Click(object sender, EventArgs e)
-        {
-            resultsWindow.Invalidate();
-        }
-
-        private void resultsWindow_Paint(object sender, PaintEventArgs e)
-        {
-            e.Graphics.Clear(Color.White);
-            e.Graphics.ScaleTransform(0.5f, 0.5f);
-
-            if (tabControl.SelectedTab == plotTabPage)
-            {
-                switch (plotTypeComboBox.SelectedIndex)
-                {
-                    //Stress-Strain Curve
-                    case 0: break;
-
-                    // Bending Moment-Curvature Curve
-                    case 1:
-                        AbstractPlotter bendingMomentCurvaturePlotter = new BendingMomentCurvaturePlotter(
-                            (float)input1.Value,
-                            (float)input2.Value,
-                            (float)input3.Value,
-                            (float)input4.Value);
-                        bendingMomentCurvaturePlotter.Plot(e.Graphics, "Curvature (mm^-1)", "Bending Moment (N.mm)"); break;
-
-                    // Shear Stiffness Curve
-                    case 2:
-                        AbstractPlotter shearStiffnessPlotter = new ShearStiffnessPlotter(
-                            (float)input1.Value,
-                            (float)input2.Value,
-                            (float)input3.Value,
-                            (float)input4.Value);
-                        shearStiffnessPlotter.Plot(e.Graphics, "Shear Strain", "Shear Stress (MPa)"); break;
-
-                    // Default
-                    default: break;
-                }
-            }
-
-            else if (tabControl.SelectedTab == fabricParametersTabPage)
-            {
-                switch (fabricParameterTypeComboBox.SelectedIndex)
-                {
-                    // Crmip
-                    case 0:
-                        AbstractCalculator crimpCalculator = new CrimpCalculator();
-                        crimpCalculator.Calculate(Weave);
-                        break;
-
-                    // Porosity
-                    case 1:
-                        AbstractCalculator porosityCalculator = new PorosityCalculator();
-                        porosityCalculator.Calculate(Weave);
-                        break;
-
-                    default: break;
-                }
-            }
-
-            else if (tabControl.SelectedTab == simulationTabPage)
-            {
-                switch (simulationTypeComboBox.SelectedIndex)
-                {
-                    // Drape 2D
-                    case 0:
-                        AbstractSimulator drapeSimulator = new DrapeSimulator(Weave);
-                        drapeSimulator.Simulate(e.Graphics); break;
-
-                    // Default
-                    default: break;
-                }
             }
         }
     }
