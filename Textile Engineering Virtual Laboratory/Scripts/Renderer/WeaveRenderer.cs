@@ -72,7 +72,7 @@ namespace TextileEngineeringVirtualLaboratory.Renderer
         {
             int bottomRowWeftIndex = weave.NumberOfWefts - 1;
 
-            using (Pen weftPen = new Pen(Color.Blue, weave.WeftThickness))
+            using (Pen weftPen = new Pen(Color.Blue, weave.WeftDiameter))
             {
                 PointF[] weftCurveControlPoints = new PointF[weave.NumberOfWarps + 2];
 
@@ -85,20 +85,20 @@ namespace TextileEngineeringVirtualLaboratory.Renderer
 
                     if (isWarpOverWeft)
                     {
-                        warpY = (weave.FabricHeight / weave.RepeatY) - (weave.WeftThickness / 2f) + weave.FabricThickness / 2;
-                        weftY = (weave.FabricHeight / weave.RepeatY) + (weave.WarpThickness / 2f) + weave.FabricThickness / 2;
+                        warpY = (weave.FabricHeight / weave.RepeatY) - (weave.WeftDiameter / 2f) + weave.FabricThickness / 2;
+                        weftY = (weave.FabricHeight / weave.RepeatY) + (weave.WarpDiameter / 2f) + weave.FabricThickness / 2;
                     }
                     else
                     {
-                        warpY = (weave.FabricHeight / weave.RepeatY) + (weave.WeftThickness / 2f) + weave.FabricThickness / 2;
-                        weftY = (weave.FabricHeight / weave.RepeatY) - (weave.WarpThickness / 2f) + weave.FabricThickness / 2;
+                        warpY = (weave.FabricHeight / weave.RepeatY) + (weave.WeftDiameter / 2f) + weave.FabricThickness / 2;
+                        weftY = (weave.FabricHeight / weave.RepeatY) - (weave.WarpDiameter / 2f) + weave.FabricThickness / 2;
                     }
 
                     weftCurveControlPoints[i + 1] = new PointF(warpCrossSectionX, weftY);
 
                     using (Brush warpBrush = new SolidBrush(Color.Red))
                     {
-                        g.FillEllipse(warpBrush, warpCrossSectionX - weave.WarpWidth / 2f, warpY - weave.WarpThickness / 2f, weave.WarpWidth, weave.WarpThickness);
+                        g.FillEllipse(warpBrush, warpCrossSectionX - weave.WarpWidth / 2f, warpY - weave.WarpDiameter / 2f, weave.WarpWidth, weave.WarpDiameter);
                     }
                 }
 

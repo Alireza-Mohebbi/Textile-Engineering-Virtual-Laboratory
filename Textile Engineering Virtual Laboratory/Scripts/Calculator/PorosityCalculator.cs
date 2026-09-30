@@ -23,8 +23,8 @@ namespace TextileEngineeringVirtualLaboratory.Calculator
             this.g = g;
 
             fabricVolume = weave.FabricWidth * weave.FabricHeight * weave.FabricThickness;
-            warpsVolume = (weave.RepeatX * weave.RepeatY * weave.SumOfWarpsCurvedLengthsInUnitCell) * (float)(Math.PI * Math.Pow(weave.WarpThickness, 2) / 4);
-            weftsVolume = (weave.RepeatX * weave.RepeatY * weave.SumOfWeftsCurvedLengthsInUnitCell) * (float)(Math.PI * Math.Pow(weave.WeftThickness, 2) / 4);
+            warpsVolume = (weave.RepeatX * weave.RepeatY * weave.SumOfWarpsCurvedLengthsInUnitCell) * (float)(Math.PI * Math.Pow(weave.WarpDiameter, 2) / 4);
+            weftsVolume = (weave.RepeatX * weave.RepeatY * weave.SumOfWeftsCurvedLengthsInUnitCell) * (float)(Math.PI * Math.Pow(weave.WeftDiameter, 2) / 4);
 
             porosityVolume = fabricVolume - (warpsVolume + weftsVolume);
             porosityPercentage = (porosityVolume / fabricVolume) * 100;
