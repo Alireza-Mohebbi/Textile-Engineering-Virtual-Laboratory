@@ -4,13 +4,16 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using TextileEngineeringVirtualLaboratory.Renderer;
 using TextileEngineeringVirtualLaboratory.Textiles;
+using WindowsFormsApplication1.Scripts.Materials;
 
 namespace TextileEngineeringVirtualLaboratory
 {
     public partial class WeaveDesigner : Form
     {
         public Weave DesignedWeave { get; set; }
+        private IMaterials material;
         private Rectangle[,] interactiveInterlacementsOfWeave;
+
         private const int displayMargin = 25;
         private const float displayScale = 50;
 
@@ -25,13 +28,11 @@ namespace TextileEngineeringVirtualLaboratory
         private void weaveButton_Click(object sender, EventArgs e)
         {
             DesignedWeave = new Weave(
-                (int)numberOfWarpsInput.Value,
-                (int)numberOfWeftsInput.Value,
-                (float)yarnWidthInput.Value,
-                (float)yarnThicknessInput.Value,
-                (float)yarnSpacingInput.Value,
-                (int)repeatXInput.Value,
-                (int)repeatYInput.Value);
+                (float)warpCountInput.Value,
+                (float)weftCountInput.Value,
+                (float)warpCompactnessInput.Value,
+                (float)weftCompactnessInput.Value,
+                material);
 
             DefineInteractiveInterlacementsOfWeave();
             insertWeaveButton.Enabled = true;
@@ -46,7 +47,7 @@ namespace TextileEngineeringVirtualLaboratory
             }
 
             interactiveInterlacementsOfWeave = new Rectangle[DesignedWeave.NumberOfWarps, DesignedWeave.NumberOfWefts];
-            int interactiveAreaSize = Math.Max(10, (int)(Math.Min(DesignedWeave.WarpWidth, DesignedWeave.WeftWidth) * displayScale));
+            int interactiveAreaSize = Math.Max(10, (int)(Math.Min(DesignedWeave.WarpDiameter, DesignedWeave.WeftDiameter) * displayScale));
 
             for (int i = 0; i < DesignedWeave.NumberOfWarps; i++)
             {
@@ -101,6 +102,16 @@ namespace TextileEngineeringVirtualLaboratory
             DesignedWeave.CalculateYarnsPathPointsAndLengths();
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+        private void yarnMaterialInput_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (yarnMaterialInput.SelectedIndex)
+            {
+                // Cotton
+                case 0:
+                    material = new CottonMaterial(); break;
+            }
         }
     }
 }

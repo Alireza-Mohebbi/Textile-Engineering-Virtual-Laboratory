@@ -19,7 +19,7 @@ namespace TextileEngineeringVirtualLaboratory.Forms
             {
                 Weave.YoungsModulusX = (float)youngsModulusXInput.Value;
                 Weave.YoungsModulusY = (float)youngsModulusYInput.Value;
-                Weave.FabricArialDensity = (float)arialDensityInput.Value;
+                Weave.ArialDensity = (float)arialDensityInput.Value;
 
                 DialogResult = DialogResult.OK;
                 Close();

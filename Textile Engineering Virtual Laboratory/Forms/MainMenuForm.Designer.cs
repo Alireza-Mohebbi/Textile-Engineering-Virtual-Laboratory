@@ -183,7 +183,6 @@
             // 
             // fabricParameterTypeComboBox
             // 
-            this.fabricParameterTypeComboBox.DisplayMember = "iii";
             this.fabricParameterTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.fabricParameterTypeComboBox.FormattingEnabled = true;
             this.fabricParameterTypeComboBox.Items.AddRange(new object[] {

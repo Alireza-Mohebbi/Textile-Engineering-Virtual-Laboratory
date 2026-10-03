@@ -1,37 +1,41 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Scripts.Materials;
 
 namespace TextileEngineeringVirtualLaboratory.Textiles
 {
     public class Weave
     {
         /// Weave physical properties ///
-        public int NumberOfWarps { get; set; }
-        public float WarpWidth { get; set; }
-        public float WarpDiameter { get; set; }
-        public float WarpSpacing { get; set; }
-        public int NumberOfWefts { get; set; }
-        public float WeftWidth { get; set; }
-        public float WeftDiameter { get; set; }
-        public float WeftSpacing { get; set; }
-        public float YarnWidth { get; set; }        // (mm)
+        /// //Warp
+        public float WarpCount { get; set; }            // Tex (g/mm)
+        public float WarpCompactness { get; set; }      // mm^-1
+        public int NumberOfWarps { get { return 2; } set { } }
+        public float WarpDiameter { get; set; }         // mm
+        public float WarpSpacing { get; set; }          // mm
+        // Weft
+        public float WeftCount { get; set; }            // Tex (g/mm)
+        public float WeftCompactness { get; set; }      // mm^-1
+        public int NumberOfWefts { get { return 2; } set { } }
+        public float WeftDiameter { get; set; }         // mm
+        public float WeftSpacing { get; set; }          // mm
+        // Fabric
+        IMaterials Material;
         public float YarnDiameter { get; set; }    // (mm)
         public float YarnSpacing { get; set; }      // (mm)
         public bool[,] IsWarpOverWeft { get; set; }
-        public int RepeatX { get; set; }
-        public int RepeatY { get; set; }
         public int NumberOfLayers { get { return 1; } }
-        public float FabricWidth { get { return WarpSpacing * NumberOfWarps * RepeatX; } }    // (mm)
-        public float FabricHeight { get { return WeftSpacing * NumberOfWefts * RepeatY; } }   // (mm)
-        public float FabricThickness { get { return NumberOfLayers * (WarpDiameter + WeftDiameter); } }  // (mm)
+        public float WeaveWidth { get { return WarpSpacing * NumberOfWarps; } }    // (mm)
+        public float WeaveHeight { get { return WeftSpacing * NumberOfWefts; } }   // (mm)
+        public float WeaveThickness { get { return NumberOfLayers * (WarpDiameter + WeftDiameter); } }  // (mm)
 
         /// Weave mechanical properties ///
         public float YoungsModulusX { get; set; }       // (MPa)
         public float YoungsModulusY { get; set; }       // (MPa)
-        public float FabricArialDensity { get; set; }   // (Kg/mm^2)
+        public float ArialDensity { get; set; }   // (Kg/mm^2)
 
-        /// Other general properties ///
+        /// Global ambient properties ///
         private const float gravitaionalAcceleration = 9810;    // (mm/s^2)
 
         /// Warps and wefts path points and lengths ///
@@ -46,25 +50,17 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
         public float SumOfWeftsStraightLengthsInUnitCell { get; private set; }
         public float SumOfWeftsCurvedLengthsInUnitCell { get; private set; }
 
-        public Weave(int numberOfWarps, int numberOfWefts, float yarnWidth, float yarnThickness, float yarnSpacing, int repeatX, int repeatY)
+        public Weave(float warpCount, float weftCount, float warpCompactness, float weftCompactness, IMaterials material)
         {
-            NumberOfWarps = numberOfWarps;
-            NumberOfWefts = numberOfWefts;
-
-            YarnWidth = yarnWidth;
-            YarnDiameter = yarnThickness;
-            YarnSpacing = yarnSpacing;
-
-            WarpWidth = yarnWidth;
-            WarpDiameter = yarnThickness;
-            WarpSpacing = yarnSpacing;
-
-            WeftWidth = yarnWidth;
-            WeftDiameter = yarnThickness;
-            WeftSpacing = yarnSpacing;
-
-            RepeatX = repeatX;
-            RepeatY = repeatY;
+            WarpCount = warpCount;
+            WeftCount = weftCount;
+            WarpCompactness = warpCompactness;
+            WeftCompactness = weftCompactness;
+            Material = material;
+            WarpDiameter = (float)Math.Sqrt((4 * WarpCount) / (1000 * Math.PI * Material.Density * Material.PackingFactor));
+            WeftDiameter = (float)Math.Sqrt((4 * WeftCount) / (1000 * Math.PI * Material.Density * Material.PackingFactor));
+            WarpSpacing = 1 / WarpCompactness * 10; //The X10 multiplication is to convert cm to mm
+            WeftSpacing = 1 / WeftCompactness * 10; // The X10 multiplication is to convert cm to mm
 
             MakeInterlacementMatrix();
         }

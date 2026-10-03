@@ -61,6 +61,8 @@
     <Compile Include="Scripts\Calculator\AbstractCalculator.cs" />
     <Compile Include="Scripts\Calculator\PorosityCalculator.cs" />
     <Compile Include="Scripts\Calculator\CrimpCalculator.cs" />
+    <Compile Include="Scripts\Materials\IMaterials.cs" />
+    <Compile Include="Scripts\Materials\CottonMaterial.cs" />
     <Compile Include="Scripts\Plotter\ShearStiffnessPlotter.cs" />
     <Compile Include="Scripts\Plotter\BendingMomentCurvaturePlotter.cs" />
     <Compile Include="Scripts\Simulator\AbstractSimulator.cs" />
