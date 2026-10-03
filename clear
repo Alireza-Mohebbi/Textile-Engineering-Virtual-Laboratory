@@ -1,0 +1,327 @@
+[33mcommit b287837328cef5ec33c37cfa3240e9e2d0c1da34[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Wed Sep 30 21:20:57 2026 +0330
+
+    Minimized printed output data of crimp calculations
+
+[33mcommit ed2d8205bdf153e18551d60e5ad799be2cd40e88[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Wed Sep 30 21:11:06 2026 +0330
+
+    Changed names of some porperties in 'Weave.cs'
+
+[33mcommit e32759868a5f5ea20141702b9a888a71f5f57b62[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Sun Sep 27 15:33:17 2026 +0330
+
+    Improved rendering the results contents of the resultsWindow
+
+[33mcommit e13fbfe55951393dc0cf4e448e2f6aebf727d83d[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Sun Sep 27 14:24:37 2026 +0330
+
+    Fully implemented porosity calculation
+
+[33mcommit 1c59083c48a19f1ab061ced6b3a8ef5d206830bf[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Sun Sep 27 12:34:57 2026 +0330
+
+    Created 'PorosityCalculator.cs'
+
+[33mcommit 6f64c9c5748a3dbddf0d2adfe59fd319d5c48db3[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Sun Sep 27 12:11:30 2026 +0330
+
+    Code cleaning and polishing
+
+[33mcommit ef583bcb1a54e0948429c62c16b932af95a80f6b[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Thu Sep 24 22:16:25 2026 +0330
+
+    Minor general enhancements
+
+[33mcommit e1750269290a61cdb88d64d1db9736cebba40099[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Thu Sep 24 21:58:29 2026 +0330
+
+    Improved weave rendering of weave designer
+
+[33mcommit 28a55dba65bd6cc0cc5ea9c66c9d5b5458974760[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Tue Sep 22 21:50:33 2026 +0330
+
+    Improved crimp calculation tab GUI
+
+[33mcommit 3d8dd7a317e023676351c1e019c9c7cad6304543[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Tue Sep 22 21:45:52 2026 +0330
+
+    Improved implementations of weave renderer
+
+[33mcommit 9d1347d10a76847afab45cf9a3f1064fa53e33c7[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Tue Sep 22 20:28:40 2026 +0330
+
+    Added direction selection GUI on crimp calculation tab
+
+[33mcommit 34cb6f1603f0307e7386ce2d866d3ffc589d1caa[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Mon Sep 21 21:35:15 2026 +0330
+
+    Fixed some miscalculations in 'Weave.cs'
+
+[33mcommit ecad6de287d18e70e10764d778915eb436e404dd[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Mon Sep 21 21:30:07 2026 +0330
+
+    Corrected some miscalculations in 'Weave.cs'
+
+[33mcommit f5c1dbc610d0697a567a2e9a927af65692881f47[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Sun Sep 20 15:52:38 2026 +0330
+
+    Encapsulated yarns path points and lengths calculations inside 'Weave.cs'
+
+[33mcommit c671f126093a647002812c6ad773ecb041683296[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Fri Sep 18 20:16:58 2026 +0330
+
+    Changed structure to 'Calculator', 'Simulator' and 'Plotter'
+
+[33mcommit 36b95b4d14c1072a27a558ca9de7f527c08abee0[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Fri Sep 18 19:23:43 2026 +0330
+
+    Added possibility to calculate crimp in weft direction
+
+[33mcommit f716ee87d306918c1d83ff6d5065ef914185bbe6[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Thu Sep 17 22:44:39 2026 +0330
+
+    Completed 'CrimpCalculator.cs' implementation
+
+[33mcommit 062755bd72e4fbdc566b3dd8db2cac7428c63d6e[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Thu Sep 17 14:41:09 2026 +0330
+
+    Developed CrimpCalculator.cs (but is still incomplete)
+
+[33mcommit 13db7354e0c71f5a4c22d83f52cf8b93f8559cd4[m
+Merge: 817b7d7 a57e73b
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Wed Sep 16 22:56:34 2026 +0330
+
+    Merge branch 'main' of https://github.com/Alireza-Mohebbi/Textile-Engineering-Virtual-Lab
+
+[33mcommit 817b7d72c0701276209dec81002099ec575cad0e[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Wed Sep 16 22:56:00 2026 +0330
+
+    Created 'AbstractCalculator.cs' and 'CrimpCalculator.cs'
+
+[33mcommit a57e73b5cf0afe69ddc2a6b8d84c80820b872291[m
+Author: Alireza <alirezamsh4@gmail.com>
+Date:   Wed Sep 9 22:48:40 2026 +0330
+
+    Update README.md
+
+[33mcommit 47c71f65b3034756ed5c781469b4db79d22eb939[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Mon Sep 7 21:07:59 2026 +0330
+
+    Overall polishing and cleaning
+
+[33mcommit e8a7a00b4d8fb44d38746b8d657e159fb2319f82[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Mon Sep 7 20:32:28 2026 +0330
+
+    Changed 'PlotterTemplate.cs' name  to 'Abstract Plotter.cs'
+
+[33mcommit f8e93f6bfb57c0c5c3d30a2ca87dc4d112c6b7b3[m
+Merge: e48ed13 56d8833
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Thu Sep 3 22:10:36 2026 +0330
+
+    Merge branch 'main' of https://github.com/Alireza-Mohebbi/Textile-Engineering-Virtual-Lab
+
+[33mcommit e48ed13f1a152792f0995729567ab44c61f78b19[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Thu Sep 3 22:09:33 2026 +0330
+
+    Changed plots' +Y axis to -Y to adapt with screen coord
+
+[33mcommit 2d1029591668e6d07affac98eb88f0e9e1c41b99[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Thu Sep 3 21:01:57 2026 +0330
+
+    Moved responsibility of controlling plot graphics from concrete plotters to the base plotter
+
+[33mcommit 63d06943baed9854c34d0396d6a16b75c0b697da[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Thu Sep 3 20:54:57 2026 +0330
+
+    Applied Template pattern to 'PlotterTemplate.cs'
+
+[33mcommit 83e63ba29def6d9c90f526a2a71679c07cc13f8f[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Thu Sep 3 20:28:19 2026 +0330
+
+    Changed 'AbstractPlotter.cs' name to 'PlotterTemplate.cs'
+
+[33mcommit 2fe25c0c7a7f2e18c1aaf014942873a966dbfd7b[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Thu Sep 3 20:26:04 2026 +0330
+
+    Changed project name to 'TextileEngineeringVirtualLaboratory'
+
+[33mcommit 56d8833d07114866f7765446e717bc5e4fe87af4[m
+Author: Alireza <alirezamsh4@gmail.com>
+Date:   Thu Sep 3 15:22:19 2026 +0330
+
+    Update README.md
+
+[33mcommit dd2d3c613bc7942ad4d3a059e5328d272d3c81af[m
+Author: Alireza <alirezamsh4@gmail.com>
+Date:   Thu Sep 3 15:12:29 2026 +0330
+
+    Update README.md
+
+[33mcommit edfdb08808bab0b5d9bedb32354c77b422f70556[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Sun Aug 30 22:01:01 2026 +0330
+
+    Change property name 'Weave' to 'DesignedWeave' in 'WeaveDesigner.cs'
+
+[33mcommit 43373d96860c89f877e4f6ab3d5f9eb7b30e1089[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Sun Aug 30 21:59:24 2026 +0330
+
+    Change property name 'Weave' to 'DesignedWeave' in 'WeaveDesigner.cs'
+
+[33mcommit ad490b512293499803b3d0464e02f3283ecc0a31[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Sun Aug 30 21:51:15 2026 +0330
+
+    Add 'shear' prefix to fields of 'ShearStiffnessPlotter.cs'
+
+[33mcommit 57a47830a836174259d3486f8f58f725a949ee7b[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Sat Aug 29 23:17:05 2026 +0330
+
+    Enhance rendering of 'plotViewer' contents
+
+[33mcommit ed3475282b13ed396ca75023db8ddf100e3ca330[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Sat Aug 29 22:55:11 2026 +0330
+
+    Enhance rendering of 'weaveViewer'
+
+[33mcommit 14ccb6d953252ee1470a982745e59d2e54655e89[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Sat Aug 29 22:10:28 2026 +0330
+
+    Define ShearStiffnessPlotter.css class
+
+[33mcommit 67bee518632c8949a8969745dcc9fa6174831787[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Fri Aug 28 22:18:38 2026 +0330
+
+    Define and unify measurement units
+
+[33mcommit 0eb29f8e707416f68eb86f7a1a49dcdcb48e326c[m
+Merge: 655a5b1 912d8bd
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Fri Aug 28 11:08:19 2026 +0330
+
+    Merge commit
+
+[33mcommit 655a5b130f212c2ebfa60dc5d3fd75ece31652b0[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Thu Aug 27 23:59:02 2026 +0330
+
+    Changed weave units from (px) to (mm)
+
+[33mcommit 373228eea23e5872a3f39f226d7277d3257621bd[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Thu Aug 27 23:52:16 2026 +0330
+
+    Changed weave units from (px) to (mm)
+
+[33mcommit 94265bbccd396cf13665ba9dd99f72eeeb54af2e[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Thu Aug 27 23:39:10 2026 +0330
+
+    Changed weave units from (px) to (mm)
+
+[33mcommit 912d8bd2df193362c54e5508657cc6bc316030d4[m
+Author: Alireza <alirezamsh4@gmail.com>
+Date:   Thu Aug 27 23:35:02 2026 +0330
+
+    Delete WindowsFormsApplication1/obj/Debug directory
+
+[33mcommit 1a11c018f266f381a4ac2570902956e82dc16d12[m
+Author: Alireza <alirezamsh4@gmail.com>
+Date:   Thu Aug 27 23:34:48 2026 +0330
+
+    Delete WindowsFormsApplication1/bin/Debug directory
+
+[33mcommit 78242faad0b8de6595c76ef34f7a4336b9c4d8dc[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Thu Aug 27 23:33:42 2026 +0330
+
+    Changed weave units from (px) to (mm)
+
+[33mcommit d90df2bab6813abb2968b8ebfd2f78d047b3b176[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Wed Aug 26 23:03:13 2026 +0330
+
+    Improved system design, Added plot coord system
+
+[33mcommit 8ad4073d2834ca10fd633405e94568a62bc287c4[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Tue Aug 25 22:20:20 2026 +0330
+
+    -Enahanced overal arcitecture and code
+    -Expanded weave properties configurer class
+
+[33mcommit f342aa0ffbd577317866c2e6a1a3008bd9adb39f[m
+Author: Alireza <alirezamsh4@gmail.com>
+Date:   Tue Aug 25 00:50:40 2026 +0330
+
+    Update README.md
+
+[33mcommit 2702f3720c799b033860753d73dea7c8b22eb150[m
+Author: Alireza <alirezamsh4@gmail.com>
+Date:   Tue Aug 25 00:47:33 2026 +0330
+
+    Update README.md
+
+[33mcommit 041908db581288487ba492e45c1048040e6e6b2a[m
+Author: Alireza <alirezamsh4@gmail.com>
+Date:   Mon Aug 24 22:39:15 2026 +0330
+
+    Create .gitignore
+
+[33mcommit 0092e4ed028ff2db07502139dbdfd83f5ea0150d[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Mon Aug 24 22:21:39 2026 +0330
+
+    Initial commit
+
+[33mcommit c4753400a5ff78ba758c19e00e6d5473383bf7ee[m
+Author: Alireza-Mohebbi <alirezamsh4@gmail.com>
+Date:   Mon Aug 24 22:10:05 2026 +0330
+
+    Initial commit
+
+[33mcommit df4e9abaff9f003827b68c4110b691f51e0a1059[m
+Author: AirezaMohebbi <alirezamsh4@gmail.com>
+Date:   Mon Aug 24 19:35:00 2026 +0330
+
+    Update README.md
+
+[33mcommit b3d3b072aaaefbe488171446e74d569d0df38c22[m
+Author: AirezaMohebbi <alirezamsh4@gmail.com>
+Date:   Mon Aug 24 19:23:16 2026 +0330
+
+    Initial commit
