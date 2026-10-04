@@ -26,29 +26,40 @@ namespace TextileEngineeringVirtualLaboratory
 
         private void newWeaveButton_Click(object sender, EventArgs e)
         {
-            if (weaveDesigner.ShowDialog() == DialogResult.OK)
+            if (Weave == null)
             {
-                Weave = weaveDesigner.DesignedWeave;
-                textilePropertiesButton.Enabled = true;
-                tabControl.Visible = true;
-                textileViewer.Invalidate();
+                CreateOrEditTextile();
+            }
+            else
+            {
+                if (MessageBox.Show("Do you want to create a new textile? The previous model will be discarded.", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    Weave = null;
+                    weaveDesigner = new WeaveDesigner();
+
+                    CreateOrEditTextile();
+                }
             }
         }
 
         private void textileViewer_Click(object sender, EventArgs e)
         {
+            CreateOrEditTextile();
+        }
+
+        private void CreateOrEditTextile()
+        {
             if (weaveDesigner.ShowDialog() == DialogResult.OK)
             {
                 Weave = weaveDesigner.DesignedWeave;
+
                 textilePropertiesButton.Enabled = true;
+                textileViewEditHintLabel.Enabled = true;
+                textileViewer.Enabled = true;
                 tabControl.Visible = true;
-                textileViewer.Invalidate();
             }
-        }
 
-        private void CreateOrEditWeave()
-        {
-
+            textileViewer.Invalidate();
         }
 
         private void weaveViewer_Paint(object sender, PaintEventArgs e)

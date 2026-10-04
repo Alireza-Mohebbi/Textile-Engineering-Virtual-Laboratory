@@ -31,7 +31,7 @@
             this.newTextileButton = new System.Windows.Forms.Button();
             this.textileModelControls = new System.Windows.Forms.Panel();
             this.textilePropertiesButton = new System.Windows.Forms.Button();
-            this.textileViewLabel = new System.Windows.Forms.Label();
+            this.textileViewEditHintLabel = new System.Windows.Forms.Label();
             this.textileViewer = new System.Windows.Forms.PictureBox();
             this.resultsWindow = new System.Windows.Forms.PictureBox();
             this.tabControl = new System.Windows.Forms.TabControl();
@@ -85,7 +85,7 @@
             this.textileModelControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textileModelControls.Controls.Add(this.newTextileButton);
             this.textileModelControls.Controls.Add(this.textilePropertiesButton);
-            this.textileModelControls.Controls.Add(this.textileViewLabel);
+            this.textileModelControls.Controls.Add(this.textileViewEditHintLabel);
             this.textileModelControls.Controls.Add(this.textileViewer);
             this.textileModelControls.Dock = System.Windows.Forms.DockStyle.Left;
             this.textileModelControls.Location = new System.Drawing.Point(0, 0);
@@ -104,21 +104,23 @@
             this.textilePropertiesButton.UseVisualStyleBackColor = true;
             this.textilePropertiesButton.Click += new System.EventHandler(this.weavePropertiesButton_Click);
             // 
-            // textileViewLabel
+            // textileViewEditHintLabel
             // 
-            this.textileViewLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textileViewLabel.AutoSize = true;
-            this.textileViewLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textileViewLabel.Location = new System.Drawing.Point(24, 348);
-            this.textileViewLabel.Name = "textileViewLabel";
-            this.textileViewLabel.Size = new System.Drawing.Size(73, 13);
-            this.textileViewLabel.TabIndex = 13;
-            this.textileViewLabel.Text = "Textile Viewer";
+            this.textileViewEditHintLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textileViewEditHintLabel.AutoSize = true;
+            this.textileViewEditHintLabel.Enabled = false;
+            this.textileViewEditHintLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textileViewEditHintLabel.Location = new System.Drawing.Point(8, 348);
+            this.textileViewEditHintLabel.Name = "textileViewEditHintLabel";
+            this.textileViewEditHintLabel.Size = new System.Drawing.Size(110, 13);
+            this.textileViewEditHintLabel.TabIndex = 13;
+            this.textileViewEditHintLabel.Text = "Click to edit the textile";
             // 
             // textileViewer
             // 
             this.textileViewer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textileViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textileViewer.Enabled = false;
             this.textileViewer.Location = new System.Drawing.Point(11, 364);
             this.textileViewer.Name = "textileViewer";
             this.textileViewer.Size = new System.Drawing.Size(105, 100);
@@ -436,7 +438,7 @@
         private System.Windows.Forms.Panel textileModelControls;
         private System.Windows.Forms.PictureBox textileViewer;
         private System.Windows.Forms.Button textilePropertiesButton;
-        private System.Windows.Forms.Label textileViewLabel;
+        private System.Windows.Forms.Label textileViewEditHintLabel;
         private System.Windows.Forms.PictureBox resultsWindow;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage fabricParametersTabPage;
