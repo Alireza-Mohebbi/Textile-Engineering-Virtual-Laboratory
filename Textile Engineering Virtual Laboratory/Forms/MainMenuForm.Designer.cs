@@ -124,6 +124,7 @@
             this.textileViewer.Size = new System.Drawing.Size(105, 100);
             this.textileViewer.TabIndex = 4;
             this.textileViewer.TabStop = false;
+            this.textileViewer.Click += new System.EventHandler(this.textileViewer_Click);
             // 
             // resultsWindow
             // 

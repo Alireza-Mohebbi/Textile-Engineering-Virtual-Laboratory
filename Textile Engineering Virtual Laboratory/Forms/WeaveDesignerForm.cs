@@ -23,20 +23,28 @@ namespace TextileEngineeringVirtualLaboratory
             DoubleBuffered = true;
             Paint += Form1_Paint;
             MouseClick += Form1_MouseClick;
+            Invalidate();
         }
 
         private void weaveButton_Click(object sender, EventArgs e)
         {
-            DesignedWeave = new Weave(
-                (float)warpCountInput.Value,
-                (float)weftCountInput.Value,
-                (float)warpCompactnessInput.Value,
-                (float)weftCompactnessInput.Value,
-                material);
+            if (warpCountInput != null && weftCountInput != null && warpCompactnessInput != null && weftCompactnessInput != null && yarnMaterialInput.SelectedIndex >= 0)
+            {
+                DesignedWeave = new Weave(
+                    (float)warpCountInput.Value,
+                    (float)weftCountInput.Value,
+                    (float)warpCompactnessInput.Value,
+                    (float)weftCompactnessInput.Value,
+                    material);
 
-            DefineInteractiveInterlacementsOfWeave();
-            insertWeaveButton.Enabled = true;
-            Invalidate();
+                DefineInteractiveInterlacementsOfWeave();
+                insertWeaveButton.Enabled = true;
+                Invalidate();
+            }
+            else
+            {
+                MessageBox.Show("Please fill all inputs.", "Message");
+            }
         }
 
         private void DefineInteractiveInterlacementsOfWeave()

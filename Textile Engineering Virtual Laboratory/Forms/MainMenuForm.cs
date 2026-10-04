@@ -14,6 +14,7 @@ namespace TextileEngineeringVirtualLaboratory
     public partial class MainMenu : Form
     {
         private Weave Weave { get; set; }
+        private WeaveDesigner weaveDesigner = new WeaveDesigner();
 
         public MainMenu()
         {
@@ -25,8 +26,6 @@ namespace TextileEngineeringVirtualLaboratory
 
         private void newWeaveButton_Click(object sender, EventArgs e)
         {
-            WeaveDesigner weaveDesigner = new WeaveDesigner();
-
             if (weaveDesigner.ShowDialog() == DialogResult.OK)
             {
                 Weave = weaveDesigner.DesignedWeave;
@@ -34,6 +33,22 @@ namespace TextileEngineeringVirtualLaboratory
                 tabControl.Visible = true;
                 textileViewer.Invalidate();
             }
+        }
+
+        private void textileViewer_Click(object sender, EventArgs e)
+        {
+            if (weaveDesigner.ShowDialog() == DialogResult.OK)
+            {
+                Weave = weaveDesigner.DesignedWeave;
+                textilePropertiesButton.Enabled = true;
+                tabControl.Visible = true;
+                textileViewer.Invalidate();
+            }
+        }
+
+        private void CreateOrEditWeave()
+        {
+
         }
 
         private void weaveViewer_Paint(object sender, PaintEventArgs e)
@@ -45,7 +60,7 @@ namespace TextileEngineeringVirtualLaboratory
             WeaveRenderer weaveRenderer = new WeaveRenderer();
             weaveRenderer.Draw(Weave, e.Graphics);
         }
-
+    
         private void weavePropertiesButton_Click(object sender, EventArgs e)
         {
             WeavePropertiesConfigurer weavePropertiesConfigurer = new WeavePropertiesConfigurer(Weave);
