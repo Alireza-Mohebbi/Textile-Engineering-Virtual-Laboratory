@@ -44,6 +44,8 @@
             this.insertWeaveButton = new System.Windows.Forms.Button();
             this.weaveDesignerHeader = new System.Windows.Forms.Label();
             this.weaveButton = new System.Windows.Forms.Button();
+            this.predictiveMethodLabel = new System.Windows.Forms.Label();
+            this.peircePredictiveMethodRadioButton = new System.Windows.Forms.RadioButton();
             this.weaveDesignerPanel.SuspendLayout();
             this.weaveInputsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.weftCountInput)).BeginInit();
@@ -72,6 +74,8 @@
             // 
             this.weaveInputsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.weaveInputsGroupBox.Controls.Add(this.peircePredictiveMethodRadioButton);
+            this.weaveInputsGroupBox.Controls.Add(this.predictiveMethodLabel);
             this.weaveInputsGroupBox.Controls.Add(this.yarnMaterialLabel);
             this.weaveInputsGroupBox.Controls.Add(this.yarnMaterialInput);
             this.weaveInputsGroupBox.Controls.Add(this.weftCountInput);
@@ -92,7 +96,7 @@
             // yarnMaterialLabel
             // 
             this.yarnMaterialLabel.AutoSize = true;
-            this.yarnMaterialLabel.Location = new System.Drawing.Point(14, 191);
+            this.yarnMaterialLabel.Location = new System.Drawing.Point(14, 76);
             this.yarnMaterialLabel.Name = "yarnMaterialLabel";
             this.yarnMaterialLabel.Size = new System.Drawing.Size(69, 13);
             this.yarnMaterialLabel.TabIndex = 12;
@@ -104,7 +108,7 @@
             this.yarnMaterialInput.FormattingEnabled = true;
             this.yarnMaterialInput.Items.AddRange(new object[] {
             "Cotton"});
-            this.yarnMaterialInput.Location = new System.Drawing.Point(14, 207);
+            this.yarnMaterialInput.Location = new System.Drawing.Point(14, 92);
             this.yarnMaterialInput.Name = "yarnMaterialInput";
             this.yarnMaterialInput.Size = new System.Drawing.Size(260, 21);
             this.yarnMaterialInput.TabIndex = 11;
@@ -119,7 +123,7 @@
             0,
             0,
             65536});
-            this.weftCountInput.Location = new System.Drawing.Point(157, 69);
+            this.weftCountInput.Location = new System.Drawing.Point(154, 169);
             this.weftCountInput.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -147,7 +151,7 @@
             0,
             0,
             65536});
-            this.warpCountInput.Location = new System.Drawing.Point(157, 32);
+            this.warpCountInput.Location = new System.Drawing.Point(154, 132);
             this.warpCountInput.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -170,7 +174,7 @@
             // warpCountLabel
             // 
             this.warpCountLabel.AutoSize = true;
-            this.warpCountLabel.Location = new System.Drawing.Point(14, 39);
+            this.warpCountLabel.Location = new System.Drawing.Point(11, 139);
             this.warpCountLabel.Name = "warpCountLabel";
             this.warpCountLabel.Size = new System.Drawing.Size(87, 13);
             this.warpCountLabel.TabIndex = 6;
@@ -179,7 +183,7 @@
             // weftCountLabel
             // 
             this.weftCountLabel.AutoSize = true;
-            this.weftCountLabel.Location = new System.Drawing.Point(14, 76);
+            this.weftCountLabel.Location = new System.Drawing.Point(11, 176);
             this.weftCountLabel.Name = "weftCountLabel";
             this.weftCountLabel.Size = new System.Drawing.Size(84, 13);
             this.weftCountLabel.TabIndex = 7;
@@ -187,7 +191,7 @@
             // 
             // warpCompactnessInput
             // 
-            this.warpCompactnessInput.Location = new System.Drawing.Point(157, 108);
+            this.warpCompactnessInput.Location = new System.Drawing.Point(154, 208);
             this.warpCompactnessInput.Minimum = new decimal(new int[] {
             1,
             0,
@@ -204,7 +208,7 @@
             // 
             // weftCompactnessInput
             // 
-            this.weftCompactnessInput.Location = new System.Drawing.Point(157, 145);
+            this.weftCompactnessInput.Location = new System.Drawing.Point(154, 245);
             this.weftCompactnessInput.Minimum = new decimal(new int[] {
             1,
             0,
@@ -222,7 +226,7 @@
             // weftCompactnessLabel
             // 
             this.weftCompactnessLabel.AutoSize = true;
-            this.weftCompactnessLabel.Location = new System.Drawing.Point(14, 152);
+            this.weftCompactnessLabel.Location = new System.Drawing.Point(11, 252);
             this.weftCompactnessLabel.Name = "weftCompactnessLabel";
             this.weftCompactnessLabel.Size = new System.Drawing.Size(131, 13);
             this.weftCompactnessLabel.TabIndex = 9;
@@ -231,7 +235,7 @@
             // warpCompactnessLabel
             // 
             this.warpCompactnessLabel.AutoSize = true;
-            this.warpCompactnessLabel.Location = new System.Drawing.Point(14, 115);
+            this.warpCompactnessLabel.Location = new System.Drawing.Point(11, 215);
             this.warpCompactnessLabel.Name = "warpCompactnessLabel";
             this.warpCompactnessLabel.Size = new System.Drawing.Size(134, 13);
             this.warpCompactnessLabel.TabIndex = 8;
@@ -269,6 +273,27 @@
             this.weaveButton.Text = "Weave";
             this.weaveButton.UseVisualStyleBackColor = true;
             this.weaveButton.Click += new System.EventHandler(this.weaveButton_Click);
+            // 
+            // predictiveMethodLabel
+            // 
+            this.predictiveMethodLabel.AutoSize = true;
+            this.predictiveMethodLabel.Location = new System.Drawing.Point(14, 27);
+            this.predictiveMethodLabel.Name = "predictiveMethodLabel";
+            this.predictiveMethodLabel.Size = new System.Drawing.Size(93, 13);
+            this.predictiveMethodLabel.TabIndex = 14;
+            this.predictiveMethodLabel.Text = "Predictive Method";
+            // 
+            // peircePredictiveMethodRadioButton
+            // 
+            this.peircePredictiveMethodRadioButton.AutoSize = true;
+            this.peircePredictiveMethodRadioButton.Checked = true;
+            this.peircePredictiveMethodRadioButton.Location = new System.Drawing.Point(14, 43);
+            this.peircePredictiveMethodRadioButton.Name = "peircePredictiveMethodRadioButton";
+            this.peircePredictiveMethodRadioButton.Size = new System.Drawing.Size(55, 17);
+            this.peircePredictiveMethodRadioButton.TabIndex = 15;
+            this.peircePredictiveMethodRadioButton.TabStop = true;
+            this.peircePredictiveMethodRadioButton.Text = "Peirce";
+            this.peircePredictiveMethodRadioButton.UseVisualStyleBackColor = true;
             // 
             // WeaveDesigner
             // 
@@ -309,6 +334,8 @@
         private System.Windows.Forms.Label warpCompactnessLabel;
         private System.Windows.Forms.ComboBox yarnMaterialInput;
         private System.Windows.Forms.Label yarnMaterialLabel;
+        private System.Windows.Forms.Label predictiveMethodLabel;
+        private System.Windows.Forms.RadioButton peircePredictiveMethodRadioButton;
     }
 }
 
