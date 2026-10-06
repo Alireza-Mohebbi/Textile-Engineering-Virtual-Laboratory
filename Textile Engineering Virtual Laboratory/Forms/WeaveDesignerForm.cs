@@ -31,6 +31,7 @@ namespace TextileEngineeringVirtualLaboratory
             if (warpCountInput != null && weftCountInput != null && warpCompactnessInput != null && weftCompactnessInput != null && yarnMaterialInput.SelectedIndex >= 0 && peircePredictiveMethodRadioButton.Checked)
             {
                 DesignedWeave = new Weave(
+                    weavePatternComboBox.Items[weavePatternComboBox.SelectedIndex].ToString(),
                     (float)warpCountInput.Value,
                     (float)weftCountInput.Value,
                     (float)warpCompactnessInput.Value,

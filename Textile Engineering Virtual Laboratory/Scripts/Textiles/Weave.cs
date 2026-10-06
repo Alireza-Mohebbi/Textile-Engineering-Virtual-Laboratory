@@ -8,16 +8,17 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
     public class Weave
     {
         /// Weave physical properties ///
-        /// //Warp
+        public string Pattern { get; set; }
+        //Warp
         public float WarpCount { get; set; }            // Ne
         public float WarpCompactness { get; set; }      // mm^-1
-        public int NumberOfWarps { get { return 2; } set { } }
+        public int NumberOfWarps { get; set; }
         public float WarpDiameter { get; set; }         // mm
         public float WarpSpacing { get; set; }          // mm
         // Weft
         public float WeftCount { get; set; }            // Ne
         public float WeftCompactness { get; set; }      // mm^-1
-        public int NumberOfWefts { get { return 2; } set { } }
+        public int NumberOfWefts { get; set; }
         public float WeftDiameter { get; set; }         // mm
         public float WeftSpacing { get; set; }          // mm
         // Fabric
@@ -50,31 +51,128 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
         public float SumOfWeftsStraightLengthsInUnitCell { get; private set; }
         public float SumOfWeftsCurvedLengthsInUnitCell { get; private set; }
 
-        public Weave(float warpCount, float weftCount, float warpCompactness, float weftCompactness, IMaterials material)
+        public Weave(string pattern, float warpCount, float weftCount, float warpCompactness, float weftCompactness, IMaterials material)
         {
+
+            Pattern = pattern;
             WarpCount = warpCount;
             WeftCount = weftCount;
             WarpCompactness = warpCompactness;
             WeftCompactness = weftCompactness;
             Material = material;
+
             WarpDiameter = 25.4f * (1 / (28 * (float)Math.Sqrt(WarpCount)));    // The 25.4X multiplication is to convert diameter unit from 'inch' to 'mm'
             WeftDiameter = 25.4f * (1 / (28 * (float)Math.Sqrt(WeftCount)));    // The 25.4X multiplication is to convert diameter unit from 'inch' to 'mm'
             WarpSpacing = 1 / WarpCompactness * 10; //The X10 multiplication is to convert cm to mm
             WeftSpacing = 1 / WeftCompactness * 10; // The X10 multiplication is to convert cm to mm
 
             MakeInterlacementMatrix();
+
         }
 
         private void MakeInterlacementMatrix()
         {
-            IsWarpOverWeft = new bool[NumberOfWarps, NumberOfWefts];
-
-            for (int i = 0; i < NumberOfWarps; i++)
+            switch (Pattern)
             {
-                for (int j = 0; j < NumberOfWefts; j++)
-                {
-                    IsWarpOverWeft[i, j] = (i + j) % 2 == 0;
-                }
+                case "Plain 1/1":
+                    NumberOfWarps = 2;
+                    NumberOfWefts = 2;
+                    IsWarpOverWeft = new bool[NumberOfWarps, NumberOfWefts];
+                    for (int i = 0; i < NumberOfWarps; i++)
+                    {
+                        for (int j = 0; j < NumberOfWefts; j++)
+                        {
+                            IsWarpOverWeft[i, j] = (i + j) % 2 == 0;
+                        }
+                    }
+                    break;
+
+                case "Basket 2/2":
+                    NumberOfWarps = 4;
+                    NumberOfWefts = 4;
+                    IsWarpOverWeft = new bool[NumberOfWarps, NumberOfWefts];
+                    for (int i = 0; i < NumberOfWarps; i++)
+                    {
+                        for (int j = 0; j < NumberOfWefts; j++)
+                        {
+                            IsWarpOverWeft[i, j] =
+                                (i / 2 + j / 2) % 2 == 0;
+                        }
+                    }
+                    break;
+
+                case "Twill 2/1":
+                    NumberOfWarps = 3;
+                    NumberOfWefts = 3;
+                    IsWarpOverWeft = new bool[NumberOfWarps, NumberOfWefts];
+                    for (int i = 0; i < NumberOfWarps; i++)
+                    {
+                        for (int j = 0; j < NumberOfWefts; j++)
+                        {
+                            IsWarpOverWeft[i, j] =
+                                (j - i + NumberOfWefts) % NumberOfWefts < 2;
+                        }
+                    }
+                    break;
+
+                case "Twill 1/2":
+                    NumberOfWarps = 3;
+                    NumberOfWefts = 3;
+                    IsWarpOverWeft = new bool[NumberOfWarps, NumberOfWefts];
+                    for (int i = 0; i < NumberOfWarps; i++)
+                    {
+                        for (int j = 0; j < NumberOfWefts; j++)
+                        {
+                            IsWarpOverWeft[i, j] =
+                                (j - i + NumberOfWefts) % NumberOfWefts < 1;
+                        }
+                    }
+                    break;
+
+                case "Twill 2/2":
+                    NumberOfWarps = 4;
+                    NumberOfWefts = 4;
+                    IsWarpOverWeft = new bool[NumberOfWarps, NumberOfWefts];
+                    for (int i = 0; i < NumberOfWarps; i++)
+                    {
+                        for (int j = 0; j < NumberOfWefts; j++)
+                        {
+                            IsWarpOverWeft[i, j] =
+                                (j - i + NumberOfWefts) % NumberOfWefts < 2;
+                        }
+                    }
+                    break;
+
+                case "Twill 3/1":
+                    NumberOfWarps = 4;
+                    NumberOfWefts = 4;
+                    IsWarpOverWeft = new bool[NumberOfWarps, NumberOfWefts];
+                    for (int i = 0; i < NumberOfWarps; i++)
+                    {
+                        for (int j = 0; j < NumberOfWefts; j++)
+                        {
+                            IsWarpOverWeft[i, j] =
+                                (j - i + NumberOfWefts) % NumberOfWefts < 3;
+                        }
+                    }
+                    break;
+
+                case "Twill 3/2":
+                    NumberOfWarps = 5;
+                    NumberOfWefts = 5;
+                    IsWarpOverWeft = new bool[NumberOfWarps, NumberOfWefts];
+                    for (int i = 0; i < NumberOfWarps; i++)
+                    {
+                        for (int j = 0; j < NumberOfWefts; j++)
+                        {
+                            IsWarpOverWeft[i, j] =
+                                (j - i + NumberOfWefts) % NumberOfWefts < 3;
+                        }
+                    }
+                    break;
+
+                default:
+                    goto case "Plain 1/1";
             }
         }
 
