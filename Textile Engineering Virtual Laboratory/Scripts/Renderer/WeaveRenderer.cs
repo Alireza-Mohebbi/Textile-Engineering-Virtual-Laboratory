@@ -52,8 +52,8 @@ namespace TextileEngineeringVirtualLaboratory.Renderer
                         float interlacementBoundingBoxLeft = interlacementCenterX - weave.WarpDiameter / 2f;
                         float interlacementBoundingBoxTop = interlacementCenterY - weave.WarpDiameter / 2f;
 
-                        RectangleF warpInterlacementBoundingBox = new RectangleF(interlacementBoundingBoxLeft, interlacementBoundingBoxTop, weave.WarpDiameter, weave.WarpDiameter);
-                        RectangleF weftInterlacementBoundingBox = new RectangleF(interlacementBoundingBoxLeft, interlacementBoundingBoxTop, weave.WeftDiameter, weave.WeftDiameter);
+                        RectangleF warpInterlacementBoundingBox = new RectangleF(interlacementBoundingBoxLeft, interlacementBoundingBoxTop, weave.WarpDiameter * 1.01f, weave.WarpDiameter * 1.01f);
+                        RectangleF weftInterlacementBoundingBox = new RectangleF(interlacementBoundingBoxLeft, interlacementBoundingBoxTop, weave.WeftDiameter * 1.01f, weave.WeftDiameter * 1.01f);
 
                         if (weave.IsWarpOverWeft[i, j])
                         {
