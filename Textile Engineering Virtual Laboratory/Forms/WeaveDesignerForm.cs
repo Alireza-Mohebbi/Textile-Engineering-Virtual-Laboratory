@@ -15,7 +15,7 @@ namespace TextileEngineeringVirtualLaboratory
         private Rectangle[,] interactiveInterlacementsOfWeave;
 
         private const int displayMargin = 25;
-        private const float displayScale = 50;
+        private const float displayScale = 80;
 
         public WeaveDesigner()
         {

@@ -9,13 +9,13 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
     {
         /// Weave physical properties ///
         /// //Warp
-        public float WarpCount { get; set; }            // Tex (g/mm)
+        public float WarpCount { get; set; }            // Ne
         public float WarpCompactness { get; set; }      // mm^-1
         public int NumberOfWarps { get { return 2; } set { } }
         public float WarpDiameter { get; set; }         // mm
         public float WarpSpacing { get; set; }          // mm
         // Weft
-        public float WeftCount { get; set; }            // Tex (g/mm)
+        public float WeftCount { get; set; }            // Ne
         public float WeftCompactness { get; set; }      // mm^-1
         public int NumberOfWefts { get { return 2; } set { } }
         public float WeftDiameter { get; set; }         // mm
