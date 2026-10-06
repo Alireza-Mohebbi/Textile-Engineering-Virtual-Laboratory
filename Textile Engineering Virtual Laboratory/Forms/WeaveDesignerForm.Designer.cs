@@ -172,18 +172,18 @@
             this.warpCountLabel.AutoSize = true;
             this.warpCountLabel.Location = new System.Drawing.Point(14, 39);
             this.warpCountLabel.Name = "warpCountLabel";
-            this.warpCountLabel.Size = new System.Drawing.Size(91, 13);
+            this.warpCountLabel.Size = new System.Drawing.Size(87, 13);
             this.warpCountLabel.TabIndex = 6;
-            this.warpCountLabel.Text = "Warp Count (Tex)";
+            this.warpCountLabel.Text = "Warp Count (Ne)";
             // 
             // weftCountLabel
             // 
             this.weftCountLabel.AutoSize = true;
             this.weftCountLabel.Location = new System.Drawing.Point(14, 76);
             this.weftCountLabel.Name = "weftCountLabel";
-            this.weftCountLabel.Size = new System.Drawing.Size(88, 13);
+            this.weftCountLabel.Size = new System.Drawing.Size(84, 13);
             this.weftCountLabel.TabIndex = 7;
-            this.weftCountLabel.Text = "Weft Count (Tex)";
+            this.weftCountLabel.Text = "Weft Count (Ne)";
             // 
             // warpCompactnessInput
             // 

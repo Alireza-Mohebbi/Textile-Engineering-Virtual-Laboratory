@@ -57,8 +57,8 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
             WarpCompactness = warpCompactness;
             WeftCompactness = weftCompactness;
             Material = material;
-            WarpDiameter = (float)Math.Sqrt((4 * WarpCount) / (1000 * Math.PI * Material.Density * Material.PackingFactor));
-            WeftDiameter = (float)Math.Sqrt((4 * WeftCount) / (1000 * Math.PI * Material.Density * Material.PackingFactor));
+            WarpDiameter = 25.4f * (1 / (28 * (float)Math.Sqrt(WarpCount)));    // The 25.4X multiplication is to convert diameter unit from 'inch' to 'mm'
+            WeftDiameter = 25.4f * (1 / (28 * (float)Math.Sqrt(WeftCount)));    // The 25.4X multiplication is to convert diameter unit from 'inch' to 'mm'
             WarpSpacing = 1 / WarpCompactness * 10; //The X10 multiplication is to convert cm to mm
             WeftSpacing = 1 / WeftCompactness * 10; // The X10 multiplication is to convert cm to mm
 
