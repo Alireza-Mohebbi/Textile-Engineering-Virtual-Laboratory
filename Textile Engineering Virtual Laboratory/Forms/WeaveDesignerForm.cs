@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using TextileEngineeringVirtualLaboratory.Renderer;
+using TextileEngineeringVirtualLaboratory.Scripts.PredictiveModel;
 using TextileEngineeringVirtualLaboratory.Textiles;
 using WindowsFormsApplication1.Scripts.Materials;
 
@@ -37,6 +38,12 @@ namespace TextileEngineeringVirtualLaboratory
                     (float)warpCompactnessInput.Value,
                     (float)weftCompactnessInput.Value,
                     material);
+
+                if (peircePredictiveMethodRadioButton.Checked)
+                {
+                    IPredictiveModel peircePredictiveModel = new PeircePredictiveModel();
+                    DesignedWeave = peircePredictiveModel.CalculateWeaveParameters(DesignedWeave);
+                }
 
                 DefineInteractiveInterlacementsOfWeave();
                 insertWeaveButton.Enabled = true;
@@ -108,7 +115,6 @@ namespace TextileEngineeringVirtualLaboratory
 
         private void insertWeaveButton_Click(object sender, EventArgs e)
         {
-            DesignedWeave.CalculateYarnsPathPointsAndLengths();
             DialogResult = DialogResult.OK;
             Close();
         }
