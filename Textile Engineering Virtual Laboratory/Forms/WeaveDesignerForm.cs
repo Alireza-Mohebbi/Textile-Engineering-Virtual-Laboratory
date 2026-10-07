@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using TextileEngineeringVirtualLaboratory.Renderer;
-using TextileEngineeringVirtualLaboratory.Scripts.PredictiveModel;
+using TextileEngineeringVirtualLaboratory.PredictiveModel;
 using TextileEngineeringVirtualLaboratory.Textiles;
 using WindowsFormsApplication1.Scripts.Materials;
 

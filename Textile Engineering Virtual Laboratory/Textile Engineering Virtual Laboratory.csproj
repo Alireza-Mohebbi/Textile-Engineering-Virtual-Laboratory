@@ -58,19 +58,19 @@
     <Compile Include="Forms\MainMenuForm.Designer.cs">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scripts\Calculators\AbstractCalculator.cs" />
-    <Compile Include="Scripts\Calculators\PorosityCalculator.cs" />
-    <Compile Include="Scripts\Calculators\CrimpCalculator.cs" />
     <Compile Include="Scripts\Materials\IMaterials.cs" />
     <Compile Include="Scripts\Materials\CottonMaterial.cs" />
     <Compile Include="Scripts\Plotter\ShearStiffnessPlotter.cs" />
     <Compile Include="Scripts\Plotter\BendingMomentCurvaturePlotter.cs" />
     <Compile Include="Scripts\PredictiveModel\PeircePredictiveModel.cs" />
     <Compile Include="Scripts\PredictiveModel\IPredictiveModel.cs" />
+    <Compile Include="Scripts\Renderer\CalculationResultRenderer\CrimpResultRenderer.cs" />
+    <Compile Include="Scripts\Renderer\CalculationResultRenderer\PorosityResultRenderer.cs" />
+    <Compile Include="Scripts\Renderer\IRenderer.cs" />
     <Compile Include="Scripts\Simulator\AbstractSimulator.cs" />
     <Compile Include="Scripts\Simulator\DrapeSimulator.cs" />
     <Compile Include="Scripts\Plotter\AbstractPlotter.cs" />
-    <Compile Include="Scripts\Renderer\WeaveRenderer.cs" />
+    <Compile Include="Scripts\Renderer\TextileRenderer\WeaveRenderer.cs" />
     <Compile Include="Scripts\Textiles\Weave.cs" />
     <Compile Include="Forms\WeaveDesignerForm.cs">
       <SubType>Form</SubType>

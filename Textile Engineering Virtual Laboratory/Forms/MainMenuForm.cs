@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using TextileEngineeringVirtualLaboratory.Calculator;
 using TextileEngineeringVirtualLaboratory.Forms;
 using TextileEngineeringVirtualLaboratory.Plotter;
 using TextileEngineeringVirtualLaboratory.Renderer;
@@ -107,14 +106,14 @@ namespace TextileEngineeringVirtualLaboratory
                 {
                     // Crmip
                     case 0:
-                        AbstractCalculator crimpCalculator = new CrimpCalculator();
-                        crimpCalculator.Calculate(Weave, e.Graphics);
+                        IRenderer crimpResultRenderer = new CrimpResultRenderer();
+                        crimpResultRenderer.Draw(Weave, e.Graphics);
                         break;
 
                     // Porosity
                     case 1:
-                        AbstractCalculator porosityCalculator = new PorosityCalculator();
-                        porosityCalculator.Calculate(Weave, e.Graphics);
+                        IRenderer porosityResultRenderer = new PorosityResultCalculator();
+                        porosityResultRenderer.Draw(Weave, e.Graphics);
                         break;
 
                     default: break;

@@ -51,6 +51,19 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
         public float SumOfWeftsStraightLengthsInUnitCell { get; set; }
         public float SumOfWeftsCurvedLengthsInUnitCell { get; set; }
 
+        /// Crimp properties ///
+        public float[] CrimpOfEachWarp { get; set; }
+        public float UnitCellCrimpInWarpsDirection { get; set; }
+        public float[] CrimpOfEachWeft { get; set; }
+        public float UnitCellCrimpInWeftsDirection { get; set; }
+
+        // Porosity properties ///
+        public float FabricVolume { get; set; }
+        public float WarpsVolume { get; set; }
+        public float WeftsVolume { get; set; }
+        public float PorosityVolume { get; set; }
+        public float PorosityPercentage { get; set; }
+
         public Weave(string pattern, float warpCount, float weftCount, float warpCompactness, float weftCompactness, IMaterials material)
         {
             Pattern = pattern;
