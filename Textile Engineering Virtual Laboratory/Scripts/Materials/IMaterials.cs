@@ -1,8 +1,6 @@
-﻿namespace WindowsFormsApplication1.Scripts.Materials
+﻿namespace TextileEngineeringVirtualLaboratory.Materials
 {
     public interface IMaterials
     {
-        float Density { get; }
-        float PackingFactor { get; }
     }
 }

@@ -42,7 +42,7 @@ namespace TextileEngineeringVirtualLaboratory
                 if (peircePredictiveMethodRadioButton.Checked)
                 {
                     IPredictiveModel peircePredictiveModel = new PeircePredictiveModel();
-                    DesignedWeave = peircePredictiveModel.CalculateWeaveParameters(DesignedWeave);
+                    DesignedWeave = peircePredictiveModel.CalculateTheGetWeaveParameters(DesignedWeave);
                 }
 
                 DefineInteractiveInterlacementsOfWeave();

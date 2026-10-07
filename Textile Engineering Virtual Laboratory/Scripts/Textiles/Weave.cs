@@ -1,7 +1,5 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-using WindowsFormsApplication1.Scripts.Materials;
+﻿using System.Drawing;
+using TextileEngineeringVirtualLaboratory.Materials;
 
 namespace TextileEngineeringVirtualLaboratory.Textiles
 {
