@@ -189,6 +189,7 @@
             this.fabricParameterTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.fabricParameterTypeComboBox.FormattingEnabled = true;
             this.fabricParameterTypeComboBox.Items.AddRange(new object[] {
+            "Fabric Thickness",
             "Crimp",
             "Porosity"});
             this.fabricParameterTypeComboBox.Location = new System.Drawing.Point(6, 48);

@@ -30,13 +30,13 @@ public class WeaveRenderer : IRenderer
             // Draw warps
             for (int i = 0; i < weave.NumberOfWarps; i++)
             {
-                g.DrawLine(warpPen, i * weave.WarpSpacing + weave.WarpSpacing / 2, 0, i * weave.WarpSpacing + weave.WarpSpacing / 2, weave.WeaveHeight);
+                g.DrawLine(warpPen, i * weave.WarpSpacing + weave.WarpSpacing / 2, 0, i * weave.WarpSpacing + weave.WarpSpacing / 2, weave.FabricHeight);
             }
 
             // Draw wefts
             for (int i = 0; i < weave.NumberOfWefts; i++)
             {
-                g.DrawLine(weftPen, 0, i * weave.WeftSpacing + weave.WeftSpacing / 2, weave.WeaveWidth, i * weave.WeftSpacing + weave.WeftSpacing / 2);
+                g.DrawLine(weftPen, 0, i * weave.WeftSpacing + weave.WeftSpacing / 2, weave.FabricWidth, i * weave.WeftSpacing + weave.WeftSpacing / 2);
             }
 
             // Draw interlacements
@@ -83,13 +83,13 @@ public class WeaveRenderer : IRenderer
 
                 if (isWarpOverWeft)
                 {
-                    warpY = (weave.WeaveHeight) - (weave.WeftDiameter / 2f) + weave.WeaveThickness / 2;
-                    weftY = (weave.WeaveHeight) + (weave.WarpDiameter / 2f) + weave.WeaveThickness / 2;
+                    warpY = (weave.FabricHeight) - (weave.WeftDiameter / 2f) + weave.FabricThickness / 2;
+                    weftY = (weave.FabricHeight) + (weave.WarpDiameter / 2f) + weave.FabricThickness / 2;
                 }
                 else
                 {
-                    warpY = (weave.WeaveHeight) + (weave.WeftDiameter / 2f) + weave.WeaveThickness / 2;
-                    weftY = (weave.WeaveHeight) - (weave.WarpDiameter / 2f) + weave.WeaveThickness / 2;
+                    warpY = (weave.FabricHeight) + (weave.WeftDiameter / 2f) + weave.FabricThickness / 2;
+                    weftY = (weave.FabricHeight) - (weave.WarpDiameter / 2f) + weave.FabricThickness / 2;
                 }
 
                 weftCurveControlPoints[i + 1] = new PointF(warpCrossSectionX, weftY);

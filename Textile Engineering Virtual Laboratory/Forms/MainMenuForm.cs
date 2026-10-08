@@ -7,7 +7,6 @@ using TextileEngineeringVirtualLaboratory.Renderer;
 using TextileEngineeringVirtualLaboratory.Simulator;
 using TextileEngineeringVirtualLaboratory.Textiles;
 
-
 namespace TextileEngineeringVirtualLaboratory
 {
     public partial class MainMenu : Form
@@ -104,14 +103,20 @@ namespace TextileEngineeringVirtualLaboratory
             {
                 switch (fabricParameterTypeComboBox.SelectedIndex)
                 {
-                    // Crmip
+                    // Fabric thickness
                     case 0:
+                        IRenderer fabricThicknessResultRenderer = new FabricThicknessResultRenderer();
+                        fabricThicknessResultRenderer.Draw(Weave, e.Graphics);
+                        break;
+
+                    // Crmip
+                    case 1:
                         IRenderer crimpResultRenderer = new CrimpResultRenderer();
                         crimpResultRenderer.Draw(Weave, e.Graphics);
                         break;
 
                     // Porosity
-                    case 1:
+                    case 2:
                         IRenderer porosityResultRenderer = new PorosityResultCalculator();
                         porosityResultRenderer.Draw(Weave, e.Graphics);
                         break;

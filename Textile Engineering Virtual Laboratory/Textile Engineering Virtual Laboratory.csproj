@@ -64,6 +64,7 @@
     <Compile Include="Scripts\Plotter\BendingMomentCurvaturePlotter.cs" />
     <Compile Include="Scripts\PredictiveModel\PeircePredictiveModel.cs" />
     <Compile Include="Scripts\PredictiveModel\IPredictiveModel.cs" />
+    <Compile Include="Scripts\Renderer\CalculationResultRenderer\FabricThicknessResultRenderer.cs" />
     <Compile Include="Scripts\Renderer\CalculationResultRenderer\CrimpResultRenderer.cs" />
     <Compile Include="Scripts\Renderer\CalculationResultRenderer\PorosityResultRenderer.cs" />
     <Compile Include="Scripts\Renderer\IRenderer.cs" />

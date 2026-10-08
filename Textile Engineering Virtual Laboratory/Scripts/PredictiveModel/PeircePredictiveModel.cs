@@ -193,7 +193,7 @@ class PeircePredictiveModel : IPredictiveModel
 
     private void CalculatePorosity()
     {
-        weave.FabricVolume = weave.WeaveWidth * weave.WeaveHeight * weave.WeaveThickness;
+        weave.FabricVolume = weave.FabricWidth * weave.FabricHeight * weave.FabricThickness;
         weave.WarpsVolume = (weave.SumOfWarpsCurvedLengthsInUnitCell) * (float)(Math.PI * Math.Pow(weave.WarpDiameter, 2) / 4);
         weave.WeftsVolume = (weave.SumOfWeftsCurvedLengthsInUnitCell) * (float)(Math.PI * Math.Pow(weave.WeftDiameter, 2) / 4);
 

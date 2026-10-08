@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using TextileEngineeringVirtualLaboratory.Renderer;
 using TextileEngineeringVirtualLaboratory.PredictiveModel;
 using TextileEngineeringVirtualLaboratory.Textiles;
-using WindowsFormsApplication1.Scripts.Materials;
+using TextileEngineeringVirtualLaboratory.Materials;
 
 namespace TextileEngineeringVirtualLaboratory
 {
