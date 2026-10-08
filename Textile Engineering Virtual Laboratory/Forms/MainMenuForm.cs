@@ -18,7 +18,7 @@ namespace TextileEngineeringVirtualLaboratory
         {
             InitializeComponent();
             DoubleBuffered = true;
-            textileViewer.Paint += weaveViewer_Paint;
+            textileViewer.Paint += textileViewer_Paint;
             resultsWindow.Paint += resultsWindow_Paint;
         }
 
@@ -30,7 +30,7 @@ namespace TextileEngineeringVirtualLaboratory
             }
             else
             {
-                if (MessageBox.Show("Do you want to create a new textile? The previous model will be discarded.", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Do you want to create a new textile?\nThe previous model will be discarded.", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     Weave = null;
                     weaveDesigner = new WeaveDesigner();
@@ -58,9 +58,10 @@ namespace TextileEngineeringVirtualLaboratory
             }
 
             textileViewer.Invalidate();
+            resultsWindow.Invalidate();
         }
 
-        private void weaveViewer_Paint(object sender, PaintEventArgs e)
+        private void textileViewer_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.Clear(Color.White);
             e.Graphics.TranslateTransform(10, 10);

@@ -29,14 +29,14 @@ namespace TextileEngineeringVirtualLaboratory
 
         private void weaveButton_Click(object sender, EventArgs e)
         {
-            if (peircePredictiveMethodRadioButton.Checked && yarnMaterialInput.SelectedIndex >= 0 && weavePatternComboBox.SelectedIndex >= 0 && warpCountInput != null && weftCountInput != null && warpCompactnessInput != null && weftCompactnessInput != null)
+            if (peircePredictiveMethodRadioButton.Checked && yarnMaterialInput.SelectedIndex >= 0 && weavePatternComboBox.SelectedIndex >= 0 && yarnCountInput != null && yarnDensityInput != null)
             {
                 DesignedWeave = new Weave(
                     weavePatternComboBox.Items[weavePatternComboBox.SelectedIndex].ToString(),
-                    (float)warpCountInput.Value,
-                    (float)weftCountInput.Value,
-                    (float)warpCompactnessInput.Value,
-                    (float)weftCompactnessInput.Value,
+                    (float)yarnCountInput.Value,
+                    (float)yarnCountInput.Value,
+                    (float)yarnDensityInput.Value,
+                    (float)yarnDensityInput.Value,
                     material);
 
                 if (peircePredictiveMethodRadioButton.Checked)
