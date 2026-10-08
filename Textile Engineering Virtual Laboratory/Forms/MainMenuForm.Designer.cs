@@ -191,7 +191,8 @@
             this.fabricParameterTypeComboBox.Items.AddRange(new object[] {
             "Fabric Thickness",
             "Crimp",
-            "Porosity"});
+            "Porosity",
+            "Arial Weight"});
             this.fabricParameterTypeComboBox.Location = new System.Drawing.Point(6, 48);
             this.fabricParameterTypeComboBox.Name = "fabricParameterTypeComboBox";
             this.fabricParameterTypeComboBox.Size = new System.Drawing.Size(295, 21);

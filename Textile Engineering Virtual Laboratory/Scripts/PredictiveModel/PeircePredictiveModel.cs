@@ -16,6 +16,7 @@ class PeircePredictiveModel : IPredictiveModel
         CalculatePathPointsAndLengthsOfYarns();
         CalculateCrimp();
         CalculatePorosity();
+        CalculateArialWeight();
 
         return this.weave;
     }
@@ -173,10 +174,10 @@ class PeircePredictiveModel : IPredictiveModel
 
         for (int i = 0; i < weave.NumberOfWarps; i++)
         {
-            weave.CrimpOfEachWarp[i] = ((weave.WarpsCurvedLengthsInUnitCell[i] - weave.WarpsStraightLengthsInUnitCell[i]) / weave.WarpsStraightLengthsInUnitCell[i]) * 100;
+            weave.CrimpOfEachWarp[i] = ((weave.WarpsCurvedLengthsInUnitCell[i] - weave.WarpsStraightLengthsInUnitCell[i]) / weave.WarpsStraightLengthsInUnitCell[i]);
         }
 
-        weave.UnitCellCrimpInWarpsDirection = ((weave.SumOfWarpsCurvedLengthsInUnitCell - weave.SumOfWarpsStraightLengthsInUnitCell) / (weave.SumOfWarpsStraightLengthsInUnitCell)) * 100;
+        weave.UnitCellCrimpInWarpsDirection = ((weave.SumOfWarpsCurvedLengthsInUnitCell - weave.SumOfWarpsStraightLengthsInUnitCell) / (weave.SumOfWarpsStraightLengthsInUnitCell));
     }
 
     private void CalculateCrimpInWeftsDirection()
@@ -185,10 +186,10 @@ class PeircePredictiveModel : IPredictiveModel
 
         for (int i = 0; i < weave.NumberOfWefts; i++)
         {
-            weave.CrimpOfEachWeft[i] = ((weave.WeftsCurvedLengthsInUnitCell[i] - weave.WeftsStraightLengthsInUnitCell[i]) / weave.WeftsStraightLengthsInUnitCell[i]) * 100;
+            weave.CrimpOfEachWeft[i] = ((weave.WeftsCurvedLengthsInUnitCell[i] - weave.WeftsStraightLengthsInUnitCell[i]) / weave.WeftsStraightLengthsInUnitCell[i]);
         }
 
-        weave.UnitCellCrimpInWeftsDirection = ((weave.SumOfWeftsCurvedLengthsInUnitCell - weave.SumOfWeftsStraightLengthsInUnitCell) / (weave.SumOfWeftsStraightLengthsInUnitCell)) * 100;
+        weave.UnitCellCrimpInWeftsDirection = ((weave.SumOfWeftsCurvedLengthsInUnitCell - weave.SumOfWeftsStraightLengthsInUnitCell) / (weave.SumOfWeftsStraightLengthsInUnitCell));
     }
 
     private void CalculatePorosity()
@@ -199,5 +200,16 @@ class PeircePredictiveModel : IPredictiveModel
 
         weave.PorosityVolume = weave.FabricVolume - (weave.WarpsVolume + weave.WeftsVolume);
         weave.PorosityPercentage = (weave.PorosityVolume / weave.FabricVolume) * 100;
+    }
+
+    private void CalculateArialWeight()
+    {
+        weave.ArialWeight =
+            0.033906f *
+            0.6857f * (float)Math.Sqrt(1 / weave.WarpCount) *
+            (weave.WarpCount * (weave.WarpSpacing / 25.4f) * (1 + weave.UnitCellCrimpInWarpsDirection)) *
+            (weave.WeftCount * (weave.WarpSpacing / 25.4f) * (1 + weave.UnitCellCrimpInWeftsDirection));
+        // Note: 0.033906 multiplication is to convert 'oz/dy^2' to 'g/mm^2'
+        // Note: 25.4 division is to convert 'mm' to 'in'
     }
 }

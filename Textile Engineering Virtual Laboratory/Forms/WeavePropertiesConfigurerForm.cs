@@ -15,11 +15,10 @@ namespace TextileEngineeringVirtualLaboratory.Forms
 
         private void applyButton_Click(object sender, System.EventArgs e)
         {
-            if (youngsModulusXInput.Value != 0 && youngsModulusYInput.Value != 0 && arialDensityInput.Value != 0)
+            if (youngsModulusXInput.Value != 0 && youngsModulusYInput.Value != 0)
             {
                 Weave.YoungsModulusX = (float)youngsModulusXInput.Value;
                 Weave.YoungsModulusY = (float)youngsModulusYInput.Value;
-                Weave.ArialDensity = (float)arialDensityInput.Value;
 
                 DialogResult = DialogResult.OK;
                 Close();

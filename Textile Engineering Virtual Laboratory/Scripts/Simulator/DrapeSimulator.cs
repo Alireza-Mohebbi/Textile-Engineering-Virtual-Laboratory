@@ -17,7 +17,7 @@ public partial class DrapeSimulator : AbstractSimulator
         this.weave = weave;
         secondMomentOfInertia = weave.FabricWidth * (float)Math.Pow(weave.FabricThickness, 3) / 12;
         bendingRigidity = weave.YoungsModulusY * secondMomentOfInertia;
-        arialDensity = weave.ArialDensity;
+        arialDensity = weave.ArialWeight;
         length = weave.FabricHeight;
     }
 

@@ -2,31 +2,24 @@
 using TextileEngineeringVirtualLaboratory.Renderer;
 using TextileEngineeringVirtualLaboratory.Textiles;
 
-class CrimpResultRenderer : IRenderer
+class ArialWeightRenderer : IRenderer
 {
     public void Draw(Weave weave, Graphics g)
     {
         g.ResetTransform();
 
         g.DrawString(
-            "Crimp Calculated Parameters:",
+            "Fabric Arial Weight:",
             new Font("Arial", 15, FontStyle.Bold),
             Brushes.Black,
             20,
             20);
 
         g.DrawString(
-            "\nUnit cell crimp in warp direction = " + (weave.UnitCellCrimpInWarpsDirection * 100).ToString() + "%",
+            "\nFabric arial weight = " + weave.ArialWeight + "g/mm^2",
             new Font("Arial", 10),
             Brushes.Black,
             20,
-            60);
-
-        g.DrawString(
-            "\nUnit cell crimp in weft direction = " + (weave.UnitCellCrimpInWeftsDirection * 100).ToString() + "%",
-            new Font("Arial", 10),
-            Brushes.Black,
-            500,
             60);
     }
 }

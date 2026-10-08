@@ -30,8 +30,6 @@
         {
             this.weaveDesignerPanel = new System.Windows.Forms.Panel();
             this.inputsGroupBox = new System.Windows.Forms.GroupBox();
-            this.arialDensityInput = new System.Windows.Forms.NumericUpDown();
-            this.arialDensityLabel = new System.Windows.Forms.Label();
             this.youngsModulusYInput = new System.Windows.Forms.NumericUpDown();
             this.youngsModulusYLabel = new System.Windows.Forms.Label();
             this.youngsModulusXInput = new System.Windows.Forms.NumericUpDown();
@@ -39,7 +37,6 @@
             this.applyButton = new System.Windows.Forms.Button();
             this.weaveDesignerPanel.SuspendLayout();
             this.inputsGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.arialDensityInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.youngsModulusYInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.youngsModulusXInput)).BeginInit();
             this.SuspendLayout();
@@ -62,8 +59,6 @@
             // 
             this.inputsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputsGroupBox.Controls.Add(this.arialDensityInput);
-            this.inputsGroupBox.Controls.Add(this.arialDensityLabel);
             this.inputsGroupBox.Controls.Add(this.youngsModulusYInput);
             this.inputsGroupBox.Controls.Add(this.youngsModulusYLabel);
             this.inputsGroupBox.Controls.Add(this.youngsModulusXInput);
@@ -74,34 +69,6 @@
             this.inputsGroupBox.TabIndex = 17;
             this.inputsGroupBox.TabStop = false;
             this.inputsGroupBox.Text = "Inputs";
-            // 
-            // arialDensityInput
-            // 
-            this.arialDensityInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.arialDensityInput.DecimalPlaces = 5;
-            this.arialDensityInput.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            327680});
-            this.arialDensityInput.Location = new System.Drawing.Point(158, 105);
-            this.arialDensityInput.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.arialDensityInput.Name = "arialDensityInput";
-            this.arialDensityInput.Size = new System.Drawing.Size(120, 20);
-            this.arialDensityInput.TabIndex = 9;
-            // 
-            // arialDensityLabel
-            // 
-            this.arialDensityLabel.AutoSize = true;
-            this.arialDensityLabel.Location = new System.Drawing.Point(6, 112);
-            this.arialDensityLabel.Name = "arialDensityLabel";
-            this.arialDensityLabel.Size = new System.Drawing.Size(120, 13);
-            this.arialDensityLabel.TabIndex = 10;
-            this.arialDensityLabel.Text = "Arial Density (Kg/mm^2)";
             // 
             // youngsModulusYInput
             // 
@@ -174,7 +141,6 @@
             this.weaveDesignerPanel.ResumeLayout(false);
             this.inputsGroupBox.ResumeLayout(false);
             this.inputsGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.arialDensityInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.youngsModulusYInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.youngsModulusXInput)).EndInit();
             this.ResumeLayout(false);
@@ -190,7 +156,5 @@
         private System.Windows.Forms.Button applyButton;
         private System.Windows.Forms.NumericUpDown youngsModulusYInput;
         private System.Windows.Forms.Label youngsModulusYLabel;
-        private System.Windows.Forms.NumericUpDown arialDensityInput;
-        private System.Windows.Forms.Label arialDensityLabel;
     }
 }
