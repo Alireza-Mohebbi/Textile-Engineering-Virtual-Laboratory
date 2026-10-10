@@ -16,7 +16,7 @@ class ArealWeightResultRenderer : IRenderer
             20);
 
         g.DrawString(
-            "\nFabric areal weight = " + weave.ArealWeight + "g/mm^2",
+            "\nFabric areal weight = " + weave.ArealWeight + "oz/yd^2",
             new Font("Arial", 10),
             Brushes.Black,
             20,
