@@ -5,7 +5,7 @@ This software allows users to model a 2D weave structure (including its cross se
 
 ## Cooperations
 
-The project is led by Dr. Mostafa Jamshidi, assistant professor in the Department of Textile Engineering at the University of Guilan.
+The project is led by Dr. Mostafa Jamshidi, faculty member in the Department of Textile Engineering at the University of Guilan.
 
 
 ## Under Development
@@ -15,4 +15,4 @@ The initial versions will focus on 2D weave modeling, property assignment, and a
 
 ## Disclaimer 
 
-This software is primarily meant to serve as a university project. The predicted mechanical behaviors are approximate and can not be considered a replacement for experimental testing or validated high-fidelity simulation methods.
+This software is primarily meant to serve as a university project. The predicted behaviors are approximate and can not be considered a replacement for experimental testing or validated high-fidelity simulation methods.

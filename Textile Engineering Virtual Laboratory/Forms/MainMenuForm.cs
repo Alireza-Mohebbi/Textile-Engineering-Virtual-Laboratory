@@ -122,10 +122,10 @@ namespace TextileEngineeringVirtualLaboratory
                         porosityResultRenderer.Draw(Weave, e.Graphics);
                         break;
 
-                    // Arial Weight
+                    // Areal Weight
                     case 3:
-                        IRenderer arialWeightRenderer = new ArialWeightRenderer();
-                        arialWeightRenderer.Draw(Weave, e.Graphics);
+                        IRenderer arealWeightRenderer = new ArealWeightRenderer();
+                        arealWeightRenderer.Draw(Weave, e.Graphics);
                         break;
 
                     default: break;

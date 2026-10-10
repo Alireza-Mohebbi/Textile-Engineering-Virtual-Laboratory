@@ -16,7 +16,7 @@ class PeircePredictiveModel : IPredictiveModel
         CalculatePathPointsAndLengthsOfYarns();
         CalculateCrimp();
         CalculatePorosity();
-        CalculateArialWeight();
+        CalculateArealWeight();
 
         return this.weave;
     }
@@ -202,9 +202,9 @@ class PeircePredictiveModel : IPredictiveModel
         weave.PorosityPercentage = (weave.PorosityVolume / weave.FabricVolume) * 100;
     }
 
-    private void CalculateArialWeight()
+    private void CalculateArealWeight()
     {
-        weave.ArialWeight =
+        weave.ArealWeight =
             0.033906f *
             0.6857f * (float)Math.Sqrt(1 / weave.WarpCount) *
             (weave.WarpCount * (weave.WarpSpacing / 25.4f) * (1 + weave.UnitCellCrimpInWarpsDirection)) *
