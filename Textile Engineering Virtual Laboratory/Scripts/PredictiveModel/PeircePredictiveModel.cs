@@ -16,6 +16,7 @@ class PeircePredictiveModel : IPredictiveModel
         CalculatePathPointsAndLengthsOfYarns();
         CalculateCrimp();
         CalculatePorosity();
+        CalculateCoverFactor();
         CalculateArealWeight();
 
         return this.weave;
@@ -200,6 +201,12 @@ class PeircePredictiveModel : IPredictiveModel
 
         weave.PorosityVolume = weave.FabricVolume - (weave.WarpsVolume + weave.WeftsVolume);
         weave.PorosityPercentage = (weave.PorosityVolume / weave.FabricVolume) * 100;
+    }
+
+    private void CalculateCoverFactor()
+    {
+        weave.CoverFactorInWarpDirection = 28 * weave.WarpDiameter / weave.WarpSpacing;
+        weave.CoverFactorInWeftDirection = 28 * weave.WeftDiameter / weave.WeftSpacing;
     }
 
     private void CalculateArealWeight()

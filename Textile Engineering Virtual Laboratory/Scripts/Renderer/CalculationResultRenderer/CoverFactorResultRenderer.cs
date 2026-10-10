@@ -2,24 +2,31 @@
 using TextileEngineeringVirtualLaboratory.Renderer;
 using TextileEngineeringVirtualLaboratory.Textiles;
 
-class ArealWeightResultRenderer : IRenderer
+class CoverFactorResultRenderer : IRenderer
 {
     public void Draw(Weave weave, Graphics g)
     {
         g.ResetTransform();
 
         g.DrawString(
-            "Fabric Areal Weight:",
+            "Cover Factor Calculated Parameters:",
             new Font("Arial", 15, FontStyle.Bold),
             Brushes.Black,
             20,
             20);
 
         g.DrawString(
-            "\nFabric areal weight = " + weave.ArealWeight + "g/mm^2",
+            "\nCover factor in warp direction = " + weave.CoverFactorInWarpDirection,
             new Font("Arial", 10),
             Brushes.Black,
             20,
+            60);
+
+        g.DrawString(
+            "\nCover factor in weft direction = " + weave.CoverFactorInWeftDirection,
+            new Font("Arial", 10),
+            Brushes.Black,
+            500,
             60);
     }
 }

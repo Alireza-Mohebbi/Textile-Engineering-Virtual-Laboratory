@@ -122,10 +122,16 @@ namespace TextileEngineeringVirtualLaboratory
                         porosityResultRenderer.Draw(Weave, e.Graphics);
                         break;
 
-                    // Areal Weight
+                    // Cover Factor
                     case 3:
-                        IRenderer arealWeightRenderer = new ArealWeightRenderer();
-                        arealWeightRenderer.Draw(Weave, e.Graphics);
+                        IRenderer coverFactorResultRenderer = new CoverFactorResultRenderer();
+                        coverFactorResultRenderer.Draw(Weave, e.Graphics);
+                        break;
+
+                    // Areal Weight
+                    case 4:
+                        IRenderer arealWeightResultRenderer = new ArealWeightResultRenderer();
+                        arealWeightResultRenderer.Draw(Weave, e.Graphics);
                         break;
 
                     default: break;

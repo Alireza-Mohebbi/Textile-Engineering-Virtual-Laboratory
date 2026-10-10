@@ -29,6 +29,8 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
         public float FabricHeight { get { return WeftSpacing * NumberOfWefts; } }   // (mm)
         public float FabricThickness { get { return NumberOfLayers * (WarpDiameter + WeftDiameter); } }  // (mm)
         public float ArealWeight { get; set; }  // (g/mm^2)
+        public float CoverFactorInWarpDirection { get; set; }
+        public float CoverFactorInWeftDirection { get; set; }
 
         /// Weave mechanical properties ///
         public float YoungsModulusX { get; set; }   // (MPa)

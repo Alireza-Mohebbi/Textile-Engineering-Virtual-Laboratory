@@ -192,6 +192,7 @@
             "Fabric Thickness",
             "Crimp",
             "Porosity",
+            "Cover Factor",
             "Areal Weight"});
             this.fabricParameterTypeComboBox.Location = new System.Drawing.Point(6, 48);
             this.fabricParameterTypeComboBox.Name = "fabricParameterTypeComboBox";
