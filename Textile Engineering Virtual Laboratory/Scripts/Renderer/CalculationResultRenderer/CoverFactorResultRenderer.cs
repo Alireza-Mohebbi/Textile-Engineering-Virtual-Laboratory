@@ -2,30 +2,30 @@
 using TextileEngineeringVirtualLaboratory.Renderer;
 using TextileEngineeringVirtualLaboratory.Textiles;
 
-class CoverFactorResultRenderer : IRenderer
+class CoverFactorResultRenderer : AbstractRenderer
 {
-    public void Draw(Weave weave, Graphics g)
+    public override void Draw(Weave weave, Graphics g)
     {
         g.ResetTransform();
 
         g.DrawString(
             "Cover Factor Calculated Parameters:",
-            new Font("Arial", 15, FontStyle.Bold),
-            Brushes.Black,
+            titleFont,
+            titleColor,
             20,
             20);
 
         g.DrawString(
             "\nCover factor in warp direction = " + weave.CoverFactorInWarpDirection,
-            new Font("Arial", 10),
-            Brushes.Black,
+            textFont,
+            textColor,
             20,
             60);
 
         g.DrawString(
             "\nCover factor in weft direction = " + weave.CoverFactorInWeftDirection,
-            new Font("Arial", 10),
-            Brushes.Black,
+            textFont,
+            textColor,
             500,
             60);
     }

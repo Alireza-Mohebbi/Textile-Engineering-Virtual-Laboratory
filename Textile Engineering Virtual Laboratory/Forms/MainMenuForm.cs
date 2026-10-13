@@ -106,31 +106,31 @@ namespace TextileEngineeringVirtualLaboratory
                 {
                     // Fabric thickness
                     case 0:
-                        IRenderer fabricThicknessResultRenderer = new FabricThicknessResultRenderer();
+                        AbstractRenderer fabricThicknessResultRenderer = new FabricThicknessResultRenderer();
                         fabricThicknessResultRenderer.Draw(Weave, e.Graphics);
                         break;
 
                     // Crmip
                     case 1:
-                        IRenderer crimpResultRenderer = new CrimpResultRenderer();
+                        AbstractRenderer crimpResultRenderer = new CrimpResultRenderer();
                         crimpResultRenderer.Draw(Weave, e.Graphics);
                         break;
 
                     // Porosity
                     case 2:
-                        IRenderer porosityResultRenderer = new PorosityResultCalculator();
+                        AbstractRenderer porosityResultRenderer = new PorosityResultCalculator();
                         porosityResultRenderer.Draw(Weave, e.Graphics);
                         break;
 
                     // Cover Factor
                     case 3:
-                        IRenderer coverFactorResultRenderer = new CoverFactorResultRenderer();
+                        AbstractRenderer coverFactorResultRenderer = new CoverFactorResultRenderer();
                         coverFactorResultRenderer.Draw(Weave, e.Graphics);
                         break;
 
                     // Areal Weight
                     case 4:
-                        IRenderer arealWeightResultRenderer = new ArealWeightResultRenderer();
+                        AbstractRenderer arealWeightResultRenderer = new ArealWeightResultRenderer();
                         arealWeightResultRenderer.Draw(Weave, e.Graphics);
                         break;
 

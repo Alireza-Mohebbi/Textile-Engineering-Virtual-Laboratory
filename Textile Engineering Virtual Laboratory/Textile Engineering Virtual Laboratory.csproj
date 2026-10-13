@@ -69,7 +69,7 @@
     <Compile Include="Scripts\Renderer\CalculationResultRenderer\CrimpResultRenderer.cs" />
     <Compile Include="Scripts\Renderer\CalculationResultRenderer\PorosityResultRenderer - Copy.cs" />
     <Compile Include="Scripts\Renderer\CalculationResultRenderer\CoverFactorResultRenderer.cs" />
-    <Compile Include="Scripts\Renderer\IRenderer.cs" />
+    <Compile Include="Scripts\Renderer\Renderer.cs" />
     <Compile Include="Scripts\Simulator\AbstractSimulator.cs" />
     <Compile Include="Scripts\Simulator\DrapeSimulator.cs" />
     <Compile Include="Scripts\Plotter\AbstractPlotter.cs" />

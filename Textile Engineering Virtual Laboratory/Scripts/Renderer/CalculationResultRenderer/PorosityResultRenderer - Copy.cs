@@ -2,16 +2,16 @@
 using TextileEngineeringVirtualLaboratory.Renderer;
 using TextileEngineeringVirtualLaboratory.Textiles;
 
-class PorosityResultCalculator : IRenderer
+class PorosityResultCalculator : AbstractRenderer
 {
-    public void Draw(Weave weave, Graphics g)
+    public override void Draw(Weave weave, Graphics g)
     {
         g.ResetTransform();
 
         g.DrawString(
             "Porosity Calculated Parameters:",
-            new Font("Arial", 15, FontStyle.Bold),
-            Brushes.Black,
+            titleFont,
+            titleColor,
             20,
             20);
 
@@ -19,8 +19,8 @@ class PorosityResultCalculator : IRenderer
             "Fabric Volume = " + weave.FabricVolume + "mm^3" +
             "\nPorosity Volume = " + weave.PorosityVolume + "mm^3" +
             "\nPorosity Percentage = " + weave.PorosityPercentage + "%",
-            new Font("Arial", 10),
-            Brushes.Black,
+            textFont,
+            textColor,
             20,
             60);
     }

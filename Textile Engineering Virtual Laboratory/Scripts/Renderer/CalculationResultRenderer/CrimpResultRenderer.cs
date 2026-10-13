@@ -2,30 +2,30 @@
 using TextileEngineeringVirtualLaboratory.Renderer;
 using TextileEngineeringVirtualLaboratory.Textiles;
 
-class CrimpResultRenderer : IRenderer
+class CrimpResultRenderer : AbstractRenderer
 {
-    public void Draw(Weave weave, Graphics g)
+    public override void Draw(Weave weave, Graphics g)
     {
         g.ResetTransform();
 
         g.DrawString(
             "Crimp Calculated Parameters:",
-            new Font("Arial", 15, FontStyle.Bold),
-            Brushes.Black,
+            titleFont,
+            titleColor,
             20,
             20);
 
         g.DrawString(
             "\nUnit cell crimp in warp direction = " + (weave.UnitCellCrimpInWarpsDirection * 100).ToString() + "%",
-            new Font("Arial", 10),
-            Brushes.Black,
+            textFont,
+            textColor,
             20,
             60);
 
         g.DrawString(
             "\nUnit cell crimp in weft direction = " + (weave.UnitCellCrimpInWeftsDirection * 100).ToString() + "%",
-            new Font("Arial", 10),
-            Brushes.Black,
+            textFont,
+            textColor,
             500,
             60);
     }

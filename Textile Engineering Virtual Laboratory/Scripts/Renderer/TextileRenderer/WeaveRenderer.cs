@@ -3,12 +3,12 @@ using System.Drawing;
 using TextileEngineeringVirtualLaboratory.Renderer;
 using TextileEngineeringVirtualLaboratory.Textiles;
 
-public class WeaveRenderer : IRenderer
+public class WeaveRenderer : AbstractRenderer
 {
     private Weave weave;
     private Graphics g;
 
-    public void Draw(Weave weave, Graphics g)
+    public override void Draw(Weave weave, Graphics g)
     {
         if (weave == null || g == null)
         {
