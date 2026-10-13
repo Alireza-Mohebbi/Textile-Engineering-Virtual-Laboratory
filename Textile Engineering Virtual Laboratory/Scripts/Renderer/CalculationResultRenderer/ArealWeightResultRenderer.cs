@@ -10,7 +10,7 @@ class ArealWeightResultRenderer : AbstractRenderer
         g.ResetTransform();
 
         g.DrawString(
-            "Fabric Areal Weight:",
+            "Calculated Parameters:",
             titleFont,
             titleColor,
             20,

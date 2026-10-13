@@ -10,7 +10,7 @@ class FabricThicknessResultRenderer : AbstractRenderer
         g.ResetTransform();
 
         g.DrawString(
-            "Fabric Thickness:",
+            "Calculated Parameters:",
             titleFont,
             titleColor,
             20,

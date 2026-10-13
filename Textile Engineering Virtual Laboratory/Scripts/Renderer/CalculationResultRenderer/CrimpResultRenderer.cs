@@ -10,7 +10,7 @@ class CrimpResultRenderer : AbstractRenderer
         g.ResetTransform();
 
         g.DrawString(
-            "Crimp Calculated Parameters:",
+            "Calculated Parameters:",
             titleFont,
             titleColor,
             20,

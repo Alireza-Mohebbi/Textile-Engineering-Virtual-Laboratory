@@ -10,7 +10,7 @@ class CoverFactorResultRenderer : AbstractRenderer
         g.ResetTransform();
 
         g.DrawString(
-            "Cover Factor Calculated Parameters:",
+            "Calculated Parameters:",
             titleFont,
             titleColor,
             20,

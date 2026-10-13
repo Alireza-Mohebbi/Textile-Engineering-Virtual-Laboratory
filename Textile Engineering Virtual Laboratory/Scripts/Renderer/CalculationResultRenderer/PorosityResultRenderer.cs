@@ -10,7 +10,7 @@ class PorosityResultCalculator : AbstractRenderer
         g.ResetTransform();
 
         g.DrawString(
-            "Porosity Calculated Parameters:",
+            "Calculated Parameters:",
             titleFont,
             titleColor,
             20,
