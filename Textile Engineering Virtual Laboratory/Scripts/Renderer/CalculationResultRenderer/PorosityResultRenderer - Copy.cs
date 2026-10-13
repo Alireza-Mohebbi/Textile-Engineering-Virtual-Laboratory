@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using TextileEngineeringVirtualLaboratory.Renderer;
 using TextileEngineeringVirtualLaboratory.Textiles;
 
@@ -16,9 +17,9 @@ class PorosityResultCalculator : AbstractRenderer
             20);
 
         g.DrawString(
-            "Fabric Volume = " + weave.FabricVolume + "mm^3" +
-            "\nPorosity Volume = " + weave.PorosityVolume + "mm^3" +
-            "\nPorosity Percentage = " + weave.PorosityPercentage + "%",
+            "Fabric Volume = " + Math.Round(weave.FabricVolume, decimalPlaces) + "mm^3" +
+            "\nPorosity Volume = " + Math.Round(weave.PorosityVolume, decimalPlaces) + "mm^3" +
+            "\nPorosity Percentage = " + Math.Round(weave.PorosityPercentage, decimalPlaces) + "%",
             textFont,
             textColor,
             20,

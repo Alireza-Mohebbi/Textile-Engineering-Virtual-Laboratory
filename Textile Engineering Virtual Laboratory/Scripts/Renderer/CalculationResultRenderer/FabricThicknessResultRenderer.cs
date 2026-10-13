@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using TextileEngineeringVirtualLaboratory.Renderer;
 using TextileEngineeringVirtualLaboratory.Textiles;
 
@@ -16,7 +17,7 @@ class FabricThicknessResultRenderer : AbstractRenderer
             20);
 
         g.DrawString(
-            "\nFabric Thickness = " + weave.FabricThickness + "mm",
+            "\nFabric Thickness = " + Math.Round(weave.FabricThickness, decimalPlaces) + "mm",
             textFont,
             textColor,
             20,

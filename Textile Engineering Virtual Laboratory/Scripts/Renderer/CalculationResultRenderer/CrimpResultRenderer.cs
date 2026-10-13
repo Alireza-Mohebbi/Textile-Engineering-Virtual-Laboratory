@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using TextileEngineeringVirtualLaboratory.Renderer;
 using TextileEngineeringVirtualLaboratory.Textiles;
 
@@ -16,14 +17,14 @@ class CrimpResultRenderer : AbstractRenderer
             20);
 
         g.DrawString(
-            "\nUnit cell crimp in warp direction = " + (weave.UnitCellCrimpInWarpsDirection * 100).ToString() + "%",
+            "\nUnit cell crimp in warp direction = " + Math.Round(weave.UnitCellCrimpInWarpsDirection * 100, decimalPlaces).ToString() + "%",
             textFont,
             textColor,
             20,
             60);
 
         g.DrawString(
-            "\nUnit cell crimp in weft direction = " + (weave.UnitCellCrimpInWeftsDirection * 100).ToString() + "%",
+            "\nUnit cell crimp in weft direction = " + Math.Round(weave.UnitCellCrimpInWeftsDirection * 100, decimalPlaces).ToString() + "%",
             textFont,
             textColor,
             500,

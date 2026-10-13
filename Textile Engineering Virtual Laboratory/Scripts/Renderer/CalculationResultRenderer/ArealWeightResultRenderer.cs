@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using TextileEngineeringVirtualLaboratory.Renderer;
 using TextileEngineeringVirtualLaboratory.Textiles;
 
@@ -16,7 +17,7 @@ class ArealWeightResultRenderer : AbstractRenderer
             20);
 
         g.DrawString(
-            "\nFabric areal weight = " + weave.ArealWeight + " g/cm^2",
+            "\nFabric areal weight = " + Math.Round(weave.ArealWeight, decimalPlaces) + " g/cm^2",
             textFont,
             textColor,
             20,

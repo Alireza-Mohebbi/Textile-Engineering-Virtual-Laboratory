@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using TextileEngineeringVirtualLaboratory.Renderer;
 using TextileEngineeringVirtualLaboratory.Textiles;
 
@@ -16,14 +17,14 @@ class CoverFactorResultRenderer : AbstractRenderer
             20);
 
         g.DrawString(
-            "\nCover factor in warp direction = " + weave.CoverFactorInWarpDirection,
+            "\nCover factor in warp direction = " + Math.Round(weave.CoverFactorInWarpDirection, decimalPlaces),
             textFont,
             textColor,
             20,
             60);
 
         g.DrawString(
-            "\nCover factor in weft direction = " + weave.CoverFactorInWeftDirection,
+            "\nCover factor in weft direction = " + Math.Round(weave.CoverFactorInWeftDirection, decimalPlaces),
             textFont,
             textColor,
             500,
