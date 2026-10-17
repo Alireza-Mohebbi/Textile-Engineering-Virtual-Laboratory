@@ -2,8 +2,19 @@
 
 namespace TextileEngineeringVirtualLaboratory.PredictiveModel
 {
-    interface IPredictiveModel
+    public interface IPredictiveModel
     {
-        Weave CalculateTheGetWeaveParameters(Weave weave);
+        Weave CalculateYarnDiameter();
+        Weave CalculateYarnSpacing();
+        Weave DefinePathPointsForEachWarp();
+        Weave CalculateLengthsOfEachWarp();
+        Weave DefinePathPointsForEachWeft();
+        Weave CalculateLengthsOfEachWeft();
+        Weave CalculateCrimpInWarpsDirection();
+        Weave CalculateCrimpInWeftsDirection();
+        Weave CalculatePorosity();
+        Weave CalculateCoverFactor();
+        Weave CalculateArealWeight();
+        Weave CalculateRequiredYarnLengthForFabric(float fabricLengthInWarpDirection, float fabricLengthInWeftDirection);
     }
 }

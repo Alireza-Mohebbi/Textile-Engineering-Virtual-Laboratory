@@ -31,6 +31,8 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
         public float ArealWeight { get; set; }  // (g/mm^2)
         public float CoverFactorInWarpDirection { get; set; }
         public float CoverFactorInWeftDirection { get; set; }
+        public float RequiredWarpLengthForFabric { get; set; }  // (mm)
+        public float RequiredWeftLengthForFabric { get; set; }  // (mm)
 
         /// Weave mechanical properties ///
         public float YoungsModulusX { get; set; }   // (MPa)
@@ -53,9 +55,9 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
 
         /// Crimp properties ///
         public float[] CrimpOfEachWarp { get; set; }                // (Dimensionless
-        public float UnitCellCrimpInWarpsDirection { get; set; }    // (Dimensionless)
+        public float UnitCellCrimpInWarpDirection { get; set; }    // (Dimensionless)
         public float[] CrimpOfEachWeft { get; set; }                // (Dimensionless)
-        public float UnitCellCrimpInWeftsDirection { get; set; }    // (Dimensionless)
+        public float UnitCellCrimpInWeftDirection { get; set; }    // (Dimensionless)
 
         // Porosity properties ///
         public float FabricVolume { get; set; }

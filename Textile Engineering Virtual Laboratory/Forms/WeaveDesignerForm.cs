@@ -12,6 +12,7 @@ namespace TextileEngineeringVirtualLaboratory
     public partial class WeaveDesigner : Form
     {
         public Weave DesignedWeave { get; set; }
+        public IPredictiveModel predictiveModel;
         private IMaterials material;
         private Rectangle[,] interactiveInterlacementsOfWeave;
 
@@ -41,8 +42,7 @@ namespace TextileEngineeringVirtualLaboratory
 
                 if (peircePredictiveMethodRadioButton.Checked)
                 {
-                    IPredictiveModel peircePredictiveModel = new PeircePredictiveModel();
-                    DesignedWeave = peircePredictiveModel.CalculateTheGetWeaveParameters(DesignedWeave);
+                    predictiveModel = new PeircePredictiveModel(DesignedWeave);
                 }
 
                 DefineInteractiveInterlacementsOfWeave();

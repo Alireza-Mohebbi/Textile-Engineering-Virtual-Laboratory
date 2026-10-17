@@ -65,6 +65,7 @@
     <Compile Include="Scripts\PredictiveModel\PeircePredictiveModel.cs" />
     <Compile Include="Scripts\PredictiveModel\IPredictiveModel.cs" />
     <Compile Include="Scripts\Renderer\CalculationResultRenderer\ArealWeightResultRenderer.cs" />
+    <Compile Include="Scripts\Renderer\CalculationResultRenderer\RequiredYarnLengthForFabricResultRenderer.cs" />
     <Compile Include="Scripts\Renderer\CalculationResultRenderer\FabricThicknessResultRenderer.cs" />
     <Compile Include="Scripts\Renderer\CalculationResultRenderer\CrimpResultRenderer.cs" />
     <Compile Include="Scripts\Renderer\CalculationResultRenderer\PorosityResultRenderer.cs" />

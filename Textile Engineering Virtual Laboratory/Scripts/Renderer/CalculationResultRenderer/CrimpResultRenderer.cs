@@ -17,14 +17,14 @@ class CrimpResultRenderer : AbstractRenderer
             20);
 
         g.DrawString(
-            "\nUnit cell crimp in warp direction = " + Math.Round(weave.UnitCellCrimpInWarpsDirection * 100, decimalPlaces).ToString() + "%",
+            "\nUnit cell crimp in warp direction = " + Math.Round(weave.UnitCellCrimpInWarpDirection * 100, decimalPlaces).ToString() + "%",
             textFont,
             textColor,
             20,
             60);
 
         g.DrawString(
-            "\nUnit cell crimp in weft direction = " + Math.Round(weave.UnitCellCrimpInWeftsDirection * 100, decimalPlaces).ToString() + "%",
+            "\nUnit cell crimp in weft direction = " + Math.Round(weave.UnitCellCrimpInWeftDirection * 100, decimalPlaces).ToString() + "%",
             textFont,
             textColor,
             500,

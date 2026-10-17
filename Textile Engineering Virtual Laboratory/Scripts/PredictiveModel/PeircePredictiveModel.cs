@@ -3,49 +3,39 @@ using System.Drawing;
 using TextileEngineeringVirtualLaboratory.PredictiveModel;
 using TextileEngineeringVirtualLaboratory.Textiles;
 
-class PeircePredictiveModel : IPredictiveModel
+public class PeircePredictiveModel : IPredictiveModel
 {
     private Weave weave;
 
-    public Weave CalculateTheGetWeaveParameters(Weave weave)
+    public PeircePredictiveModel(Weave weave)
     {
         this.weave = weave;
 
         CalculateYarnDiameter();
         CalculateYarnSpacing();
-        CalculatePathPointsAndLengthsOfYarns();
-        CalculateCrimp();
-        CalculatePorosity();
-        CalculateCoverFactor();
-        CalculateArealWeight();
-
-        return this.weave;
-    }
-
-    private void CalculateYarnDiameter()
-    {
-        weave.WarpDiameter = 25.4f * (1 / (28 * (float)Math.Sqrt(weave.WarpCount)));    // The 25.4X multiplication is to convert diameter unit from 'inch' to 'mm'
-        weave.WeftDiameter = 25.4f * (1 / (28 * (float)Math.Sqrt(weave.WeftCount)));    // The 25.4X multiplication is to convert diameter unit from 'inch' to 'mm'
-    }
-
-    private void CalculateYarnSpacing()
-    {
-
-        weave.WarpSpacing = 1 / weave.WarpCompactness * 10; //The X10 multiplication is to convert cm to mm
-        weave.WeftSpacing = 1 / weave.WeftCompactness * 10; // The X10 multiplication is to convert cm to mm
-
-    }
-
-    private void CalculatePathPointsAndLengthsOfYarns()
-    {
         DefinePathPointsForEachWarp();
         CalculateLengthsOfEachWarp();
-
         DefinePathPointsForEachWeft();
         CalculateLengthsOfEachWeft();
     }
 
-    private void DefinePathPointsForEachWarp()
+    public Weave CalculateYarnDiameter()
+    {
+        weave.WarpDiameter = 25.4f * (1 / (28 * (float)Math.Sqrt(weave.WarpCount)));    // The 25.4X multiplication is to convert diameter unit from 'inch' to 'mm'
+        weave.WeftDiameter = 25.4f * (1 / (28 * (float)Math.Sqrt(weave.WeftCount)));    // The 25.4X multiplication is to convert diameter unit from 'inch' to 'mm'
+
+        return weave;
+    }
+
+    public Weave CalculateYarnSpacing()
+    {
+        weave.WarpSpacing = 1 / weave.WarpCompactness * 10; //The X10 multiplication is to convert cm to mm
+        weave.WeftSpacing = 1 / weave.WeftCompactness * 10; // The X10 multiplication is to convert cm to mm
+
+        return weave;
+    }
+
+    public Weave DefinePathPointsForEachWarp()
     {
         weave.WarpsPathPointsInUnitCell = new PointF[weave.NumberOfWarps, weave.NumberOfWefts + 2];
 
@@ -77,9 +67,11 @@ class PeircePredictiveModel : IPredictiveModel
             int lastPointIndex = weave.WarpsPathPointsInUnitCell.GetLength(1) - 1;
             weave.WarpsPathPointsInUnitCell[i, lastPointIndex] = (new PointF(weave.WarpsPathPointsInUnitCell[i, lastPointIndex - 1].X + weave.WeftSpacing / 2, weave.WarpsPathPointsInUnitCell[i, lastPointIndex - 1].Y));
         }
+
+        return weave;
     }
 
-    private void CalculateLengthsOfEachWarp()
+    public Weave CalculateLengthsOfEachWarp()
     {
         weave.SumOfWarpsStraightLengthsInUnitCell = 0;
         weave.SumOfWarpsCurvedLengthsInUnitCell = 0;
@@ -102,9 +94,11 @@ class PeircePredictiveModel : IPredictiveModel
                 weave.SumOfWarpsCurvedLengthsInUnitCell += warpSegmentCurvedLength;
             }
         }
+
+        return weave;
     }
 
-    private void DefinePathPointsForEachWeft()
+    public Weave DefinePathPointsForEachWeft()
     {
         weave.WeftsPathPointsInUnitCell = new PointF[weave.NumberOfWefts, weave.NumberOfWarps + 2];
 
@@ -136,9 +130,11 @@ class PeircePredictiveModel : IPredictiveModel
             int lastPointIndex = weave.WeftsPathPointsInUnitCell.GetLength(1) - 1;
             weave.WeftsPathPointsInUnitCell[i, lastPointIndex] = (new PointF(weave.WeftsPathPointsInUnitCell[i, lastPointIndex - 1].X + weave.WarpSpacing / 2, weave.WeftsPathPointsInUnitCell[i, lastPointIndex - 1].Y));
         }
+
+        return weave;
     }
 
-    private void CalculateLengthsOfEachWeft()
+    public Weave CalculateLengthsOfEachWeft()
     {
         weave.SumOfWeftsStraightLengthsInUnitCell = 0;
         weave.SumOfWeftsCurvedLengthsInUnitCell = 0;
@@ -161,15 +157,11 @@ class PeircePredictiveModel : IPredictiveModel
                 weave.SumOfWeftsCurvedLengthsInUnitCell += weftSegmentCurvedLength;
             }
         }
+
+        return weave;
     }
 
-    private void CalculateCrimp()
-    {
-        CalculateCrimpInWarpsDirection();
-        CalculateCrimpInWeftsDirection();
-    }
-
-    private void CalculateCrimpInWarpsDirection()
+    public Weave CalculateCrimpInWarpsDirection()
     {
         weave.CrimpOfEachWarp = new float[weave.NumberOfWarps];
 
@@ -178,10 +170,12 @@ class PeircePredictiveModel : IPredictiveModel
             weave.CrimpOfEachWarp[i] = ((weave.WarpsCurvedLengthsInUnitCell[i] - weave.WarpsStraightLengthsInUnitCell[i]) / weave.WarpsStraightLengthsInUnitCell[i]);
         }
 
-        weave.UnitCellCrimpInWarpsDirection = ((weave.SumOfWarpsCurvedLengthsInUnitCell - weave.SumOfWarpsStraightLengthsInUnitCell) / (weave.SumOfWarpsStraightLengthsInUnitCell));
+        weave.UnitCellCrimpInWarpDirection = ((weave.SumOfWarpsCurvedLengthsInUnitCell - weave.SumOfWarpsStraightLengthsInUnitCell) / (weave.SumOfWarpsStraightLengthsInUnitCell));
+
+        return weave;
     }
 
-    private void CalculateCrimpInWeftsDirection()
+    public Weave CalculateCrimpInWeftsDirection()
     {
         weave.CrimpOfEachWeft = new float[weave.NumberOfWefts];
 
@@ -190,10 +184,12 @@ class PeircePredictiveModel : IPredictiveModel
             weave.CrimpOfEachWeft[i] = ((weave.WeftsCurvedLengthsInUnitCell[i] - weave.WeftsStraightLengthsInUnitCell[i]) / weave.WeftsStraightLengthsInUnitCell[i]);
         }
 
-        weave.UnitCellCrimpInWeftsDirection = ((weave.SumOfWeftsCurvedLengthsInUnitCell - weave.SumOfWeftsStraightLengthsInUnitCell) / (weave.SumOfWeftsStraightLengthsInUnitCell));
+        weave.UnitCellCrimpInWeftDirection = ((weave.SumOfWeftsCurvedLengthsInUnitCell - weave.SumOfWeftsStraightLengthsInUnitCell) / (weave.SumOfWeftsStraightLengthsInUnitCell));
+
+        return weave;
     }
 
-    private void CalculatePorosity()
+    public Weave CalculatePorosity()
     {
         weave.FabricVolume = weave.FabricWidth * weave.FabricHeight * weave.FabricThickness;
         weave.WarpsVolume = (weave.SumOfWarpsCurvedLengthsInUnitCell) * (float)(Math.PI * Math.Pow(weave.WarpDiameter, 2) / 4);
@@ -201,20 +197,34 @@ class PeircePredictiveModel : IPredictiveModel
 
         weave.PorosityVolume = weave.FabricVolume - (weave.WarpsVolume + weave.WeftsVolume);
         weave.PorosityPercentage = (weave.PorosityVolume / weave.FabricVolume) * 100;
+
+        return weave;
     }
 
-    private void CalculateCoverFactor()
+    public Weave CalculateCoverFactor()
     {
         weave.CoverFactorInWarpDirection = 28 * weave.WarpDiameter / weave.WarpSpacing;
         weave.CoverFactorInWeftDirection = 28 * weave.WeftDiameter / weave.WeftSpacing;
+
+        return weave;
     }
 
-    private void CalculateArealWeight()
+    public Weave CalculateArealWeight()
     {
         weave.ArealWeight =
             0.30518f *   // The 33.906X multiplication is to convert unit (oz/yd^2) to (g/cm^2)
             0.6857f * (float)Math.Sqrt(1 / weave.WarpCount) *
-            ((weave.CoverFactorInWarpDirection * (1 + weave.UnitCellCrimpInWarpsDirection)) +
-            (weave.CoverFactorInWeftDirection * (1 + weave.UnitCellCrimpInWeftsDirection) * ((float)Math.Sqrt(weave.WarpCount / weave.WeftCount))));
+            ((weave.CoverFactorInWarpDirection * (1 + weave.UnitCellCrimpInWarpDirection)) +
+            (weave.CoverFactorInWeftDirection * (1 + weave.UnitCellCrimpInWeftDirection) * ((float)Math.Sqrt(weave.WarpCount / weave.WeftCount))));
+
+        return weave;
+    }
+
+    public Weave CalculateRequiredYarnLengthForFabric(float fabricLengthInWarpDirection, float fabricLengthInWeftDirection)
+    {
+        weave.RequiredWarpLengthForFabric = fabricLengthInWarpDirection * (1 + weave.UnitCellCrimpInWarpDirection);     // (m)
+        weave.RequiredWeftLengthForFabric = fabricLengthInWeftDirection * (1 + weave.UnitCellCrimpInWeftDirection);     // (m)
+
+        return weave;
     }
 }
