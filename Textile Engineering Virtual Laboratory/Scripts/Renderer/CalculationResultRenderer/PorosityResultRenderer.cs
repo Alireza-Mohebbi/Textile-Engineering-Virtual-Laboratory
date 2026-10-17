@@ -17,7 +17,7 @@ class PorosityResultCalculator : AbstractRenderer
             20);
 
         g.DrawString(
-            "Fabric Volume = " + Math.Round(weave.FabricVolume, decimalPlaces) + "mm^3" +
+            "\nFabric Volume = " + Math.Round(weave.FabricVolume, decimalPlaces) + "mm^3" +
             "\nPorosity Volume = " + Math.Round(weave.PorosityVolume, decimalPlaces) + "mm^3" +
             "\nPorosity Percentage = " + Math.Round(weave.PorosityPercentage, decimalPlaces) + "%",
             textFont,

@@ -279,8 +279,8 @@ namespace TextileEngineeringVirtualLaboratory
                 fabricParametersInput2.Minimum = 0.1m;
                 fabricParametersInput2.Maximum = 1000;
 
-                fabricParametersInputLabel1.Text = "Fabric Length in warp direction (m)";
-                fabricParametersInputLabel2.Text = "Fabric Length in weft direction (m)";
+                fabricParametersInputLabel1.Text = "Fabric Length in Warp Direction (m)";
+                fabricParametersInputLabel2.Text = "Fabric Length in Weft Direction (m)";
             }
             else
             {
