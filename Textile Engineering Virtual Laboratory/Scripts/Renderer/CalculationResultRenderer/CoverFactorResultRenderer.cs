@@ -17,14 +17,14 @@ class CoverFactorResultRenderer : AbstractRenderer
             20);
 
         g.DrawString(
-            "\nCover factor in warp direction = " + Math.Round(weave.CoverFactorInWarpDirection, decimalPlaces),
+            "\nCover factor in warp direction = " + Math.Round(weave.CoverFactorInWarpDirection, decimalPlaces) + " / 28",
             textFont,
             textColor,
             20,
             60);
 
         g.DrawString(
-            "\nCover factor in weft direction = " + Math.Round(weave.CoverFactorInWeftDirection, decimalPlaces),
+            "\nCover factor in weft direction = " + Math.Round(weave.CoverFactorInWeftDirection, decimalPlaces) + " / 28",
             textFont,
             textColor,
             500,
