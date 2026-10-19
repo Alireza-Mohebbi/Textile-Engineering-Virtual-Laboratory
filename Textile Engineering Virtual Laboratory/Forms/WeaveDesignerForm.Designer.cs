@@ -34,7 +34,7 @@
             this.weavePatternLabel = new System.Windows.Forms.Label();
             this.weavePatternComboBox = new System.Windows.Forms.ComboBox();
             this.peircePredictiveMethodRadioButton = new System.Windows.Forms.RadioButton();
-            this.predictiveMethodLabel = new System.Windows.Forms.Label();
+            this.predictiveModelLabel = new System.Windows.Forms.Label();
             this.yarnMaterialLabel = new System.Windows.Forms.Label();
             this.yarnMaterialInput = new System.Windows.Forms.ComboBox();
             this.yarnCountInput = new System.Windows.Forms.NumericUpDown();
@@ -73,7 +73,7 @@
             this.weaveInputsGroupBox.Controls.Add(this.weavePatternLabel);
             this.weaveInputsGroupBox.Controls.Add(this.weavePatternComboBox);
             this.weaveInputsGroupBox.Controls.Add(this.peircePredictiveMethodRadioButton);
-            this.weaveInputsGroupBox.Controls.Add(this.predictiveMethodLabel);
+            this.weaveInputsGroupBox.Controls.Add(this.predictiveModelLabel);
             this.weaveInputsGroupBox.Controls.Add(this.yarnMaterialLabel);
             this.weaveInputsGroupBox.Controls.Add(this.yarnMaterialInput);
             this.weaveInputsGroupBox.Controls.Add(this.yarnCountInput);
@@ -126,14 +126,14 @@
             this.peircePredictiveMethodRadioButton.Text = "Peirce";
             this.peircePredictiveMethodRadioButton.UseVisualStyleBackColor = true;
             // 
-            // predictiveMethodLabel
+            // predictiveModelLabel
             // 
-            this.predictiveMethodLabel.AutoSize = true;
-            this.predictiveMethodLabel.Location = new System.Drawing.Point(14, 27);
-            this.predictiveMethodLabel.Name = "predictiveMethodLabel";
-            this.predictiveMethodLabel.Size = new System.Drawing.Size(93, 13);
-            this.predictiveMethodLabel.TabIndex = 14;
-            this.predictiveMethodLabel.Text = "Predictive Method";
+            this.predictiveModelLabel.AutoSize = true;
+            this.predictiveModelLabel.Location = new System.Drawing.Point(14, 27);
+            this.predictiveModelLabel.Name = "predictiveModelLabel";
+            this.predictiveModelLabel.Size = new System.Drawing.Size(86, 13);
+            this.predictiveModelLabel.TabIndex = 14;
+            this.predictiveModelLabel.Text = "Predictive Model";
             // 
             // yarnMaterialLabel
             // 
@@ -281,7 +281,7 @@
         private System.Windows.Forms.Label yarnDensityLabel;
         private System.Windows.Forms.ComboBox yarnMaterialInput;
         private System.Windows.Forms.Label yarnMaterialLabel;
-        private System.Windows.Forms.Label predictiveMethodLabel;
+        private System.Windows.Forms.Label predictiveModelLabel;
         private System.Windows.Forms.RadioButton peircePredictiveMethodRadioButton;
         private System.Windows.Forms.Label weavePatternLabel;
         private System.Windows.Forms.ComboBox weavePatternComboBox;

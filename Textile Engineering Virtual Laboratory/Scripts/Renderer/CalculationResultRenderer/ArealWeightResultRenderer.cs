@@ -17,7 +17,7 @@ class ArealWeightResultRenderer : AbstractRenderer
             20);
 
         g.DrawString(
-            "\nFabric areal weight = " + 1000000 * Math.Round(weave.ArealWeight, decimalPlaces) + " g/m^2",
+            "\nFabric areal weight = " + Math.Round(weave.ArealWeight, decimalPlaces) + " g/m^2",
             textFont,
             textColor,
             20,

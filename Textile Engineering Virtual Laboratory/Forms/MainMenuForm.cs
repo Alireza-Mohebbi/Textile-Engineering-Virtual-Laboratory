@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using TextileEngineeringVirtualLaboratory.Forms;
-using TextileEngineeringVirtualLaboratory.Plotter;
 using TextileEngineeringVirtualLaboratory.Renderer;
-using TextileEngineeringVirtualLaboratory.Simulator;
 using TextileEngineeringVirtualLaboratory.Textiles;
 
 namespace TextileEngineeringVirtualLaboratory
@@ -51,7 +48,6 @@ namespace TextileEngineeringVirtualLaboratory
             {
                 Weave = weaveDesigner.DesignedWeave;
 
-                textilePropertiesButton.Enabled = true;
                 textileViewEditHintLabel.Enabled = true;
                 textileViewer.Enabled = true;
                 tabControl.Visible = true;
@@ -71,26 +67,7 @@ namespace TextileEngineeringVirtualLaboratory
             weaveRenderer.Draw(Weave, e.Graphics);
         }
 
-        private void weavePropertiesButton_Click(object sender, EventArgs e)
-        {
-            WeavePropertiesConfigurer weavePropertiesConfigurer = new WeavePropertiesConfigurer(Weave);
-            if (weavePropertiesConfigurer.ShowDialog() == DialogResult.OK)
-            {
-                Weave = weavePropertiesConfigurer.Weave;
-            }
-        }
-
         private void calculateButton_Click(object sender, EventArgs e)
-        {
-            resultsWindow.Invalidate();
-        }
-
-        private void simulateButton_Click(object sender, EventArgs e)
-        {
-            resultsWindow.Invalidate();
-        }
-
-        private void plotButton_Click(object sender, EventArgs e)
         {
             resultsWindow.Invalidate();
         }
@@ -99,6 +76,17 @@ namespace TextileEngineeringVirtualLaboratory
         {
             e.Graphics.Clear(Color.White);
             e.Graphics.ScaleTransform(0.5f, 0.5f);
+
+            if (Weave != null)
+            {
+                weaveDesigner.predictiveModel.CalculateCrimpInWarpsDirection();
+                weaveDesigner.predictiveModel.CalculateCrimpInWeftsDirection();
+                weaveDesigner.predictiveModel.CalculatePorosity();
+                weaveDesigner.predictiveModel.CalculateCoverFactor();
+                weaveDesigner.predictiveModel.CalculateArealWeight();
+                weaveDesigner.predictiveModel.CalculateRequiredYarnLengthForFabric((float)fabricParametersInput1.Value, (float)fabricParametersInput2.Value);
+            }
+
 
             if (tabControl.SelectedTab == fabricParametersTabPage)
             {
@@ -112,9 +100,6 @@ namespace TextileEngineeringVirtualLaboratory
 
                     // Crmip
                     case 1:
-                        weaveDesigner.predictiveModel.CalculateCrimpInWarpsDirection();
-                        weaveDesigner.predictiveModel.CalculateCrimpInWeftsDirection();
-
                         AbstractRenderer crimpResultRenderer = new CrimpResultRenderer();
                         crimpResultRenderer.Draw(Weave, e.Graphics);
 
@@ -123,7 +108,6 @@ namespace TextileEngineeringVirtualLaboratory
                     // Porosity
                     case 2:
 
-                        weaveDesigner.predictiveModel.CalculatePorosity();
 
                         AbstractRenderer porosityResultRenderer = new PorosityResultCalculator();
                         porosityResultRenderer.Draw(Weave, e.Graphics);
@@ -133,7 +117,6 @@ namespace TextileEngineeringVirtualLaboratory
                     // Cover Factor
                     case 3:
 
-                        weaveDesigner.predictiveModel.CalculateCoverFactor();
 
                         AbstractRenderer coverFactorResultRenderer = new CoverFactorResultRenderer();
                         coverFactorResultRenderer.Draw(Weave, e.Graphics);
@@ -143,7 +126,6 @@ namespace TextileEngineeringVirtualLaboratory
                     // Areal Weight
                     case 4:
 
-                        weaveDesigner.predictiveModel.CalculateArealWeight();
 
                         AbstractRenderer arealWeightResultRenderer = new ArealWeightResultRenderer();
                         arealWeightResultRenderer.Draw(Weave, e.Graphics);
@@ -153,8 +135,6 @@ namespace TextileEngineeringVirtualLaboratory
                     // Required Yarn Length For Fabric
                     case 5:
 
-                        weaveDesigner.predictiveModel.CalculateRequiredYarnLengthForFabric((float)fabricParametersInput1.Value, (float)fabricParametersInput2.Value);
-
                         AbstractRenderer requiredYarnLengthForFabricResultRenderer = new RequiredYarnLengthForFabricResultRenderer();
                         requiredYarnLengthForFabricResultRenderer.Draw(Weave, e.Graphics);
 
@@ -163,98 +143,6 @@ namespace TextileEngineeringVirtualLaboratory
                     default:
                         break;
                 }
-            }
-
-            else if (tabControl.SelectedTab == simulationTabPage)
-            {
-                switch (simulationTypeComboBox.SelectedIndex)
-                {
-                    // Drape 2D
-                    case 0:
-                        AbstractSimulator drapeSimulator = new DrapeSimulator(Weave);
-                        drapeSimulator.Simulate(e.Graphics); break;
-
-                    default: break;
-                }
-            }
-
-            else if (tabControl.SelectedTab == plotTabPage)
-            {
-                switch (plotTypeComboBox.SelectedIndex)
-                {
-                    //Stress-Strain Curve
-                    case 0: break;
-
-                    // Bending Moment-Curvature Curve
-                    case 1:
-                        AbstractPlotter bendingMomentCurvaturePlotter = new BendingMomentCurvaturePlotter(
-                            (float)input1.Value,
-                            (float)input2.Value,
-                            (float)input3.Value,
-                            (float)input4.Value);
-                        bendingMomentCurvaturePlotter.Plot(e.Graphics, "Curvature (mm^-1)", "Bending Moment (N.mm)"); break;
-
-                    // Shear Stiffness Curve
-                    case 2:
-                        AbstractPlotter shearStiffnessPlotter = new ShearStiffnessPlotter(
-                            (float)input1.Value,
-                            (float)input2.Value,
-                            (float)input3.Value,
-                            (float)input4.Value);
-                        shearStiffnessPlotter.Plot(e.Graphics, "Shear Strain", "Shear Stress (MPa)"); break;
-
-                    default: break;
-                }
-            }
-        }
-
-        private void plotTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (plotTypeComboBox.SelectedIndex)
-            {
-                // Stress-Strain Curve
-                case 0:
-                    input1.Visible = true;
-                    input2.Visible = true;
-                    input3.Visible = true;
-                    input4.Visible = true;
-                    inputLabel1.Text = "Stress 1 (MPa)";
-                    inputLabel2.Text = "Strain 1";
-                    inputLabel3.Text = "Stress 2 (MPa)";
-                    inputLabel4.Text = "Strain 2"; break;
-
-                // Bending Moment-Curvature Curve
-                case 1:
-                    input1.Visible = true;
-                    input2.Visible = true;
-                    input3.Visible = true;
-                    input4.Visible = true;
-                    inputLabel1.Text = "Bending Moment 1 (N.mm)";
-                    inputLabel2.Text = "Curvature 1 (mm^-1)";
-                    inputLabel3.Text = "Bending Moment 2 (N.mm)";
-                    inputLabel4.Text = "Curvature 2 (mm^-1)"; break;
-
-                // Shear Stiffness Curve
-                case 2:
-                    input1.Visible = true;
-                    input2.Visible = true;
-                    input3.Visible = true;
-                    input4.Visible = true;
-                    inputLabel1.Text = "Shear Stress 1 (MPa)";
-                    inputLabel2.Text = "Shear Strain 1";
-                    inputLabel3.Text = "Shear Stress 2 (MPa)";
-                    inputLabel4.Text = "Shear Strain 2"; break;
-
-                // default
-                default:
-                    input1.Visible = false;
-                    input2.Visible = false;
-                    input3.Visible = false;
-                    input4.Visible = false;
-                    inputLabel1.Text = "";
-                    inputLabel2.Text = "";
-                    inputLabel3.Text = "";
-                    inputLabel4.Text = ""; break;
             }
         }
 

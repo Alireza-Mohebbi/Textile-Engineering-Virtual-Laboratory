@@ -212,7 +212,7 @@ public class PeircePredictiveModel : IPredictiveModel
     public Weave CalculateArealWeight()
     {
         weave.ArealWeight =
-            0.0000339043f *   // The 0.0000339043X multiplication is to convert unit (oz/yd^2) to (g/cm^2)
+            33.9043f *   // The 0.33.9043X multiplication is to convert unit (oz/yd^2) to (g/m^2)
             0.6857f * (float)Math.Sqrt(1 / weave.WarpCount) *
             ((weave.CoverFactorInWarpDirection * (1 + weave.UnitCellCrimpInWarpDirection)) +
             (weave.CoverFactorInWeftDirection * (1 + weave.UnitCellCrimpInWeftDirection) * ((float)Math.Sqrt(weave.WarpCount / weave.WeftCount))));

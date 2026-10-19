@@ -24,7 +24,7 @@ namespace TextileEngineeringVirtualLaboratory
             InitializeComponent();
             DoubleBuffered = true;
             Paint += Form1_Paint;
-            MouseClick += Form1_MouseClick;
+            //MouseClick += Form1_MouseClick;
             Invalidate();
         }
 
@@ -77,7 +77,7 @@ namespace TextileEngineeringVirtualLaboratory
         }
 
         // Switch between warp-over-weft or vice versa by clicking on an interlacement
-        private void Form1_MouseClick(object sender, MouseEventArgs e)
+       /* private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
             if (DesignedWeave == null || interactiveInterlacementsOfWeave == null)
             {
@@ -96,7 +96,7 @@ namespace TextileEngineeringVirtualLaboratory
                     }
                 }
             }
-        }
+        }*/
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {

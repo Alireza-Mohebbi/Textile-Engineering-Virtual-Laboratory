@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\WeavePropertiesConfigurerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\WeavePropertiesConfigurerForm.Designer.cs">
-      <DependentUpon>WeavePropertiesConfigurerForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\MainMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,8 +54,6 @@
     </Compile>
     <Compile Include="Scripts\Materials\IMaterials.cs" />
     <Compile Include="Scripts\Materials\CottonMaterial.cs" />
-    <Compile Include="Scripts\Plotter\ShearStiffnessPlotter.cs" />
-    <Compile Include="Scripts\Plotter\BendingMomentCurvaturePlotter.cs" />
     <Compile Include="Scripts\PredictiveModel\PeircePredictiveModel.cs" />
     <Compile Include="Scripts\PredictiveModel\IPredictiveModel.cs" />
     <Compile Include="Scripts\Renderer\CalculationResultRenderer\ArealWeightResultRenderer.cs" />
@@ -71,9 +63,6 @@
     <Compile Include="Scripts\Renderer\CalculationResultRenderer\PorosityResultRenderer.cs" />
     <Compile Include="Scripts\Renderer\CalculationResultRenderer\CoverFactorResultRenderer.cs" />
     <Compile Include="Scripts\Renderer\Renderer.cs" />
-    <Compile Include="Scripts\Simulator\AbstractSimulator.cs" />
-    <Compile Include="Scripts\Simulator\DrapeSimulator.cs" />
-    <Compile Include="Scripts\Plotter\AbstractPlotter.cs" />
     <Compile Include="Scripts\Renderer\TextileRenderer\WeaveRenderer.cs" />
     <Compile Include="Scripts\Textiles\Weave.cs" />
     <Compile Include="Forms\WeaveDesignerForm.cs">
@@ -89,9 +78,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\WeaveDesignerForm.resx">
       <DependentUpon>WeaveDesignerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\WeavePropertiesConfigurerForm.resx">
-      <DependentUpon>WeavePropertiesConfigurerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
