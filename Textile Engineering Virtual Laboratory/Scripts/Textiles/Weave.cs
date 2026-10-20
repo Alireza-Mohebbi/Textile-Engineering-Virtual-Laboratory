@@ -8,17 +8,17 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
         /// Weave physical properties ///
         public string Pattern { get; set; }
         //Warp
-        public float WarpCount { get; set; }            // Ne
+        public float WarpCount { get; set; }            // (Ne)
         public float WarpDensity { get; set; }      // (ends/mm^-1)
         public int NumberOfWarps { get; set; }
-        public float WarpDiameter { get; set; }     // mm
-        public float WarpSpacing { get; set; }      // mm
+        public float WarpDiameter { get; set; }     // (mm)
+        public float WarpSpacing { get; set; }      // (mm)
         // Weft
-        public float WeftCount { get; set; }            // Ne
+        public float WeftCount { get; set; }            // (Ne)
         public float WeftDensity { get; set; }      // (picks/mm^-1)
         public int NumberOfWefts { get; set; }
-        public float WeftDiameter { get; set; }     // mm
-        public float WeftSpacing { get; set; }      // mm
+        public float WeftDiameter { get; set; }     // (mm)
+        public float WeftSpacing { get; set; }      // (mm)
         // Fabric
         IMaterials Material;
         public float YarnDiameter { get; set; }     // (mm)
@@ -33,13 +33,6 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
         public float CoverFactorInWeftDirection { get; set; }
         public float RequiredWarpLengthForFabric { get; set; }  // (mm)
         public float RequiredWeftLengthForFabric { get; set; }  // (mm)
-
-        /// Weave mechanical properties ///
-        public float YoungsModulusX { get; set; }   // (MPa)
-        public float YoungsModulusY { get; set; }   // (MPa)
-   
-        /// Global ambient properties ///
-        private const float gravitaionalAcceleration = 9810;    // (mm/s^2)
 
         /// Warps and wefts path points and lengths ///
         public PointF[,] WarpsPathPointsInUnitCell { get; set; }
@@ -60,11 +53,11 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
         public float UnitCellCrimpInWeftDirection { get; set; }    // (Dimensionless)
 
         // Porosity properties ///
-        public float FabricVolume { get; set; }
-        public float WarpsVolume { get; set; }
-        public float WeftsVolume { get; set; }
-        public float PorosityVolume { get; set; }
-        public float PorosityPercentage { get; set; }
+        public float FabricVolume { get; set; }         // (mm^3)
+        public float WarpsVolume { get; set; }          // (mm^3)
+        public float WeftsVolume { get; set; }          // (mm^3)
+        public float PorosityVolume { get; set; }       // (mm^3)
+        public float PorosityPercentage { get; set; }   // (%)
 
         public Weave(string pattern, float warpCount, float weftCount, float warpDensity, float weftDensity, IMaterials material)
         {
