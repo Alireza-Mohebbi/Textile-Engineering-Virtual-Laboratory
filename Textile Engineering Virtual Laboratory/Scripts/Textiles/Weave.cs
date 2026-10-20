@@ -9,13 +9,13 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
         public string Pattern { get; set; }
         //Warp
         public float WarpCount { get; set; }            // Ne
-        public float WarpCompactness { get; set; }      // mm^-1
+        public float WarpDensity { get; set; }      // (ends/mm^-1)
         public int NumberOfWarps { get; set; }
         public float WarpDiameter { get; set; }     // mm
         public float WarpSpacing { get; set; }      // mm
         // Weft
         public float WeftCount { get; set; }            // Ne
-        public float WeftCompactness { get; set; }      // mm^-1
+        public float WeftDensity { get; set; }      // (picks/mm^-1)
         public int NumberOfWefts { get; set; }
         public float WeftDiameter { get; set; }     // mm
         public float WeftSpacing { get; set; }      // mm
@@ -66,13 +66,13 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
         public float PorosityVolume { get; set; }
         public float PorosityPercentage { get; set; }
 
-        public Weave(string pattern, float warpCount, float weftCount, float warpCompactness, float weftCompactness, IMaterials material)
+        public Weave(string pattern, float warpCount, float weftCount, float warpDensity, float weftDensity, IMaterials material)
         {
             Pattern = pattern;
             WarpCount = warpCount;
             WeftCount = weftCount;
-            WarpCompactness = warpCompactness;
-            WeftCompactness = weftCompactness;
+            WarpDensity = warpDensity;
+            WeftDensity = weftDensity;
             Material = material;
 
             MakeInterlacementMatrix();

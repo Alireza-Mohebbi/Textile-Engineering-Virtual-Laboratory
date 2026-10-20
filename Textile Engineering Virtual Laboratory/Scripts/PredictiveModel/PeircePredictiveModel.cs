@@ -29,8 +29,8 @@ public class PeircePredictiveModel : IPredictiveModel
 
     public Weave CalculateYarnSpacing()
     {
-        weave.WarpSpacing = 1 / weave.WarpCompactness * 10; //The X10 multiplication is to convert cm to mm
-        weave.WeftSpacing = 1 / weave.WeftCompactness * 10; // The X10 multiplication is to convert cm to mm
+        weave.WarpSpacing = 1 / weave.WarpDensity * 10; //The X10 multiplication is to convert cm to mm
+        weave.WeftSpacing = 1 / weave.WeftDensity * 10; // The X10 multiplication is to convert cm to mm
 
         return weave;
     }
