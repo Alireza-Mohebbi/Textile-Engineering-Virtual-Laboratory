@@ -24,6 +24,8 @@ public class PeircePredictiveModel : IPredictiveModel
         weave.WarpDiameter = 25.4f * (1 / (28 * (float)Math.Sqrt(weave.WarpCount)));    // The 25.4X multiplication is to convert diameter unit from 'inch' to 'mm'
         weave.WeftDiameter = 25.4f * (1 / (28 * (float)Math.Sqrt(weave.WeftCount)));    // The 25.4X multiplication is to convert diameter unit from 'inch' to 'mm'
 
+        weave.CrossSection = new CircleCrossSection(weave.WarpDiameter);
+
         return weave;
     }
 

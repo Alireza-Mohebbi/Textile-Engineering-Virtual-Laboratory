@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using TextileEngineeringVirtualLaboratory.CrossSection;
 using TextileEngineeringVirtualLaboratory.Materials;
 
 namespace TextileEngineeringVirtualLaboratory.Textiles
@@ -7,6 +8,7 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
     {
         /// Weave physical properties ///
         public string Pattern { get; set; }
+        public ICrossSection CrossSection { get; set; }
         //Warp
         public float WarpCount { get; set; }            // (Ne)
         public float WarpDensity { get; set; }      // (ends/mm^-1)

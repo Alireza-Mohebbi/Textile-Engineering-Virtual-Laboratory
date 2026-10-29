@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using TextileEngineeringVirtualLaboratory.CrossSection;
 using TextileEngineeringVirtualLaboratory.Renderer;
 using TextileEngineeringVirtualLaboratory.Textiles;
 
@@ -68,45 +70,84 @@ public class WeaveRenderer : AbstractRenderer
 
     private void DrawCrossSection()
     {
+        ICrossSection section = weave.CrossSection;
+
         int bottomRowWeftIndex = weave.NumberOfWefts - 1;
+        float yOffset = weave.FabricThickness;
 
         using (Pen weftPen = new Pen(Color.Blue, weave.WeftDiameter))
+        using (Brush warpBrush = new SolidBrush(Color.Red))
         {
-            PointF[] weftCurveControlPoints = new PointF[weave.NumberOfWarps + 2];
+            // +2 for the extra start and end points
+            PointF[] weftPoints = new PointF[weave.NumberOfWarps + 2];
 
             for (int i = 0; i < weave.NumberOfWarps; i++)
             {
-                float warpCrossSectionX = i * weave.WarpSpacing + weave.WarpSpacing / 2f;
-                bool isWarpOverWeft = weave.IsWarpOverWeft[i, bottomRowWeftIndex];
+                float x = i * weave.WarpSpacing + weave.WarpSpacing / 2f;
+
+                bool isWarpOverWeft =
+                    weave.IsWarpOverWeft[i, bottomRowWeftIndex];
+
                 float warpY;
                 float weftY;
 
                 if (isWarpOverWeft)
                 {
-                    warpY = (weave.FabricHeight) - (weave.WeftDiameter / 2f) + weave.FabricThickness / 2;
-                    weftY = (weave.FabricHeight) + (weave.WarpDiameter / 2f) + weave.FabricThickness / 2;
+                    warpY = weave.FabricHeight
+                            - weave.WarpDiameter / 2f;
+
+                    weftY = weave.FabricHeight
+                            - weave.FabricThickness
+                            + weave.WeftDiameter / 2f;
                 }
                 else
                 {
-                    warpY = (weave.FabricHeight) + (weave.WeftDiameter / 2f) + weave.FabricThickness / 2;
-                    weftY = (weave.FabricHeight) - (weave.WarpDiameter / 2f) + weave.FabricThickness / 2;
+                    warpY = weave.FabricHeight
+                            - weave.FabricThickness
+                            + weave.WarpDiameter / 2f;
+
+                    weftY = weave.FabricHeight
+                            - weave.WeftDiameter / 2f;
                 }
 
-                weftCurveControlPoints[i + 1] = new PointF(warpCrossSectionX, weftY);
+                warpY += yOffset;
+                weftY += yOffset;
 
-                using (Brush warpBrush = new SolidBrush(Color.Red))
+                // Draw warp cross-section using the shape in Weave.
+                PointF[] points = new PointF[101];
+
+                for (int j = 0; j <= 100; j++)
                 {
-                    g.FillEllipse(warpBrush, warpCrossSectionX - weave.WarpDiameter / 2f, warpY - weave.WarpDiameter / 2f, weave.WarpDiameter, weave.WarpDiameter);
+                    double t = section.TStart
+                        + (section.TEnd - section.TStart) * j / 100.0;
+
+                    PointF p = section.GetPoint(t);
+
+                    points[j] = new PointF(
+                        x + p.X,
+                        warpY + p.Y);
                 }
+
+                using (GraphicsPath path = new GraphicsPath())
+                {
+                    path.AddPolygon(points);
+                    g.FillPath(warpBrush, path);
+                }
+
+                // Offset by 1 because index 0 is reserved for the left end point
+                weftPoints[i + 1] = new PointF(x, weftY);
             }
 
-            // Extend the curve horizontally from the first interlacement
-            weftCurveControlPoints[0] = new PointF(0, weftCurveControlPoints[1].Y);
+            // Extend the weft curve to the left and right edges of the fabric
+            // (same extent as the top view).
+            weftPoints[0] = new PointF(0f, weftPoints[1].Y);
+            weftPoints[weftPoints.Length - 1] =
+                new PointF(weave.FabricWidth, weftPoints[weftPoints.Length - 2].Y);
 
-            // Extend the curve horizontally after the last interlacement
-            float lastInterlacementX = weftCurveControlPoints[weave.NumberOfWarps].X;
-            weftCurveControlPoints[weave.NumberOfWarps + 1] = new PointF(lastInterlacementX + weave.WarpSpacing / 2f, weftCurveControlPoints[weave.NumberOfWarps].Y);
-            g.DrawCurve(weftPen, weftCurveControlPoints);
+            if (weftPoints.Length >= 2)
+            {
+                g.DrawCurve(weftPen, weftPoints);
+            }
         }
     }
 }

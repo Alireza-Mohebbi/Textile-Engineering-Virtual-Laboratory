@@ -52,6 +52,8 @@
     <Compile Include="Forms\MainMenuForm.Designer.cs">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Scripts\CrossSection\CircleCrossSection.cs" />
+    <Compile Include="Scripts\CrossSection\ICrossSection.cs" />
     <Compile Include="Scripts\Materials\IMaterials.cs" />
     <Compile Include="Scripts\Materials\CottonMaterial.cs" />
     <Compile Include="Scripts\PredictiveModel\PeircePredictiveModel.cs" />
