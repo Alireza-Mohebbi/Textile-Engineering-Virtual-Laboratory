@@ -53,6 +53,7 @@
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Scripts\CrossSection\CircleCrossSection.cs" />
+    <Compile Include="Scripts\CrossSection\PowerEllipseCrossSection.cs" />
     <Compile Include="Scripts\CrossSection\RaceTrackCrossSection.cs" />
     <Compile Include="Scripts\CrossSection\ICrossSection.cs" />
     <Compile Include="Scripts\Materials\IMaterials.cs" />
