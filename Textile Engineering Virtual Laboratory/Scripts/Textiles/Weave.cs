@@ -27,8 +27,12 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
         public float YarnSpacing { get; set; }      // (mm)
         public bool[,] IsWarpOverWeft { get; set; }
         public int NumberOfLayers { get { return 1; } }
-        public float FabricWidth { get { return WarpSpacing * NumberOfWarps; } }    // (mm)
-        public float FabricHeight { get { return WeftSpacing * NumberOfWefts; } }   // (mm)
+        public float UnitCellLengthInWarpDirection { get { return WeftSpacing * NumberOfWefts; } }   // (mm)
+
+        public float UnitCellLengthInWeftDirection { get { return WarpSpacing * NumberOfWarps; } }    // (mm)
+        public float FabricLengthInWarpDirection { get; set; }
+        public float FabricLengthInWeftDirection { get; set; }
+
         public float FabricThickness { get { return NumberOfLayers * (WarpDiameter + WeftDiameter); } }  // (mm)
         public float ArealWeight { get; set; }  // (g/mm^2)
         public float CoverFactorInWarpDirection { get; set; }
@@ -61,14 +65,16 @@ namespace TextileEngineeringVirtualLaboratory.Textiles
         public float PorosityVolume { get; set; }       // (mm^3)
         public float PorosityPercentage { get; set; }   // (%)
 
-        public Weave(string pattern, float warpCount, float weftCount, float warpDensity, float weftDensity, IMaterials material)
+        public Weave(IMaterials material, string pattern, float warpCount, float weftCount, float warpDensity, float weftDensity, float fabricLengthInWarpDirection, float fabricLengthInWeftDirection)
         {
+            Material = material;
             Pattern = pattern;
             WarpCount = warpCount;
             WeftCount = weftCount;
             WarpDensity = warpDensity;
             WeftDensity = weftDensity;
-            Material = material;
+            FabricLengthInWarpDirection = fabricLengthInWarpDirection;
+            FabricLengthInWeftDirection = fabricLengthInWeftDirection;
 
             MakeInterlacementMatrix();
         }

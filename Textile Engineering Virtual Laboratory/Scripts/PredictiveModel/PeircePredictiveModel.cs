@@ -193,7 +193,7 @@ public class PeircePredictiveModel : IPredictiveModel
 
     public Weave CalculatePorosity()
     {
-        weave.FabricVolume = weave.FabricWidth * weave.FabricHeight * weave.FabricThickness;
+        weave.FabricVolume = weave.UnitCellLengthInWeftDirection * weave.UnitCellLengthInWarpDirection * weave.FabricThickness;
         weave.WarpsVolume = (weave.SumOfWarpsCurvedLengthsInUnitCell) * (float)(Math.PI * Math.Pow(weave.WarpDiameter, 2) / 4);
         weave.WeftsVolume = (weave.SumOfWeftsCurvedLengthsInUnitCell) * (float)(Math.PI * Math.Pow(weave.WeftDiameter, 2) / 4);
 
@@ -222,10 +222,10 @@ public class PeircePredictiveModel : IPredictiveModel
         return weave;
     }
 
-    public Weave CalculateRequiredYarnLengthForFabric(float fabricLengthInWarpDirection, float fabricLengthInWeftDirection)
+    public Weave CalculateRequiredYarnLengthForFabric()
     {
-        weave.RequiredWarpLengthForFabric = fabricLengthInWarpDirection * (1 + weave.UnitCellCrimpInWarpDirection);     // (m)
-        weave.RequiredWeftLengthForFabric = fabricLengthInWeftDirection * (1 + weave.UnitCellCrimpInWeftDirection);     // (m)
+        weave.RequiredWarpLengthForFabric = weave.FabricLengthInWarpDirection * (1 + weave.UnitCellCrimpInWarpDirection);     // (m)
+        weave.RequiredWeftLengthForFabric = weave.FabricLengthInWeftDirection * (1 + weave.UnitCellCrimpInWeftDirection);     // (m)
 
         return weave;
     }

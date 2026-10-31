@@ -15,6 +15,6 @@ namespace TextileEngineeringVirtualLaboratory.PredictiveModel
         Weave CalculatePorosity();
         Weave CalculateCoverFactor();
         Weave CalculateArealWeight();
-        Weave CalculateRequiredYarnLengthForFabric(float fabricLengthInWarpDirection, float fabricLengthInWeftDirection);
+        Weave CalculateRequiredYarnLengthForFabric();
     }
 }

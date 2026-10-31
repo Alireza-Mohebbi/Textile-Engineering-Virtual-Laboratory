@@ -33,13 +33,13 @@ public class WeaveRenderer : AbstractRenderer
             // Draw warps
             for (int i = 0; i < weave.NumberOfWarps; i++)
             {
-                g.DrawLine(warpPen, i * weave.WarpSpacing + weave.WarpSpacing / 2, 0, i * weave.WarpSpacing + weave.WarpSpacing / 2, weave.FabricHeight);
+                g.DrawLine(warpPen, i * weave.WarpSpacing + weave.WarpSpacing / 2, 0, i * weave.WarpSpacing + weave.WarpSpacing / 2, weave.UnitCellLengthInWarpDirection);
             }
 
             // Draw wefts
             for (int i = 0; i < weave.NumberOfWefts; i++)
             {
-                g.DrawLine(weftPen, 0, i * weave.WeftSpacing + weave.WeftSpacing / 2, weave.FabricWidth, i * weave.WeftSpacing + weave.WeftSpacing / 2);
+                g.DrawLine(weftPen, 0, i * weave.WeftSpacing + weave.WeftSpacing / 2, weave.UnitCellLengthInWeftDirection, i * weave.WeftSpacing + weave.WeftSpacing / 2);
             }
 
             // Draw interlacements
@@ -136,7 +136,7 @@ public class WeaveRenderer : AbstractRenderer
             minY = Math.Min(minY, p.Y - weftRadius);
         }
 
-        float shift = (float)(weave.FabricHeight - minY);
+        float shift = (float)(weave.UnitCellLengthInWarpDirection - minY);
 
         GraphicsState state = g.Save();
         g.TranslateTransform(0f, shift);
@@ -210,14 +210,14 @@ public class WeaveRenderer : AbstractRenderer
         int m = SamplesPerSpacing;
         double step = weave.WarpSpacing / (double)m;
 
-        int last = Math.Max(m, (int)Math.Round(weave.FabricWidth / step));
+        int last = Math.Max(m, (int)Math.Round(weave.UnitCellLengthInWeftDirection / step));
 
         double[] xs = new double[last + 1];
         for (int k = 0; k <= last; k++)
         {
             xs[k] = k * step;
         }
-        xs[last] = weave.FabricWidth;
+        xs[last] = weave.UnitCellLengthInWeftDirection;
 
         // Offset envelope of the warp shape, relative to the warp centre.
         // upper[d]: highest the weft centre may be when ABOVE the warp (min Y)

@@ -78,6 +78,7 @@ namespace TextileEngineeringVirtualLaboratory
                 weaveDesigner.predictiveModel.CalculatePorosity();
                 weaveDesigner.predictiveModel.CalculateCoverFactor();
                 weaveDesigner.predictiveModel.CalculateArealWeight();
+                weaveDesigner.predictiveModel.CalculateRequiredYarnLengthForFabric();
 
                 AbstractRenderer resultWindowRenderer = new ResultWindowRenderer();
                 resultWindowRenderer.Draw(Weave, e.Graphics);
