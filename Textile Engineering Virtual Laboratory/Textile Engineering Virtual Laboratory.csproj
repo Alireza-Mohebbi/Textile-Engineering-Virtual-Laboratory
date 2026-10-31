@@ -60,9 +60,9 @@
     <Compile Include="Scripts\Materials\CottonMaterial.cs" />
     <Compile Include="Scripts\PredictiveModel\PeircePredictiveModel.cs" />
     <Compile Include="Scripts\PredictiveModel\IPredictiveModel.cs" />
-    <Compile Include="Scripts\Renderer\ResultWindowRenderer\ResultWindowRenderer.cs" />
+    <Compile Include="Scripts\Renderer\ResultWindowRenderer.cs" />
     <Compile Include="Scripts\Renderer\AbstractRenderer.cs" />
-    <Compile Include="Scripts\Renderer\TextileRenderer\WeaveRenderer.cs" />
+    <Compile Include="Scripts\Renderer\WeaveRenderer.cs" />
     <Compile Include="Scripts\Textiles\Weave.cs" />
     <Compile Include="Forms\WeaveDesignerForm.cs">
       <SubType>Form</SubType>
