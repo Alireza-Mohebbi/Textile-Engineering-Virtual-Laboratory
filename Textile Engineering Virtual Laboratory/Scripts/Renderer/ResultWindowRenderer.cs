@@ -19,7 +19,7 @@ class ResultWindowRenderer : AbstractRenderer
 
         // Areal weight
         g.DrawString(
-            "\nFabric areal weight = " + Math.Round(weave.ArealWeight, decimalPlaces) + " g/m^2",
+            "\nAreal weight = " + Math.Round(weave.ArealWeight, decimalPlaces) + " g/m^2",
             textFont,
             textColor,
             20,
@@ -36,8 +36,8 @@ class ResultWindowRenderer : AbstractRenderer
 
         // Crimp
         g.DrawString(
-            "\nUnit cell crimp in warp direction = " + Math.Round(weave.UnitCellCrimpInWarpDirection * 100, decimalPlaces).ToString() + "%" +
-            "\nUnit cell crimp in weft direction = " + Math.Round(weave.UnitCellCrimpInWeftDirection * 100, decimalPlaces).ToString() + "%",
+            "\nCrimp in warp direction = " + Math.Round(weave.UnitCellCrimpInWarpDirection * 100, decimalPlaces).ToString() + "%" +
+            "\nCrimp in weft direction = " + Math.Round(weave.UnitCellCrimpInWeftDirection * 100, decimalPlaces).ToString() + "%",
             textFont,
             textColor,
             20,
@@ -45,7 +45,7 @@ class ResultWindowRenderer : AbstractRenderer
 
         // Fabric thickness
         g.DrawString(
-            "\nFabric Thickness = " + Math.Round(weave.FabricThickness, decimalPlaces) + "mm",
+            "\nFabric thickness = " + Math.Round(weave.FabricThickness, decimalPlaces) + "mm",
             textFont,
             textColor,
             20,
@@ -53,9 +53,9 @@ class ResultWindowRenderer : AbstractRenderer
 
         // Porosity
         g.DrawString(
-            "\nFabric Volume = " + Math.Round(weave.FabricVolume, decimalPlaces) + "mm^3" +
-            "\nPorosity Volume = " + Math.Round(weave.PorosityVolume, decimalPlaces) + "mm^3" +
-            "\nPorosity Percentage = " + Math.Round(weave.PorosityPercentage, decimalPlaces) + "%",
+            "\nFabric volume = " + Math.Round(weave.FabricVolume, decimalPlaces) + "mm^3" +
+            "\nPores volume = " + Math.Round(weave.PorosityVolume, decimalPlaces) + "mm^3" +
+            "\nPorosity = " + Math.Round(weave.PorosityPercentage, decimalPlaces) + "%",
             textFont,
             textColor,
             20,
@@ -63,7 +63,9 @@ class ResultWindowRenderer : AbstractRenderer
 
         // Required yarn length for the fabric
         g.DrawString(
-            "\nRequired Yarn Length for the Fabric = " + (Math.Round(weave.RequiredWarpLengthForFabric + weave.RequiredWeftLengthForFabric, decimalPlaces)) + " m",      // (m)
+            "\nRequired warp yarn = " + (Math.Round(weave.RequiredWarpLengthForFabric, decimalPlaces)) + " m" +      // (m)
+            "\nRequired weft yarn = " + (Math.Round(weave.RequiredWeftLengthForFabric, decimalPlaces)) + " m" +      // (m)
+            "\nTotal required yarn = " + (Math.Round(weave.RequiredWarpLengthForFabric + weave.RequiredWeftLengthForFabric, decimalPlaces)) + " m",      // (m)
             textFont,
             textColor,
             20,
