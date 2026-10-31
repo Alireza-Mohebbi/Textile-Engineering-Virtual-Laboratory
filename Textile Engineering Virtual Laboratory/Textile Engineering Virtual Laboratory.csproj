@@ -60,13 +60,8 @@
     <Compile Include="Scripts\Materials\CottonMaterial.cs" />
     <Compile Include="Scripts\PredictiveModel\PeircePredictiveModel.cs" />
     <Compile Include="Scripts\PredictiveModel\IPredictiveModel.cs" />
-    <Compile Include="Scripts\Renderer\CalculationResultRenderer\ArealWeightResultRenderer.cs" />
-    <Compile Include="Scripts\Renderer\CalculationResultRenderer\RequiredYarnLengthForFabricResultRenderer.cs" />
-    <Compile Include="Scripts\Renderer\CalculationResultRenderer\FabricThicknessResultRenderer.cs" />
-    <Compile Include="Scripts\Renderer\CalculationResultRenderer\CrimpResultRenderer.cs" />
-    <Compile Include="Scripts\Renderer\CalculationResultRenderer\PorosityResultRenderer.cs" />
-    <Compile Include="Scripts\Renderer\CalculationResultRenderer\CoverFactorResultRenderer.cs" />
-    <Compile Include="Scripts\Renderer\Renderer.cs" />
+    <Compile Include="Scripts\Renderer\ResultWindowRenderer\ResultWindowRenderer.cs" />
+    <Compile Include="Scripts\Renderer\AbstractRenderer.cs" />
     <Compile Include="Scripts\Renderer\TextileRenderer\WeaveRenderer.cs" />
     <Compile Include="Scripts\Textiles\Weave.cs" />
     <Compile Include="Forms\WeaveDesignerForm.cs">
